@@ -1,0 +1,14 @@
+/* code/sql/HW_Avg.sql */
+
+DROP SCHEMA IF EXISTS HW_Avg;
+CREATE SCHEMA HW_Avg;
+USE HW_AVG;
+
+CREATE TABLE TEST(
+    Test INT
+);
+
+INSERT INTO TEST VALUES (null), (0), (10);
+
+SELECT AVG(Test) FROM TEST;
+-- Returns 5.0
