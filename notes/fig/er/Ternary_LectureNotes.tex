@@ -1,0 +1,10 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (CLASS) {CLASS};
+	\node [relationship] (REFERS) [right=of CLASS] {REFERS TO} edge node[above]{$\cP$} (CLASS);
+	\node [entity] [right = of REFERS] {PROFESSOR} edge node[above]{$\cN$} (REFERS);
+	\node [entity] [below = of REFERS] {LECTURE NOTES} edge node[left]{$\cM$} (REFERS);
+\end{tikzpicture}
+\end{document}
