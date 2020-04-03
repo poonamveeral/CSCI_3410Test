@@ -35,7 +35,11 @@
     | ----------- | -------------------------------- |
 
 * XML Files in Code Folder
-  * 
+  * Camel case is a common naming rule in JavaScripts.
+  * Uppercase first letter in each word except the first
+
+    | Example     |  firstName |
+    | ----------- | ---------- |
 
 
 
@@ -67,4 +71,4 @@
 
 * Rules are taken by:
   *  https://www.geeksforgeeks.org/.
-  *  https://docs.oracle.com/cd/E82085_01/150/funtional_artifacts_guide/or-fasg-standards.htm
+  *  https://www.w3schools.com/xml/xml_elements.asp.
