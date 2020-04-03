@@ -19,16 +19,16 @@
 
 
         Example | file-name.extension |
-        ---------|----------|---------
+       ---------|---------------------|
  
     * Not Recommended
 
 
         Example | filename.extension |
-        ---------|----------|---------
+       ---------|--------------------|
 
          Example | fileName.extension |
-        ---------|----------|---------
+        ---------|--------------------|
 
 * Other exceptions
   
