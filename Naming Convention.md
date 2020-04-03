@@ -1,4 +1,7 @@
-#   Naming Convention Standard
+#   Naming Convention Standard/File Name Conventions
+
+## A collection of guidelines for writing file, folder, classes, figures, and images names in the project.
+  
 
 * SQL Homework Files in Code Folder.
     * Every Homework will be followed by HW_ and Upper Camel Case.
