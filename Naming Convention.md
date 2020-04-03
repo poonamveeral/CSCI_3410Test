@@ -2,10 +2,6 @@
 
 ## A collection of guidelines for writing file, folder, classes, figures, and images names in the project.
 
-*   Do not use names which could misguide other developers.
-*   Names should be meaningfully distinct and pronounceable.
-
-  
   * [File Names](#file-name)
   * [Figures](#figure-name)
   * [Folders](#folder-name)
@@ -140,13 +136,16 @@
 
 
 
+##### *Important* Notes: 
+
+*   Do not use names which could misguide other developers.
+*   Names should be meaningfully distinct and pronounceable.
 
 
 
 
 
-
-* Rules are taken by:
+### *Rules* are taken by:
   *  https://www.geeksforgeeks.org/.
   *  https://www.w3schools.com/xml/xml_elements.asp.
   *  https://developers.google.com/style/filenames.
