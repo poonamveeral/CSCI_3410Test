@@ -15,14 +15,11 @@
         * Interfaces name should also be capitalised just like class names.
         * Use whole words and must avoid acronyms and abbreviations.
 
-        |   Example |
-        | ----------- | ----------- |
-        | interface      Bicycle      |
-        | class MountainBike implements Bicycle | 
-        | interface      Sport      |
-        | class Football implements Sport | 
-        |                                 |
-* 
+         | Example     | class MountainBike | class MountainBike |
+         | ----------- | ----------- | ----------- |
+        
+       
+
 
 
 
