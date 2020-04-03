@@ -2,12 +2,56 @@
 
 ## A collection of guidelines for writing file, folder, classes, figures, and images names in the project.
   
+  * [File Names](#file-name)
+  * [Figures](#figure-name)
+  * [Folders](#folder-name)
+  * [The Tags in the Document](#tag-name)
+  * [The Links in the Document](#link-name)
+  * [Code Folder Naming Convention](#code-folder-naming-convention)
+
+
+# File Name
+*  Make file and directory names lowercase.
+*  Separate words with hyphens, not underscores.
+*  Use only standard ASCII alphanumeric characters in  file and directory names.
+
+    * Recommended
+
+
+        Example | file-name.extension |
+        ---------|----------|---------
+ 
+    * Not Recommended
+
+
+        Example | filename.extension |
+        ---------|----------|---------
+
+         Example | fileName.extension |
+        ---------|----------|---------
+
+* Other exceptions
+  
+  * It's okay to have some inconsistency in filenames if it can't otherwise be avoided.
+    * For example, sometimes tools that generate reference documentation produce file names based on different style requirements or based on the design and naming conventions of the product or API itself.
+
+
+# Figure Name
+
+# Folder Name
+
+# Tag Name
+
+# Link Name
+
+# Code Folder Naming Convention
+
 
 * SQL Homework Files in Code Folder.
     * Every Homework will be followed by HW_ and Upper Camel Case.
 
-        | Example     | HW_HomeworkName |
-        | ----------- | ----------- |
+        | Example    | HW_HomeworkName |
+        | -----------| --------------- |
 
 
 * JAVA Files in Code Folder.
@@ -75,3 +119,4 @@
 * Rules are taken by:
   *  https://www.geeksforgeeks.org/.
   *  https://www.w3schools.com/xml/xml_elements.asp.
+  *  https://developers.google.com/style/filenames.
