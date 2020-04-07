@@ -6238,7 +6238,7 @@ Problem (Reading the MOVIES database ER schema) +.#movie
 
     Consider the ER schema for the MOVIES database ([@Textbook6, Figure 7.24]):
 
-    ![](img/te)
+    ![](img/movies_example)
 
     Assume that MOVIES is a populated database.
     ACTOR is used as a gender-neutral term.
@@ -6829,7 +6829,7 @@ Solution to [%D %n (%T)](#problem:car-insurance)
 ~ 
     Two possible solutions are
     
-    ![](img/p)
+    ![](img/car_example)
 
     and
 
