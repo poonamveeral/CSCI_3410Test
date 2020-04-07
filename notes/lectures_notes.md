@@ -8600,7 +8600,7 @@ Problem (E.R. Diagram from XML File -- Customer) +.#xmltoercustomer
 
     Consider the following `xml` file:
     
-    ```{.xml .numberLines include=code/xml/Customers.xml}
+    ```{.xml .numberLines include=code/xml/customers.xml}
     ```
     
     Try to draw the E.R. model that would correspond to the relational implementation of this database.
@@ -8613,7 +8613,7 @@ Problem (E.R. Diagram from XML File -- Award) +.#xmltoeraward
 
     Find below a (mashup) of actual data from the National Science Foundation (courtesy of <https://www.nsf.gov/awardsearch/download.jsp>):
 
-    ```{.xml .numberLines include=code/xml/NSF_Award.xml}
+    ```{.xml .numberLines include=code/xml/NSFAward.xml}
     ```
     
     It contains information about one particular award, awarded to an institution on behalf of two researchers.
