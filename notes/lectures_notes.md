@@ -4982,7 +4982,7 @@ From relational models to E.R. models (sometimes needed)
 
 ![](img/reverse_eng_01.jpeg){width=90%}
 
-![](img/reverse_Eeng_03.jpeg){width=90%}
+![](img/reverse_eng_03.jpeg){width=90%}
 
 ---
 
