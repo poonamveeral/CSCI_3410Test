@@ -5877,7 +5877,7 @@ Exercise +.#
 ~ 
     Consider the following diagram:
 
-    ![](fig/uml/Flight)
+    ![](fig/uml/flight)
     
     Give the number of attributes for both classes, and suggest two operations for the class that does not have any. Discuss the multiplicities: why did the designer picked those values?
 
@@ -6186,7 +6186,7 @@ Solution +.#
     As far as we know "hand" could refer to a card game, and "person" could refer to players.
     A straightforward representation of the same diagram as a U.M.L. class diagram could be:
     
-    ![](fig/uml/Hand)
+    ![](fig/uml/hand)
 
     Note that we could convey more information, for instance by using aggregation, or even composition, but, without more information about those entities and this relationship, it may be safer not to make any additional supposition.
 
@@ -6198,12 +6198,12 @@ Solution +.#
     Composition association: class does not exist without the association.
 
 Solution +.#
-~ ![](fig/uml/Generalization)
+~ ![](fig/uml/generalization)
 Because it avoids redundancy.
 
 
 Solution +.#
-~ ![](fig/uml/Flight_2)
+~ ![](fig/uml/flight_02)
 
 
 ## Problems  {-}
@@ -6732,7 +6732,7 @@ Problem (From E.R. to relational schema and UML class diagram -- CAR\_INFO) +.#c
 
     Consider the following E.R. schema for the CAR\_INFO database:
 
-    ![](fig/er/Car_Info)
+    ![](fig/er/car_Info)
 
     Note that a car can have at most one driver, $N$ passengers, $N$ insurances, and that car insurances exist only if they are "tied up" to a car (i.e., they are weak entities, and their identifying relationship is called "Insured").
 
@@ -6801,7 +6801,7 @@ Problem (From UML to relational model -- DRIVER) +.#UMLtoRELDriver
     Consider the UML diagram below, and convert it to the relational model.
     Do not forget to indicate primary and foreign keys.
 
-    ![](fig/uml/Driver)
+    ![](fig/uml/driver)
 
 
 ## Solutions to Selected Problems {-}
@@ -7128,7 +7128,7 @@ Solution to [%D %n (%T)](#problem:carinfo)
     
     Note that, during the coversion, we had to make "Insured Car" part of the primary key of CAR INSURANCE.
     
-    ![](fig/uml/Car_Info)
+    ![](fig/uml/car_info)
     
 ---
 
