@@ -199,7 +199,7 @@ The `sql` code is formatted using the [Poor Man's T-SQL Formatter](http://archit
 
 Those lecture notes were created under an [Affordable Learning Georgia](https://www.affordablelearninggeorgia.org/) [Mini-Grant for Ancillary Materials Creation and Revision](https://www.affordablelearninggeorgia.org/about/r13_grantees) ([Proposal M71](https://affordablelearninggeorgia.org/documents/M71_Augusta_Aubert.pdf)).
 
-![Affordable Learning Georgia](img/ALG_Logo_hires.png){width=70%}\ 
+![Affordable Learning Georgia](img/ALG_logo_hires.png){width=70%}\ 
 
 
 ## Resources {-}
@@ -4923,7 +4923,7 @@ The idea being that the Health care provider cares about an insuree  only if the
 
 Multiple notations have been used to represent the ratio and constraint on relationship.
 
-![A Quick Overview of the Notations for ER Diagram (courtesy of [wikipedia](https://commons.wikimedia.org/wiki/File:ERD_Representation.svg#/media/File:ERD_Representation.svg))](img/ERD_Representation.svg)
+![A Quick Overview of the Notations for ER Diagram (courtesy of [wikipedia](https://commons.wikimedia.org/wiki/File:ERD_representation.svg#/media/File:ERD_representation.svg))](img/ERD_representation.svg)
 
 In the following, we introduce two of them: the Min/Max and the Crow's foot notations.
 
@@ -4980,9 +4980,9 @@ Will not be able to represent it, because of https://stackoverflow.com/a/2126026
 
 From relational models to E.R. models (sometimes needed)
 
-![](img/Reverse_Eng1.jpeg){width=90%}
+![](img/reverse_eng_01.jpeg){width=90%}
 
-![](img/Reverse_Eng3.jpeg){width=90%}
+![](img/reverse_Eeng_03.jpeg){width=90%}
 
 ---
 
@@ -5481,7 +5481,7 @@ Wide, powerful, but also intimidating.
 
 You know UML from object-oriented programming language:
 
-![](img/Class_diag.png){width=90%}
+![](img/class_diagram.png){width=90%}
 
 That's a class diagram, there are other types of diagrams, they are not unrelated!
 For instance, using communication diagrams, deployment diagrams, and state chart diagrams, you can collect the requirements needed to draw a class diagram!
@@ -5491,7 +5491,7 @@ They each offer a viewpoint on a software that will help you in making sure the 
 
 There are 14 different types of diagrams, divided between two categories: structural and behavioral.
 
-![](img/UML_Diagrammhierarchie.svg)
+![](img/UML_diagram_hierarchie.svg)
 
 (Source: <https://commons.wikimedia.org/wiki/File:UML_diagrams_overview.svg>)
 
@@ -5517,7 +5517,7 @@ They describe the behavioral, or dynamic, relationship, between components.
 - **State machine diagram**, a.k.a., state chart diagram, describes how a system react to external events. You can picture yourself a complex form of finite state automata diagram.
 - **Activity diagram** is a flow of control between activities. You may have seen them already, they are supposedly easy to follow: 
 
-![](img/Activity_diag.png)
+![](img/activity_diagram.png)
 
 Then there is the sub-category of "Interaction diagrams":
 
@@ -5551,7 +5551,7 @@ Associations are, to some extend, more expressive than relationship types:
 - **As for relationship types** they can have attributes: actually, a whole class can be connected to an association.
 - **As for relationship types**, they can express a cardinality constraint on the relation between classes. They are written as `min .. max`, with `*` for "no maximum", and the following shorthands: `*` stands for `0..*` and `1` stands for `1..1`. An association with `1` on one side and `*` on the other (resp. `1` and `1`, `*` and `1`, `*` and `*`) is sometimes called "one-to-many" (resp., "one-to-one", "many-to-one", "many-to-many"). The notation in partially inverted w.r.t. ER diagrams:
 
-![](img/Multiplicities.png)
+![](img/multiplicities.png)
 
 Additionaly, associations can be "extended", and they are not the only kind of relationship that can be expressed between two classes.
 
@@ -7223,7 +7223,7 @@ Java actually uses
 - A **protocol** (the API, a class libarary), Java DataBase Connectivity (JDBC), common to all DBMS. Essentially, a collection of classes to send SQL statements, retriev and update the results of a query, handle exceptions, etc.
 - A **subprotocol** (the driver, connector), Connector/J for MySQL.
 
-![](img/Connector.png){ height=50% }
+![](img/connector.png){ height=50% }
 
 And the routine is a bit more complex:
 
