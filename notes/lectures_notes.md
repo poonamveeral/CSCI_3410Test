@@ -7918,9 +7918,9 @@ txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
 
 Can also be used for DBMS fingerprinting.
 
-The source code at `code/java/SimpleInjection_1.java` and `code/java/SimpleInjection_2.java` give two examples of `SQL` injection for Java programs, and how to fix them using prepared statements is presented at `code/java/SimpleInjection_3.java`.
+The source code at `code/java/SimpleInjection01.java` and `code/java/SimpleInjection02.java` give two examples of `SQL` injection for Java programs, and how to fix them using prepared statements is presented at `code/java/SimpleInjection03.java`.
 
-The gist of `code/java/SimpleInjection_1.java` is that writing a statement like
+The gist of `code/java/SimpleInjection01.java` is that writing a statement like
 
 ~~~{.java}
 ResultSet rset = stmt.executeQuery("SELECT * FROM SECRETVIP WHERE Name ='" + entered + "';");
@@ -7928,7 +7928,7 @@ ResultSet rset = stmt.executeQuery("SELECT * FROM SECRETVIP WHERE Name ='" + ent
 
 leaves the door open for an attacker to enter `n' OR '1' = '1`{.sqlmysql} as a value for `entered`, so that the condition would always be true.
 
-For `code/java/SimpleInjection_2.java`, it shows how
+For `code/java/SimpleInjection02.java`, it shows how
 
 ~~~{.java}
 stmt.execute("SELECT * FROM SECRETVIP WHERE Name ='" + entered + "';");
@@ -7936,7 +7936,7 @@ stmt.execute("SELECT * FROM SECRETVIP WHERE Name ='" + entered + "';");
 
 could be a serious issue if `nope'; DROP SCHEMA HW_SIMPLE_INJECTION_2;`{.sqlmysql} was entered as a value for `entered`, destroying the whole schema `HW_SIMPLE_INJECTION_2`.
 
-Finally, `code/java/SimpleInjection_3.java` shows how to use proper statements to avoid this situation.
+Finally, `code/java/SimpleInjection03.java` shows how to use proper statements to avoid this situation.
 
 ### Protections
 
