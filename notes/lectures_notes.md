@@ -5580,7 +5580,7 @@ Pictures in the img/ folder.
 
 Qualified associations can be used for weak entities, but not only.
 
-![](img/Class-Diagram-Relationships.png)
+![](img/class_diagram_relationships.png)
 
 Some of those subtleties depend on your need, and are subjective, but are important tool to design properly a database, and relieving the programmer from the burden of figuring out many details.
 
