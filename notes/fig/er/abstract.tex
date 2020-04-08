@@ -1,0 +1,10 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (A) {A};
+	\node [relationship] (R) [right=of A] {R} edge node[above]{$\cM$} (A);
+	\node [entity] (B) [right = of R] {B} edge[total] node[above]{$1$} (R);
+\end{tikzpicture}
+
+\end{document}
