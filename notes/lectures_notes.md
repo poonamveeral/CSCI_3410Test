@@ -1923,7 +1923,7 @@ MariaDB [HW_CONSTRAINTS_PART3]> SELECT * FROM Table_set_null;
 ![
 PROF(Login (PK), Name, Department (FK to DEPARTMENT.Code))  
 DEPARTMENT(Code (PK), Name, Head (FK to PROF.Login))
-](fig/rel_mod/prof_department)
+](fig/rel_mod/professor_department)
 \ 
 
 ~~~{.sqlmysql}
@@ -4326,7 +4326,7 @@ Solution to [%D %n (%T)](#problem:profrevisited)
     LECTURE (Code (PK), Year (PK), Name, Instructor (FK to PROF.Login)
     STUDENT(Login (PK), Name, Registered, Major (FK to DEPARTMENT.Code))
     GRADE (Login (PK, FK to STUDENT.Login), Grade (PK), LectureCode (FK to LECTURE.Code), LectureYear (FK to LECTURE.Year))
-    ](fig/rel_mod/prof_department_extended)
+    ](fig/rel_mod/professor_department_extended)
     \ 
 
     For the other questions, refer to this code.
