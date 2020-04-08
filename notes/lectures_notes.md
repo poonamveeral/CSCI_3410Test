@@ -851,7 +851,7 @@ CAR(VIN (PK), Make, Model, Year)
 DRIVER(State (PK), Licence\_number (PK), Name, Address)
 INSURANCE(Policy\_Number (PK), Insured\_Car (FK to CAR.VIN), Insured\_Driver\_State (FK to DRIVER.State), Insured\_Driver\_Num (FK to DRIVER.Licence\_number), Rate)
 PRICE(Stock\_number (PK), Car\_Vin (FK to CAR.VIN), Price, Margin)
-](fig/rel_mod/CAR1)
+](fig/rel_mod/car_01)
 \ 
 
 (Yes, we do need the state *and* the licence number to uniquely identify a driver's licence, since [many states use the same licence format](https://ntsi.com/drivers-license-format/).
@@ -1006,7 +1006,7 @@ Exercise +.#
     AUTHOR(Ref, Name, Address)  
     BOOK(ISSN, AuthorRef, Title)  
     GAINED-AWARD(Ref, Name, BookISSN, Year)
-    ](fig/rel_mod/BOOK_Exo)
+    ](fig/rel_mod/book_exo)
     \ 
 
     For each relation, answer the following:
@@ -1022,7 +1022,7 @@ Exercise +.#
     TRAIN(Ref (PK), Model, Year)  
     CONDUCTOR(CompanyID (PK), Name, ExperienceLevel)  
     ASSIGNED-TO(TrainRef (PK, FK to TRAIN.Ref), ConductorID (PK, FK to CONDUCTOR.CompanyID), Date (PK))   
-    ](fig/rel_mod/TRAIN_Exo)
+    ](fig/rel_mod/train_exo)
     \ 
 
     #. What are the foreign keys in the ASSIGNED-TO relation? What are they refering?
@@ -1078,7 +1078,7 @@ Exercise +.#
     ![
     BUILDING(Name (PK), Address)  
     ROOM(Code (PK), Building (FK to BUILDING.Name))
-    ](fig/rel_mod/BUILDING_ROOM)
+    ](fig/rel_mod/building_room)
     \ 
 	
 	#. Give two possible tuples for the BUILDING relation, and two possible tuples for the ROOM relation such that the state is consistent.
@@ -1170,7 +1170,7 @@ Solution +.#
     AUTHOR(Ref (PK), Name, Address)  
     BOOK(ISSN (PK), AuthorRef (FK to AUTHOR.REF), Title)  
     GAINED-AWARD(Ref (PK), Name, BookISSN (FK to BOOK.ISSN), Year)
-    ](fig/rel_mod/BOOK_Sol)
+    ](fig/rel_mod/book_sol)
     \ 
 
     For the last question, the answer is yes: based on the ISSN of the book, we can retrieve the author of the book. Hence, knowing which book was awarded which year, by looking in the GAINED-AWARD table, gives us the answer to that question.
@@ -1212,7 +1212,7 @@ Solution +.#
     ![
     MOVIE(Title (PK), Year)
     CHARACTER(Name(PK), First_Appearance (FK referencing MOVIE.Title))
-    ](fig/rel_mod/CHARACTER)
+    ](fig/rel_mod/character)
     \ 
     
     #. Inserting <"Ash", "Evil Dead"> into the **CHARACTER** relation would cause an error if the database was empty, since no movie with the primary key "Evil Dead" has been introduced yet: this would be a referential integrity constraint violation.
@@ -1301,7 +1301,7 @@ Solution to [%D %n (%T)](#problem:cinema)
     AUDITORIUM(ID (PK), Capacity, Theater (FK to THEATER.ID))  
     SHOWTIME(ID (PK), MovieId (FK to MOVIE.ID), AuditoriumId (FK to AUDITORIUM.ID), StartTime)  
     TICKETS(ID (PK), ShowTimeId (FK to SHOWTIME.ID), Price)
-    ](fig/rel_mod/CINEMA)
+    ](fig/rel_mod/cinema)
     \ 
 
 --- 
@@ -1316,7 +1316,7 @@ Solution to [%D %n (%T)](#problem:rel_model_bills)
     MEMBER(Name, Political Group, BTerm, ETerm, ID (PK))
     REPRESENTATIVE(Role (PK), Member (FK to MEMBER.ID))
     VOTE(Bill (PK, FK to BILL.ID), Member (PK, FK to MEMBER.ID))
-    ](fig/rel_mod/BILL)
+    ](fig/rel_mod/bill)
     \ 
     
     For simplicity, we added an `ID` to our `MEMBER` and `BILL` relations. Note that having a "role" in the `MEMBER` relation to store the information about speaker, etc., would be extremely inefficient, since we would add an attribute to the ~435 members that would be `NULL`{.sqlmysql} in ~430 of them.
@@ -1337,7 +1337,7 @@ CAMPUS (Address (PK), University (FK to UNIVERSITY.Name))
 DEPARTMENT (Code (PK), Contact, CreationDate, University (FK to UNIVERSITY.Name))
 COURSE (Name (PK), CreditHours)
 OFFERING (Department (PK, FK to DEPARTMENT.Name), Course (PK, FK to COURSE.Name), Code)
-    ](fig/rel_mod/UNIVERSITIES)
+    ](fig/rel_mod/universities)
     \ 
 
 
@@ -1923,7 +1923,7 @@ MariaDB [HW_CONSTRAINTS_PART3]> SELECT * FROM Table_set_null;
 ![
 PROF(Login (PK), Name, Department (FK to DEPARTMENT.Code))  
 DEPARTMENT(Code (PK), Name, Head (FK to PROF.Login))
-](fig/rel_mod/PROF_DEPARTMENT)
+](fig/rel_mod/prof_department)
 \ 
 
 ~~~{.sqlmysql}
@@ -4124,7 +4124,7 @@ Solution to [%D %n (%T)](#problem:address)
         ![
         NAME(FName, LName, ID(PK))
         ADDRESS(StreetName (PK), Number (PK), Habitants (FK referencing NAME.ID))
-        ](fig/rel_mod/ADDRESS)
+        ](fig/rel_mod/address)
         \ 
 
     @problem:address -- Solution to Q. -.#
@@ -4326,7 +4326,7 @@ Solution to [%D %n (%T)](#problem:profrevisited)
     LECTURE (Code (PK), Year (PK), Name, Instructor (FK to PROF.Login)
     STUDENT(Login (PK), Name, Registered, Major (FK to DEPARTMENT.Code))
     GRADE (Login (PK, FK to STUDENT.Login), Grade (PK), LectureCode (FK to LECTURE.Code), LectureYear (FK to LECTURE.Year))
-    ](fig/rel_mod/PROF_DEPARTMENT_EXTENDED)
+    ](fig/rel_mod/prof_department_extended)
     \ 
 
     For the other questions, refer to this code.
@@ -4356,7 +4356,7 @@ Solution to [%D %n (%T)](#problem:coffee)
     CUSTOMER (CardNo (PK), Name, Email, FavCoffee (FK to COFFEE.Ref))
     SUPPLY (Provider (PK, FK to PROVIDEV.ID), Coffee (PK, FK to COFEE.Ref))
     PROVIDER (Name (PK), Email)
-    ](fig/rel_mod/COFFEE)
+    ](fig/rel_mod/coffee)
     \ 
 
 
@@ -4434,7 +4434,7 @@ Solution to [%D %n (%T)](#problem:roleplaying)
     QUEST(Name (PK), XP)
     COMPLETED-BY(Character (PK, FK to CHARACTER.Name), Quest (PK, FK to QUEST.Name))
     SPECIAL-ITEM(Name (P), Quest (FK to QUEST.Name))
-    ](fig/rel_mod/RPG)
+    ](fig/rel_mod/rpg)
     \ 
 
 ---
@@ -4575,7 +4575,7 @@ Solution to [%D %n (%T)](#problem:sqlWorks)
     AUTHOR(Name (PK), Email)
     BOOK(ISBN (PK), Work (FK to WORK.Title), Published, Price)
     EBOOK(ISBN (PK), Work (FK to WORK.Title), Published, Price)
-    ](fig/rel_mod/WORK)
+    ](fig/rel_mod/work)
     \ 
 
     The solution to the next questions can be read from the following code:
@@ -4704,21 +4704,21 @@ multivalued | the box have double lines |
 derived | the box have dotted lines |
 a key | the name of the attribute is underlined |
 
-![](fig/er/Naming)
+![](fig/er/naming)
 \ 
 
-![](fig/er/Entity_Instructor)
+![](fig/er/entity_instructor)
 \ 
 
 In the following, we'll focus on the relationship between the entities more than on the attributes of particular entities, so we'll sometimes simply draw
 
-![](fig/er/Naming_short1)
+![](fig/er/naming_short_01)
 \ 
 
 leaving the attributes un-specified (but that does not mean that they all have to be atomic) or even just
 
 
-![](fig/er/Naming_short2)
+![](fig/er/naming_short_02)
 \ 
 
 but that does not mean that the entity type have no attribute!
@@ -4736,7 +4736,7 @@ but that does not mean that the entity type have no attribute!
 
 $E_1$, … $E_n$ *participate* in R,  $e_1$, …, $e_n$ *participate* in $r_1$, $n$ is the degree.
 
-![](fig/er/Rel_Instance)
+![](fig/er/rel_instance)
 \ 
 
 Note that we can have Entity Set 1 = Entity Set 2, in which case we say the relation is recursive.
@@ -4749,7 +4749,7 @@ Naming convention:
 - Drawing usually reads right to left, and up to down.
 
 
-![](fig/er/Bad_Design)
+![](fig/er/bad_design)
 \ 
 
 
@@ -4759,12 +4759,12 @@ Convenient, and sometimes mandatory, to give role names.
 
 If we want to stress that we are considering only one aspect of an entity (that is, a person is not only an employee, a company is not only an employer, but this aspect is crucial for the "EMPLOYS" relation):
 
-![](fig/er/Role_Name1)
+![](fig/er/role_name_01)
 
 We can also use it to make the "right-side" and the "left-side" of a recursive relationship explicit:
 
-![](fig/er/Role_Name2)
-![](fig/er/Role_Name3)
+![](fig/er/role_name_02)
+![](fig/er/role_name_03)
 
 Finally, we will sometimes use "Role Name of Entity 1 : Role Name of Entity 2" as a notation for the relation between them.
 For instance, we can write "Employer:Employee" to denote the "EMPLOYS" relation, and we will also use this notation when the relationship is between different entities, and write e.g. "PERSON:POSITION" for the "OCCUPIES" relation.
@@ -4793,12 +4793,12 @@ STUDENT : TEAM | $M:N$ | "A student can participate in multiple team, a team can
 
 We indicate the ratio on the edges:
 
-![](fig/er/Constraint1)
+![](fig/er/constraint_01)
 
 Note that reflexive relations can have any ratio as well.
 An example of $M:N$ recursive relation could be:
 
-![](fig/er/Software_Dep)
+![](fig/er/software_dep)
 
 ##### Participation Constraint
 
@@ -4808,7 +4808,7 @@ The participation can be total (a.k.a. existence dependency, the entity **must**
 
 Total is drawn with a double line, partial is drawn with a single line:
 
-![](fig/er/Constraint2)
+![](fig/er/constraint_02)
 
 This reads "a course **must** be offered by a department, but a department may or may not offer courses".
 
@@ -4825,12 +4825,12 @@ We are dealing with moving aspects here: atributes on $1:1$, $1:N$, $N:1$ relati
 
 For instance, imagine that every phone uses exactly (= "at most and at least") one carrier, that a carrier can provide network to multiple phones, and that the average quality of the network is an attribute in this relationship:
 
-![](fig/er/Phone_Carrier1)
+![](fig/er/phone_carrier_01)
 
 Then each instance of the relation would be of the form ("Phone X", "Carrier Y", "$9/10$") for some way of ranking the average quality from $0$ to $10$.
 Note that, from the fact that the relationship is $N:1$, this means that there is only one tuple involving "Phone X": this means that the average quality could actually be seen as a property of _the phone_, and hence be migrated as an attribute to the phone side:
 
-![](fig/er/Phone_Carrier2)
+![](fig/er/phone_carrier_02)
 
 Note that we could *not* migrate the "average phone quality" to the "Carrier" side: imagine if we had the instances ("Phone X", "Carrier Y", "$9/10$")  and  ("Phone Z", "Carrier Y", "$3/10$"), then should the attribute of "Carrier Y" be "$9/10$" or  "$3/10$": we have no way of deciding based on this model.
 
@@ -4842,7 +4842,7 @@ As an exercise, you can look at the relationships TEACHING, MENTORING and EMITED
 Of course, relationships can have a degree higher than two.
 An example of a ternary relation could be:
 
-![](fig/er/Account)
+![](fig/er/account)
 
 To determine cardinality ratio, one should fix all but one parameters, and wonder how many values of the remaining parameter can be in that relationship.
 
@@ -4852,9 +4852,9 @@ On the oppsite, Customer Y and Account K would be in relationship with only $1$ 
 It is sometimes impossible to do without relations with arity greater than $2$.
 For instance, consider the following two diagrams:
 
-![](fig/er/Book)
+![](fig/er/book_01)
 
-![](fig/er/Book2)
+![](fig/er/book_02)
 
 You should realize that they convey different information.
 For instance, you can know for a fact that a person visit a library only if they bought something in it, while the second diagram de-correlate the act of buying with the visit to a library.
@@ -4862,11 +4862,11 @@ Similarly, the second diagram could give you a hint that a person that owns a co
 
 An example of recursive ternary relation could be:
 
-![](fig/er/Parents)
+![](fig/er/parents)
 
 An example of relation of degree $4$ could be:
 
-![](fig/er/Teaches)
+![](fig/er/teaches)
 
 
 ---
@@ -4885,7 +4885,7 @@ The **partial key** is an attribute, that, _when paired with an entity with whic
 
 Weak entities and identifying relationships have a double border, and partial key have a dotted underline, as follows:
 
-![](fig/er/Dependent)
+![](fig/er/dependent)
 
 The idea here is that we do not need to gather data about all the dependent in the world, or in isolation, but are interrested in dependent only if they are related to en employee in our database.
 Just having the name of a dependent is not enough to identify them, but having their name _and_ the SSN of the employee they are related to is enough.
@@ -4895,16 +4895,16 @@ If you need to have, for instance, a dependant connected to multiple employees, 
 You may wonder why we do not represent weak entities simply as (composite, multi-valued) attributes of their owner type.
 For instance, why would we use
 
-![](fig/er/Pet1)
+![](fig/er/pet_01)
 
 instead of 
 
-![](fig/er/Pet2)
+![](fig/er/pet_02)
 
 ? 
 The answer depends whenever we need to have the ability to represent our weak entities (here, PET) as being in relationship with other entities (that can themselves be weak!), as follows:
 
-![](fig/er/Pet3)
+![](fig/er/pet_03)
 
 This would be impossible if PET was an attribute of FRIEND!
 Whenever the pet entity type is involved in other relationships or not should help you in deciding which representation to chose.
@@ -4915,7 +4915,7 @@ Whenever the pet entity type is involved in other relationships or not should he
 
 Another example of weak entity whose owner is weak as well could be:
 
-![](fig/er/Doula)
+![](fig/er/doula)
 
 The idea being that the Health care provider cares about an insuree  only if they are covered by them, and that they care about the doula only if they are currently helping one of their insuree.
 
@@ -4933,11 +4933,11 @@ The two constraints can be written on the same side, and the $N$, $M$, $P$ ratio
 
 For instance,
 
-![](fig/er/Alt_Not1)
+![](fig/er/alt_not_01)
 
 could be drawn as
 
-![](fig/er/Alt_Not2)
+![](fig/er/alt_not_02)
 
 meaning that 
 
@@ -4946,7 +4946,7 @@ meaning that
 
 More generally, we have the following:
 
-![](fig/er/Alt_Not3)
+![](fig/er/alt_not_03)
 
 #### Crow's Foot Notation {#sec:Crow_foot}
 
@@ -5029,34 +5029,34 @@ Every time a relationships have attributes, they are mapped to the resulting rel
 Let us look in more details at some of those steps.
 For strong entities, using steps 1 and 7, the following:
 
-![](fig/er/Desk)
+![](fig/er/desk)
 
 would give:
 
 ![
 DESK(Serial(PK), Building, Room)
 DESK_COLOR(Desk (PK, FK referencing DESK.Serial))
-](fig/rel_mod/DESK)
+](fig/rel_mod/desk)
 \ 
 
 
 And note that if Serial was a complex attribute, we would just "unfold" it, or decompose it, and make all the resulting attributes the primary key of the relation.
 If one of the attribute was at the same time multi-valued and composite, as follows:
 
-![](fig/er/Computer_User)
+![](fig/er/computer_user)
 
 Then we would obtain:
 
 ![
 COMPUTER(MAC(PK))
 COMPUTER_COLOR(Compter (PK, FK referencing COMPUTER.MAC), Name, Email)
-](fig/rel_mod/COMPUTER_USER)
+](fig/rel_mod/computer_user)
 \ 
 
 For relationships, things are a bit more complicated.
 Consider the following:
 
-![](fig/er/MappingRelationships1)
+![](fig/er/mapping_relationships_01)
 
 Since it is a $1:1$ relationship where one of the side has a partial constraint, we have the choice between two approaches.
 The foreign key approach would give:
@@ -5064,7 +5064,7 @@ The foreign key approach would give:
 ![
 ENT.A(KeyA (PK), FK (FK to ENT.B.KeyB))
 ENT.B(KeyB (PK))
-](fig/rel_mod/MappingRelationships1)
+](fig/rel_mod/mapping_relationships_01)
 \ 
 
 Note that we could also have added the foreign key on the side of ENT.B, referencing the key of ENT.A.
@@ -5076,20 +5076,20 @@ For the same diagram, the cross-reference approach would give:
 ENT.A(KeyA (PK))
 ENT.B(KeyB (PK))
 MAPPING(KeyA (PK, FK referencing ENT.A.KeyA), KeyB(FK referencing ENT.B.KeyB))
-](fig/rel_mod/MappingRelationships2)
+](fig/rel_mod/mapping_relationships_02)
 \ 
 
 Similarly, note that, in MAPPING, KeyB, or KeyA and KeyB, would also be valid primary keys, but that it makes more sense to have KeyA being the primary key, since we know that ENT.A has a total participation constraint, but ENT.B does not.
 
 If both participation constraints were total, as follows:
 
-![](fig/er/MappingRelationships2)
+![](fig/er/mapping_relationships_02)
 
 Then we could use the merged relations approach, and get:
 
 ![
 ENT.A.AND.B.(KeyA (PK), KeyB)
-](fig/rel_mod/MappingRelationships3)
+](fig/rel_mod/mapping_relationships_03)
 \ 
 
 We picked KeyA to be the primary key for the same reason as before.
@@ -5099,7 +5099,7 @@ Of course, if ENT.A and ENT.B are the same entity (that is, REL is recursive), w
 
 ![
 ENT.A(KeyA (PK), Rel(FK referencing Ent.A.KeyA))
-](fig/rel_mod/MappingRelationships4)
+](fig/rel_mod/mapping_relationships_04)
 \ 
 
 or
@@ -5107,7 +5107,7 @@ or
 ![
 ENT.A(KeyA (PK))
 REL(KeyA1 (PK, FK referencing Ent.A.KeyA), KeyA2 (FK referencing Ent.A.KeyA))
-](fig/rel_mod/MappingRelationships5)
+](fig/rel_mod/mapping_relationships_05)
 \ 
 
 depending on the approach we chose.
@@ -5116,7 +5116,7 @@ Binary $1:N$ and binary $M:N$ relationships are dealt with in a similar way, usi
 The most difficult part of the mapping is with $n$-ary relationships: we have to use cross-reference approaches, but determining the primary key is not an easy task.
 Consider the following^[This developement was actually asked at <https://dba.stackexchange.com/q/232068/>.]:
 
-![](fig/er/Gym)
+![](fig/er/gym)
 
 The arity constraints here can be rephrased as:
 
@@ -5290,15 +5290,15 @@ Att. 1 → Att. 3 | Att. 2 → Att. 1
 
 #### Notations
 
-![](fig/fd/Notation1)
+![](fig/fd/notation_01)
 
 Or, more conveniently:
 
-![](fig/fd/Notation2)
+![](fig/fd/notation_02)
 
 If an attribute is a foreign key to another, we will draw an arrow between relations:
 
-![](fig/fd/Notation3)
+![](fig/fd/notation_03)
 
 Note that:
 
@@ -5386,25 +5386,25 @@ For each attribute $A$ of the relation whose primary key is $A_1, …, A_n$:
             - Remove $A$ from the original relation, and all the functional dependencies that implied it,
             - Add a foreign key from $\{A'_1, …, A'_k\}$ to their original counterparts in the original relation.
 
-![](fig/fd/Course)
+![](fig/fd/course)
 
 becomes 
 
-![](fig/fd/Course_Norm1)
+![](fig/fd/course_norm_01)
 
                                                         
 Refinment: note that if more than one attribute depends of the same subset $\{A'_1, …, A'_k\}$, we will create two relations: that is useless, we could have created just one.
 For instance, considering
 
-![](fig/fd/Example2NF1)
+![](fig/fd/example_2NF_01)
 
 applying the algorithm would give
 
-![](fig/fd/Example2NF2)
+![](fig/fd/example_2NF_02)
 
 whereas a more subtle algorithm would give
 
-![](fig/fd/Example2NF3)
+![](fig/fd/example_2NF_03)
 
 Note that in both cases, all the relations are in Second Normal Form, though.
 
@@ -5435,7 +5435,7 @@ For each attribute $A$ of the relation whose primary key is $A_1, …, A_n$:
 
 We can have a look at another example:
 
-![](fig/fd/DriverExample1)
+![](fig/fd/driver_example_01)
 
 Note that \{State, Driver\_Licence\_Num\}, would be a valid primary key for this relation, and that adding it would make it a relation in 1NF.
 
@@ -5443,19 +5443,19 @@ As we can see, the name "Driver" is somehow counter-intuitive, since the relatio
 This relation is actually not in 2NF, because the FD \{State, Driver\_Licence\_Num\} → Governor is not fully functional.
 A possible way to fix it is to get:
 
-![](fig/fd/DriverExample2)
+![](fig/fd/driver_example_02)
 
 As you can see, the 2NF helped us in separating properly the entities.
 
 An example of a relation that is in 2NF but not in 3NF could be:
 
-![](fig/fd/StudentExample1)
+![](fig/fd/student_example_01)
 
 As we can see, all the non-prime attributes are fully functionaly dependent from Login, which is our primary key.
 But, obviously, one of this dependecy is transitive, and breaks the 3NF.
 A way to fix it is:
 
-![](fig/fd/StudentExample2)
+![](fig/fd/student_example_02)
 
 As we can see, 3NF also helped us in separating properly the entities, in a slightly different way.
 
@@ -5651,7 +5651,7 @@ Would it make sense to be have a total participation constraint on one side, and
 Exercise +.# 
 
 : Express the constraints represented in the following diagram in plain English.
-![](fig/er/CompOS)
+![](fig/er/comp_os)
 
 Exercise +.# 
 
@@ -5726,7 +5726,7 @@ Exercise +.#
 ~ 
     Convert the following ER diagram into a relational model:
 
-    ![](fig/er/Stays_At)
+    ![](fig/er/stays_at)
 
 Exercise +.# 
 
@@ -5877,7 +5877,7 @@ Exercise +.#
 ~ 
     Consider the following diagram:
 
-    ![](fig/uml/flight)
+    ![](fig/uml/flight_01)
     
     Give the number of attributes for both classes, and suggest two operations for the class that does not have any. Discuss the multiplicities: why did the designer picked those values?
 
@@ -5885,7 +5885,7 @@ Exercise +.#
 ~ 
 	Convert the following E.R. diagram to a U.M.L. class diagram.
 
-    : ![](fig/er/Belongs)
+    : ![](fig/er/belongs)
 
 Exercise +.# 
 
@@ -5901,7 +5901,7 @@ Exercise +.#
 
     Convert the following E.R. diagram into a U.M.L. class diagram:
 
-    ![](fig/er/Pilot)
+    ![](fig/er/pilot)
 
 
 ## Solution to Exercises {-} 
@@ -5917,11 +5917,11 @@ To have statistics about the extensions, to sort the username by length, etc.
 
 Solution +.#
 
-: ![](fig/er/Computer)
+: ![](fig/er/computer)
 
 Solution +.#
 
-: ![](fig/er/Cellphone)
+: ![](fig/er/cell_phone)
 
 Solution +.#
 
@@ -5929,7 +5929,7 @@ Solution +.#
 
 Solution +.#
 
-: ![](fig/er/Printer)
+: ![](fig/er/printer)
 
 Solution +.#
 
@@ -5983,7 +5983,7 @@ Solution +.#
 
 Solution +.#
 
-: ![](fig/er/Belongs)
+: ![](fig/er/belongs)
 
 Solution +.#
 
@@ -5992,11 +5992,11 @@ Solution +.#
 
 Solution +.#
 
-: ![](fig/er/Example_of_Derived)
+: ![](fig/er/example_of_derived)
 
 Solution +.#
 
-: ![](fig/er/Contains)
+: ![](fig/er/contains)
 
 Solution +.#
 
@@ -6009,14 +6009,14 @@ Solution +.#
 
     We could have the following: 
     
-    ![](fig/er/Produces)
+    ![](fig/er/produces)
 
 Solution +.#
 ~ 
 
     We could have the following: 
     
-    ![](fig/er/Membership)
+    ![](fig/er/membership)
 
 Solution +.#
 
@@ -6041,7 +6041,7 @@ Solution +.#
 
     A possible solution is:
 
-    ![](fig/er/Song)
+    ![](fig/er/song)
     
     Note that the two composite attributes are "generic", in the sense that you can re-use those examples easily.
 
@@ -6055,7 +6055,7 @@ Solution +.#
     ![
     PERSON(SSN (PK), DOB, Stays_At (FK to PLACE.Address)
     ADDRESS(Address (PK), Rooms)
-    ](fig/rel_mod/PERSON)
+    ](fig/rel_mod/person)
     \ 
     
     Note that "Stays_At" could also be a separate relation, with two attributes, "Address" and "Person", linked to respectively PLACE.Address and PERSON.SSN, and both being the primary key of the relation.
@@ -6293,7 +6293,7 @@ Problem (Reverse engineering by hand) +.#Reverse-Engineering-ACTOR
 
     Look at the following relational model, and "reverse-engineer" it to obtain an E.R. diagram:
 
-    ![](fig/rel_mod/ACTOR)
+    ![](fig/rel_mod/actor)
 
 ---
 
@@ -6330,7 +6330,7 @@ Problem (From E.R. diagram to Relational model -- BIKE) +.#ERtoRELBike
 
     Consider the following E.R. diagram:
 
-    ![](fig/er/Bike)
+    ![](fig/er/bike)
     \ 
     
      _Based on this diagram_, answer the following: "Is it true that …"
@@ -6356,7 +6356,7 @@ Problem (From E.R. diagram to Relational model -- RECORD) +.#ERtoRELRecord
 
     Consider the following E.R. diagram:
 
-    ![](fig/er/Record)
+    ![](fig/er/record)
     \ 
     
      _Based on this diagram_, is it true that …
@@ -6382,7 +6382,7 @@ Problem (ER-to-Relation mapping for Country) +.#ERtoRELCountry
 
     Consider the following E.R. schema:
 
-    ![](fig/er/Country)
+    ![](fig/er/country)
     \ 
 
     where 
@@ -6657,7 +6657,7 @@ Problem (PRINT relation in third normal form) +.#print
 
     Normalize the following relation to the third normal form.
 
-    ![](fig/fd/Print){width=90%}
+    ![](fig/fd/print){width=90%}
 
     Do not forget to indicate all the primary keys in your relations.
 
@@ -6732,7 +6732,7 @@ Problem (From E.R. to relational schema and UML class diagram -- CAR\_INFO) +.#c
 
     Consider the following E.R. schema for the CAR\_INFO database:
 
-    ![](fig/er/car_Info)
+    ![](fig/er/car_info)
 
     Note that a car can have at most one driver, $N$ passengers, $N$ insurances, and that car insurances exist only if they are "tied up" to a car (i.e., they are weak entities, and their identifying relationship is called "Insured").
 
@@ -6833,7 +6833,7 @@ Solution to [%D %n (%T)](#problem:car-insurance)
 
     and
 
-    ![](fig/er/Accident)
+    ![](fig/er/accident)
     \ 
 
 ---
@@ -6843,7 +6843,7 @@ Solution to [%D %n (%T)](#problem:job-offers)
 
     A possible solution is:
 
-    ![](fig/er/Job)
+    ![](fig/er/job)
     \ 
     
     Note that CONTACT could be a weak entity, with the identifying relationship being either DISCUSSED_BY or EMPLOYS, but both have disadvantages, since they would disallow a CONTACT to discuss more than one offer, or to be hired by more than one company.
@@ -6869,7 +6869,7 @@ Solution to [%D %n (%T)](#problem:ERtoRELBike)
 For the $1:M$ relationships that are not identifying, we can chose between the foreign key and the cross-reference approaches.
 If we use the former, we obtain:
 
-![](fig/rel_mod/BIKE_FK)
+![](fig/rel_mod/bike_fk)
 
 We could also have used a combination of both!
 
@@ -6902,7 +6902,7 @@ SHOP(Name (PK), StreetName, Citiy, Zip)
 LABEL(Name (PK), Phone, LogoName, LogoColor)
 SELL(Recording (FK, PK to RECORDING.Title), Shop (PK, FK to SHOP.Name), NumberOfCopies)
 LABELGENRE(Label (PK, FK to LABEL.Name), Genre (PK))
-](fig/rel_mod/RECORD)\ 
+](fig/rel_mod/record)\ 
 
 --- 
 
@@ -6968,7 +6968,7 @@ Solution to [%D %n (%T)](#problem:schedule)
      
      Once normalized to the third normal form, we get:
      
-     ![](fig/fd/Schedule){width=90%}
+     ![](fig/fd/schedule){width=90%}
 
 
 ---
@@ -7123,7 +7123,7 @@ Solution to [%D %n (%T)](#problem:carinfo)
     PERSON(ID (PK), Name, Street, City, Seat (FK to CAR.Vin), Position)
     CAR(Vin (PK), Make, Year, Brand, Driver (FK to PERSON.ID))
     CAR INSURANCE(Insured Car (PK, FK to CAR.Vin), Policy Number (PK), Covered Amount, Company Name)
-    ](fig/rel_mod/CAR_INFO)
+    ](fig/rel_mod/car_info)
     \ 
     
     Note that, during the coversion, we had to make "Insured Car" part of the primary key of CAR INSURANCE.
@@ -7137,7 +7137,7 @@ Solution to [%D %n (%T)](#problem:library_network)
 
     For the ER diagram, we could get something like:
 
-    ![](fig/er/Library)
+    ![](fig/er/library)
     
     Note that:
     
@@ -7157,7 +7157,7 @@ Solution to [%D %n (%T)](#problem:library_network)
     BORROWING(Copy (PK, FK to COPY.Code), Patron (PK, FK to PATRON.CardNumber), ReturnDate)
     PATRON(CardNumber (PK), Name, Email)
     HOLD(Copy (PK, FK to COPY.Code), Patron (PK, FK to PATRON.CardNumber), ExpirationDate)
-    ](fig/rel_mod/NETWORK_LIBRARY)
+    ](fig/rel_mod/network_library)
     \ 
     
 Note that:
@@ -8635,7 +8635,7 @@ Solution to [%D %n (%T)](#problem:xmltoercustomer)
     
     Put together, this gives the following diagram:
     
-    ![](fig/er/Customers)
+    ![](fig/er/customers)
     \ 
     
     We made further assumptions: an order cannot be empty (transcribed by the total constraint on CONTAINS), an order does not exist if it was not passed by a customer (transcribed by the fact that ORDER is a weak entity), which also implies that an order cannot be passed by more than one customer.
@@ -8669,7 +8669,7 @@ Solution to [%D %n (%T)](#problem:xmltoeraward)
     
     All together, this gives the following diagram:
     
-    ![](fig/er/Award)
+    ![](fig/er/award)
     \ 
 
     
