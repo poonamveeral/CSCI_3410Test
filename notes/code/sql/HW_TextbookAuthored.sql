@@ -1,0 +1,44 @@
+/* code/sql/HW_TEXTBOOK_AUTHORED.sql */
+
+DROP SCHEMA IF EXISTS HW_TEXTBOOK_AUTHORED;
+CREATE SCHEMA HW_TEXTBOOK_AUTHORED;
+USE HW_TEXTBOOK_AUTHORED;
+
+CREATE TABLE TEXTBOOK(
+    Title VARCHAR(50),
+    ISBN CHAR(13) PRIMARY KEY,
+    Price DECIMAL(10,2)
+);
+
+CREATE TABLE AUTHOR(
+    LName VARCHAR(30),
+    FName VARCHAR(30),
+    Email VARCHAR(30),
+    PRIMARY KEY(Lname, Fname)
+);
+
+CREATE TABLE AUTHORED(
+    Book CHAR(13),
+        FOREIGN KEY (Book)
+        REFERENCES TEXTBOOK(ISBN),
+    AuthorLName VARCHAR(30),
+    AuthorFName VARCHAR(30),
+        FOREIGN KEY (AuthorLName, AuthorFName)
+        REFERENCES AUTHOR(LName, Fname)
+);
+
+INSERT INTO TEXTBOOK VALUES
+   ('Starting Out with Java: Early Objects',
+   9780133776744,
+   30.00),
+   ('NoSQL for Mere Mortals',
+   9780134023212,
+   47.99);
+
+INSERT INTO AUTHOR VALUES
+   ('Sullivan', 'Dan', NULL),
+   ('Gaddis', 'Tony', NULL);
+
+INSERT INTO AUTHORED VALUES
+   (9780134023212, 'Sullivan', 'Dan'),
+   (9780133776744, 'Gaddis', 'Tony');
