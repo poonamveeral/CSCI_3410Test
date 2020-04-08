@@ -61,7 +61,7 @@ To clone and compile this document, refer to the `README.md` file, at <https://r
 
 On top of the notes, you will find in this document:
 
-- [References, at the very end of this document](#ref)
+- [References, at the very end of this document](#references)
 - and for each chapter,
     - A list of additional resources,
     - A list of short exercises,
@@ -3578,7 +3578,7 @@ Problem (Revisiting the PROF table) +.#profrevisited
 
 ---
 
-Problem (HW_Traintable and more advanced SQL coding) +.#train
+Problem (HW_Train table and more advanced SQL coding) +.#train
 ~ 
 
     Look at the SQL code below, and then answer the following questions.
