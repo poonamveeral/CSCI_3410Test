@@ -5641,7 +5641,7 @@ Exercise +.#
 Exercise +.# 
 
 : Express the constraints represented in the following diagram in plain English.
-![](fig/er/KeyOpensDoor)
+![](fig/er/key_opens_door)
 
 Exercise +.#chair_relationship
 
