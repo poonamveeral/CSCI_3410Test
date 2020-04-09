@@ -1,6 +1,10 @@
 #   Naming Convention Standard/File Name Conventions
 
-## A collection of guidelines for writing file, folder, classes, figures, and images names in the project.
+### A collection of guidelines for writing file, folder, classes, figures, and images names in the project. These guidelines should help you toward that goal of not only correct code, but understandable. 
+
+* Our working directory is
+
+![alt text](1.png)
 
   * [File Names](#file-name)
   * [Figures](#figure-name)
@@ -11,36 +15,19 @@
 
 
 # File Name
-*  Make file and directory names lowercase.
-*  Separate words with hyphens, not underscores.
+*  Make file names lowercase.
+*  Separate words with underscores.
 *  Use only standard ASCII alphanumeric characters in  file and directory names.
 
     * Recommended
 
 
-        Example | file-name.extension |
+        Example | file_name.extension |
        ---------|---------------------|
- 
-    * Not Recommended
-
-
-        Example | filename.extension |
-       ---------|--------------------|
-
-         Example | fileName.extension |
-        ---------|--------------------|
-
-* Other exceptions
-  
-  * It's okay to have some inconsistency in filenames if it can't otherwise be avoided.
-    * For example, sometimes tools that generate reference documentation produce file names based on different style requirements or based on the design and naming conventions of the product or API itself.
 
 # Folder Name
-*   The source code, hosted at <https://rocketgit.com/user/caubert/CSCI_3410>, is organized as follows:
-
-![alt text](1.png "Logo Title Text 1")
-
-* following lowercase convention for folder names.
+* Folder Name should be meaningful.
+* Make folder names lowercase.
 
 # Figure Name
 
@@ -73,8 +60,11 @@
 
 #### JAVA
 * JAVA Files in Code Folder.
-    * Every JAVA file will be followed by the with a capital letter or first word with a lowercase letter, rest all with capital.
+    * Every JAVA file name will be written as UpperCamelCase.
 
+
+         | Example     | FileName.java |
+         | ----------- | ------------- | 
     * Classes and Interfaces
         * Class names should be nouns, in mixed case with the first letter of each internal word capitalised. 
         * Interfaces name should also be capitalised just like class names.
@@ -151,3 +141,4 @@
   *  https://developers.google.com/style/filenames.
   *  https://guides.lib.purdue.edu/c.php?g=353013&p=2378293
   *  https://dev.to/danialmalik/a-beginner-s-guide-to-clean-code-part1-naming-conventions-139l
+  *  https://www.cs.cornell.edu/courses/JavaAndDS/JavaStyle.html
