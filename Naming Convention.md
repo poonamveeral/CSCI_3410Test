@@ -6,12 +6,13 @@
 
 ![alt text](1.png)
 
+  * [Code Folder Naming Convention](#code-folder-naming-convention)
   * [File Names](#file-name)
   * [Figures](#figure-name)
   * [Folders](#folder-name)
   * [The Tags in the Document](#tag-name)
   * [The Links in the Document](#link-name)
-  * [Code Folder Naming Convention](#code-folder-naming-convention)
+  
 
 
 
