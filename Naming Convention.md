@@ -45,21 +45,13 @@
          |Class Example         | class FishBowl implements AqueousHabitat { ... } | 
          | -------------------- | ------------------------------------------------ | 
 
-* Variables : Variable names should be short yet meaningful.
-    * Should not start with underscore(‘_’) or dollar sign ‘$’ characters.
-    * Should be mnemonic i.e, designed to indicate to the casual observer the intent of its use.
-    * One-character variable names should be avoided except for temporary variables.
-    * Common names for temporary variables are i, j, k, m, and n for integers; c, d, and e for characters.
+    * Method Names 
+  
+      * Method names generally begin with a lowercase letter. 
+      * A call on a procedure is a statement to do something, so a procedure name is generally a verb phrase that is a command to do something.
 
-        | Example     |  int speed = 0 |  int gear = 1; |
-        | ----------- | ----------- | ----------- |
-
-* Constant variables: 
-  * Should be all uppercase with words separated by underscores (“_”).
-  * There are various constants used in predefined classes like Float, Long, String etc.
-
-    | Example     |  static final int MIN_WIDTH = 4; |
-    | ----------- | -------------------------------- |
+         | Example              | public void setTitle(String t) { ... } | 
+         | -------------------- | ------------------------------------------------ | 
 
 #### SQL
 
