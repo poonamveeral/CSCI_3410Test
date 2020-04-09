@@ -14,41 +14,6 @@
   * [Code Folder Naming Convention](#code-folder-naming-convention)
 
 
-# File Name
-*  Make file names lowercase.
-*  Separate words with underscores.
-*  Use only standard ASCII alphanumeric characters in  file and directory names.
-
-    * Recommended
-
-
-        Example | file_name.extension |
-       ---------|---------------------|
-
-# Folder Name
-* Folder Name should be meaningful.
-* Make folder names lowercase.
-
-# Figure Name
-
-* Figures Names should follow the Underscore Case.
-*  everything is in lower case and the words are separated by underscores.
-*  This convention is also popularly known as snake case
-
-    | Example    | figure_name.svg |
-    | ---------- | --------------- |
-
-# Tag Name
-
- * Create descriptive names 
- * Create short and simple names
- * Avoid "-". If you name something "first-name", some software may think you want to subtract "name" from "first".
- * Avoid ".". If you name something "first.name", some software may think that "name" is a property of the object "first".
- * Avoid ":". Colons are reserved for namespaces (more later).
-
-# Link Name
-
-
 
 # Code Folder Naming Convention
 
@@ -61,17 +26,24 @@
 #### JAVA
 * JAVA Files in Code Folder.
     * Every JAVA file name will be written as UpperCamelCase.
-
+    * Words are smashed together and the first letter of each word is capitalized. No word separator, like the underscore _, is used.
 
          | Example     | FileName.java |
          | ----------- | ------------- | 
-    * Classes and Interfaces
-        * Class names should be nouns, in mixed case with the first letter of each internal word capitalised. 
-        * Interfaces name should also be capitalised just like class names.
-        * Use whole words and must avoid acronyms and abbreviations.
 
-         | Example     | class MountainBike | interface Sport |
-         | ----------- | ----------- | ----------- |
+    * If there is any version/number, it should be written as,
+         | Example     | FileName01.java | FileName02.java |
+         | ----------- | --------------- | --------------- |
+
+    * Classes and Interfaces Names
+        * Class and interface names are generally noun or noun phrases.
+        * Class and interface must begin with a capital letter.
+
+         |interface Example     | interface AqueousHabitat { ... } | 
+         | -------------------- | -------------------------------- | 
+
+         |Class Example         | class FishBowl implements AqueousHabitat { ... } | 
+         | -------------------- | ------------------------------------------------ | 
 
 * Variables : Variable names should be short yet meaningful.
     * Should not start with underscore(‘_’) or dollar sign ‘$’ characters.
@@ -103,6 +75,38 @@
 
     | Example     |  firstName |
     | ----------- | ---------- |
+
+
+# File Name
+*  Make file names lowercase.
+*  Separate words with underscores.
+*  Use only standard ASCII alphanumeric characters in  file and directory names.
+
+    * Recommended
+
+
+        Example | file_name.extension |
+       ---------|---------------------|
+
+# Folder Name
+* Folder Name should be meaningful.
+* Make folder names lowercase.
+
+# Figure Name
+
+* Figures Names should follow the Underscore Case.
+*  everything is in lower case and the words are separated by underscores.
+*  This convention is also popularly known as snake case.
+
+    | Example    | figure_name.svg |
+    | ---------- | --------------- |
+
+# Tag Name
+
+
+
+# Link Name
+
 
 
 
