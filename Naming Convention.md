@@ -23,7 +23,7 @@
 2. [SQL](#sql)
 3. [XML](#xml)
 
-#### JAVA
+#### **JAVA**
 * JAVA Files in Code Folder.
     * Every JAVA file name will be written as UpperCamelCase.
     * Words are smashed together and the first letter of each word is capitalized. No word separator, like the underscore _, is used.
@@ -88,14 +88,14 @@
   
        * Package names are usually all lowercase and consist of nouns.
 
-#### SQL
+#### **SQL**
 
 * SQL folder has Homework Files.
     * Every Homework will be followed by HW_ and filename.
 
         | Example    | HW_HomeworkName |
         | -----------| --------------- |
-#### XML
+#### **XML**
 * XML Files in Code Folder
   * Camel case is a common naming rule in JavaScripts.
   * Uppercase first letter in each word except the first
