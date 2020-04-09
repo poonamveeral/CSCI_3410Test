@@ -62,6 +62,22 @@
          | Example              | public boolean isEquilateralTriangle(int b, int c, int d) { ... } | 
          | -------------------- | ------------------------------------------------ | 
 
+    * Variable Names
+  
+      * Variable names generally start with a lowercase letter.
+      * Variable names should give the reader some hint about what the variable is used for. 
+      * A well-chosen name, which gives a hint at the meaning of the variable, helps document a program, making it easier to understand. On the other hand, using the names of your friends or flowers that you like as variable names just annoys and makes the program harder to understand. Don't do that. 
+      * Also, refrain from using vague names like counter or var or data; instead think about what the variable really is for and use a more concrete name.
+      * There is a tension between writing long descriptive names and very short names.
+      * We tend to use shorter names for parameters and local variables and longer names for fields and static variables.
+
+    * Parameter Names
+      * Parameter names may be short, even one letter long.
+        | Example    | /** Return "lengths b, c, and d are the sides of an equilateral triangle" */
+public boolean isEquilateralTriangle(int b, int c, int d) {
+    return b == c && c == d;
+} |
+        | -----------| --------------- |
 
 #### SQL
 
