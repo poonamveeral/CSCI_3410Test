@@ -35,7 +35,7 @@
          | Example     | FileName01.java | FileName02.java |
          | ----------- | --------------- | --------------- |
 
-    * Classes and Interfaces Names
+    * *Classes and Interfaces Names*
         * Class and interface names are generally noun or noun phrases.
         * Class and interface must begin with a capital letter.
 
@@ -45,7 +45,7 @@
          |Class Example         | class FishBowl implements AqueousHabitat { ... } | 
          | -------------------- | ------------------------------------------------ | 
 
-    * Method Names 
+    * *Method Names* 
   
       * Method names generally begin with a lowercase letter. 
       * A call on a procedure is a statement to do something, so a procedure name is generally a verb phrase that is a command to do something.
@@ -62,7 +62,7 @@
          | Example              | public boolean isEquilateralTriangle(int b, int c, int d) { ... } | 
          | -------------------- | ------------------------------------------------ | 
 
-    * Variable Names
+    * *Variable Names*
   
       * Variable names generally start with a lowercase letter.
       * Variable names should give the reader some hint about what the variable is used for. 
@@ -71,20 +71,20 @@
       * There is a tension between writing long descriptive names and very short names.
       * We tend to use shorter names for parameters and local variables and longer names for fields and static variables.
 
-    * Parameter Names
+    * *Parameter Names*
       * Parameter names may be short, even one letter long.
         | Example    | public boolean isEquilateralTriangle(int b, int c, int d) {return b == c && c == d;} |
         | -----------| ------------------------------------------------------------------------------------ |
 
-      * Local variable names. 
+      * *Local variable names* 
         * A local variable is a variable that is declared in a method body. 
         * Its declaration should be placed as close to its first use as possible.
         *  The scope of a local variable is usually short, and its meaning is often obvious either from a comment on its declaration or from the short code in which it is used. Therefore, names of local variables may be short.
 
-       * Fields and class (i.e. static) variables. 
+       * *Fields and class (i.e. static) variables* 
          * The meaning of fields and class variables are typically given as comments by the declarations, far from where the variables are used. 
          * Therefore, the names of field and class variables should be longer and as mnemonic as possible, giving the reader a good idea what the meaning are.
-     * Package names
+     * *Package names*
   
        * Package names are usually all lowercase and consist of nouns.
 
