@@ -1,6 +1,6 @@
 #   Naming Convention Standard/File Name Conventions
 
-### A collection of guidelines for writing file, folder, classes, figures, and images names in the project. These guidelines should help you toward that goal of not only correct code, but understandable. 
+>### A collection of guidelines for writing file, folder, classes, figures, and images names in the project. These guidelines should help you toward that goal of not only correct code, but understandable. 
 
 * Our working directory is
 
