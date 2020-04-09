@@ -73,11 +73,8 @@
 
     * Parameter Names
       * Parameter names may be short, even one letter long.
-        | Example    | /** Return "lengths b, c, and d are the sides of an equilateral triangle" */
-public boolean isEquilateralTriangle(int b, int c, int d) {
-    return b == c && c == d;
-} |
-        | -----------| --------------- |
+        | Example    | public boolean isEquilateralTriangle(int b, int c, int d) {return b == c && c == d;} |
+        | -----------| ------------------------------------------------------------------------------------ |
 
 #### SQL
 
