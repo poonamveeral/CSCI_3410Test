@@ -93,14 +93,14 @@
 * SQL folder has Homework Files.
     * Every Homework will be followed by HW_ and filename.
 
-        | Example    | HW_HomeworkName |
+        | Example    | HW_HomeworkName.sql |
         | -----------| --------------- |
 #### **XML**
 * XML Files in Code Folder
   * Camel case is a common naming rule in JavaScripts.
   * Uppercase first letter in each word except the first
 
-    | Example     |  firstName |
+    | Example     |  firstName.xml |
     | ----------- | ---------- |
 
 
@@ -122,8 +122,8 @@
 # Figure Name
 
 * Figures Names should follow the Underscore Case.
-*  everything is in lower case and the words are separated by underscores.
-*  This convention is also popularly known as snake case.
+* Everything is in lower case and the words are separated by underscores.
+* This convention is also popularly known as snake case.
 
     | Example    | figure_name.svg |
     | ---------- | --------------- |
