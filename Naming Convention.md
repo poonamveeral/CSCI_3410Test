@@ -77,15 +77,15 @@
         | Example    | public boolean isEquilateralTriangle(int b, int c, int d) {return b == c && c == d;} |
         | -----------| ------------------------------------------------------------------------------------ |
 
-      * *Local variable names* 
+    * *Local variable names* 
         * A local variable is a variable that is declared in a method body. 
         * Its declaration should be placed as close to its first use as possible.
         *  The scope of a local variable is usually short, and its meaning is often obvious either from a comment on its declaration or from the short code in which it is used. Therefore, names of local variables may be short.
 
-       * *Fields and class (i.e. static) variables* 
+    * *Fields and class (i.e. static) variables* 
          * The meaning of fields and class variables are typically given as comments by the declarations, far from where the variables are used. 
          * Therefore, the names of field and class variables should be longer and as mnemonic as possible, giving the reader a good idea what the meaning are.
-     * *Package names*
+    * *Package names*
   
        * Package names are usually all lowercase and consist of nouns.
 
