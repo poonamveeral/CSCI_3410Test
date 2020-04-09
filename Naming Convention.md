@@ -53,6 +53,16 @@
          | Example              | public void setTitle(String t) { ... } | 
          | -------------------- | ------------------------------------------------ | 
 
+         
+      * A function call yields a value, so a function name is generally a noun phrase that describes the value.
+         | Example              | public double areaOfTriangle(int b, int c, int d) { ... } | 
+         | -------------------- | ------------------------------------------------ | 
+
+      * The name of a boolean function is often a verb phrase starting with "is", thus describing what the value means,
+         | Example              | public boolean isEquilateralTriangle(int b, int c, int d) { ... } | 
+         | -------------------- | ------------------------------------------------ | 
+
+
 #### SQL
 
 * SQL folder has Homework Files.
