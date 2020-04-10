@@ -89,7 +89,7 @@ A typical (metting twice a week, ±17 weeks, ±30 classes) semester is divided a
 - Lecture 10--11: Review session and Exam #1
 - Lecture 12: [Introduction to High-Level Design](#interest-for-high-level-design)
 - Lecture 13--15: [Entity-Relationship Model](#entity-relationship-model)
-- Lecture 16: [E.R.-to-Relational Models Mapping](#e.r.-to-relational-models-mapping)
+- Lecture 16: [ER-to-Relational Models Mapping](#e.r.-to-relational-models-mapping)
 - Lecture 17--20: [Guidelines and Normal Form](#guidelines-and-normal-form)
 - Lecture 21--22: [Unified Modeling Language Diagram](#unified-modeling-language-diagrams)
 - Lecture 23--24: Review session and Exam #2
@@ -739,14 +739,14 @@ The relational data model (or relational database schema) is:
 - **Domain** (or type) = set of atomic (as far as the relation is concerned) values. You can compare it to datatype and literals, and indeed it can be given in the form of a data type, but it can be named and carry a logical definition (i.e., `List_of_major` as an enumerated data type, instead of just `String`), enforce some constraints (i.e., `UNIQUE`, to force all the values to be different), or even have a default value.
 - **Attribute** = Attribute name + attribute domain (but we'll just write the name).
 - **Relation Schema** (or scheme) = description of a relation, often written "RELATION_NAME(Attribute$_1$, …, Attribute$_n$)", where $n$ is the degre (arity) of the relation, and the domain of Attribute$_i$ is written dom(Attribute$_i$).
-- **Tuple** t of the schema R(A$_1$, …, A$_n$) is an ordered list of values <v$_1$, …, v$_n$> where v$_i$ is in dom(A$_i$) or a special `NULL`{.sqlmysql} value. 
+- **Tuple** t of the schema R(A$_1$, …, A$_n$) is an ordered list of values <v$_1$, …, v$_n$> where v$_i$ is in dom(A$_i$) or a special `NULL` value. 
 - **Relation** (or relation state) r of the schema R(A$_1$, …, A$_n$), also written r(R), is the set of $n$-tuples t$_1$, …, t$_m$ where each t$_i$ is a tuple of the schema R(A$_1$, …, A$_n$).
 
 ### Characteristics of Relations
 
 - In a relation, the order of tuples does not matter (a relation is *a set*). Order *in* tuple *do* matter (alternate representation where this is not true exist, cf. self-describing data).
 - Value is atomic =  "flat relational model", we will always be in the first normal form (not composite, not multi-valued).
-- `NULL`{.sqlmysql} is N/A, unknown, unavailable (or withheld).
+- `NULL` is N/A, unknown, unavailable (or withheld).
 - While a relation schema is to be read like an assertion (e.g., *"Every student has a name, a SSN, …"*) a tuple is a fact (e.g., *"The student Bob Taylor has SSN 12898, …"*).
 - Relations represents uniformly entities (STUDENT(…)) and relations (PREREQUISITE(Course_number, Prerequisite_number)).
 
@@ -784,7 +784,7 @@ Those are part of the definition of the relational model and are independent of 
 Those constraints are parts of the schema.
 
 - The value must match its domain ("Domain constraint"), knowing that a domain can have additional constraints (`NOT NULL`, `UNIQUE`).
-- The entity integrity constraint: no primary key value can be `NULL`{.sqlmysql}.
+- The entity integrity constraint: no primary key value can be `NULL`.
 - The referential integrity constraint: referred values must exist.
 
 Those last two constraints will be studied in the next section.
@@ -834,7 +834,7 @@ Formally, the set of attributes FK in the relation schema R$_1$ is a foreign key
 - FK refers to R$_2$ (i.e., the attributes in FK have the same domain(s) as the primary key PK of R$_2$)
 - a value of FK in a tuple t$_1$ of r$_1$(R$_1$) either
   - occurs as a value of PK for some tuple t$_2$ of r$_2$(R$_2$), i.e., t$_1$[FK] = t$_2$[PK]
-  - is `NULL`{.sqlmysql}
+  - is `NULL`
   
   in the first case, we say that "t$_1$ refers to t$_2$".
 
@@ -883,7 +883,7 @@ The annotations (1.), (2.) and (3.) refer to the "remedies", discussed afterward
 How things can go wrong:
 
 - Inserting the values in the wrong order (meta)
-- `NULL`{.sqlmysql} for any value of the attributes of the primary key (1.)
+- `NULL` for any value of the attributes of the primary key (1.)
 - Duplicate value for all the values in the primary key (1.)
 - Wrong number of arguments (1.)
 - Fail to reference an existing value for a foreign key (1.)
@@ -903,7 +903,7 @@ How things can go wrong:
 
 How things can go wrong:
 
-- `NULL`{.sqlmysql} for the any value of the attributes of the primary key (1.)
+- `NULL` for the any value of the attributes of the primary key (1.)
 - Duplicate value for the primary key (1.)
 - Change value that are referenced (1., 2., 3.)
 - Change foreign key to a non-existing value (1.)
@@ -915,7 +915,7 @@ When the operation leads the database to become inconsistent, you can either:
 
 #. Reject (restrict) the operation,
 #. Cascade (propagate) the modification,
-#. Set default, or set `NULL`{.sqlmysql}, the corresponding value(s).
+#. Set default, or set `NULL`, the corresponding value(s).
 
 <!--
 Go back to the CAR example and populate it with some data to "see" how those options affects how the database react to various operations.
@@ -966,7 +966,7 @@ Exercise +.#entityintegrity
 
 Exercise +.#
 
-: Are we violating an integrity constraint if we try to set the value of an attribute that is part of a primary key to `NULL`{.sqlmysql}? If yes, which one?
+: Are we violating an integrity constraint if we try to set the value of an attribute that is part of a primary key to `NULL`? If yes, which one?
 
 Exercise +.#
 
@@ -1115,7 +1115,7 @@ Solution +.#
 
 Solution +.#
 
-: `NULL`{.sqlmysql} 
+: `NULL` 
 
 Solution +.#
 
@@ -1141,7 +1141,7 @@ Solution +.#
 
 Solution +.#
 
-: Reading from the database, performing `UPDATE`{.sqlmysql} or `DELETE`{.sqlmysql} operations.
+: Reading from the database, performing `UPDATE` or `DELETE` operations.
 
 Solution +.#
 
@@ -1155,11 +1155,11 @@ Solution +.#
 
 Solution +.#
 
-: An operation whose execution in isolation would result in the violation of a constraint can either a) be "restricted" (i.e., not executed), b) result in a propagation (i.e., the tuples that would violate a constraint are updated or deleted accordingly), or c) result in some values in tuples that would violate a constraint to be set to a default value, or the `NULL`{.sqlmysql} value (this last option works only if the constraint violated is the referential entity constraint).
+: An operation whose execution in isolation would result in the violation of a constraint can either a) be "restricted" (i.e., not executed), b) result in a propagation (i.e., the tuples that would violate a constraint are updated or deleted accordingly), or c) result in some values in tuples that would violate a constraint to be set to a default value, or the `NULL` value (this last option works only if the constraint violated is the referential entity constraint).
 
 Solution +.#
 
-: The requirement that each tuple must have for an attribute $A$ an atomic value from the domain dom($A$), or `NULL`{.sqlmysql}.
+: The requirement that each tuple must have for an attribute $A$ an atomic value from the domain dom($A$), or `NULL`.
 
 Solution +.#
 ~ 
@@ -1181,7 +1181,7 @@ Solution +.#
     #. In ASSIGNED-TO, TrainRef is a FK to TRAIN.Ref, and ConductorID is a FK to CONDUCTOR.CompanyID.
     #. In this model, a conductor can be assigned to different trains on different days. If Date was not part of the PK of ASSIGNED-TO, then a conductor could be assigned to only one train.
     #.  #. Yes, this instruction is valid.
-        #. No, it violates the entity integrity constraint: `NULL`{.sqlmysql} can be given as a value to an attribute that is part of the PK.
+        #. No, it violates the entity integrity constraint: `NULL` can be given as a value to an attribute that is part of the PK.
         #. No, it violates the referential integrity constraint: `'XB-124` and `'GPalmer'` are not values in `TRAIN.Ref` and `CONDUCTOR.CompanyID`.
         #. No, it violates the key constraint: two tuples cannot have the same value for the values of the primary key.
 
@@ -1319,7 +1319,7 @@ Solution to [%D %n (%T)](#problem:rel_model_bills)
     ](fig/rel_mod/bill)
     \ 
     
-    For simplicity, we added an `ID` to our `MEMBER` and `BILL` relations. Note that having a "role" in the `MEMBER` relation to store the information about speaker, etc., would be extremely inefficient, since we would add an attribute to the ~435 members that would be `NULL`{.sqlmysql} in ~430 of them.
+    For simplicity, we added an `ID` to our `MEMBER` and `BILL` relations. Note that having a "role" in the `MEMBER` relation to store the information about speaker, etc., would be extremely inefficient, since we would add an attribute to the ~435 members that would be `NULL` in ~430 of them.
 
 --- 
 
@@ -1445,17 +1445,17 @@ They allow you to get a sense of the current state of your databases.
 
 In the following, `<SchemaName>` should be substituted with an actual schema name.
 
-~~~{.sqlmysql}
+```
 SHOW SCHEMAS; -- List the schemas.
 SHOW TABLES; -- List the tables in a schema.
 DROP SCHEMA <SchemaName>; -- "Drop" (erase) SchemaName. 
-~~~
+```
 
 You can also use the variation
 
-~~~{.sqlmysql}
+```
 DROP SCHEMA IF EXISTS <SchemaName>;
-~~~
+```
 
 that will not issue an error if `<SchemaName>` does not exist.
 
@@ -1463,26 +1463,26 @@ that will not issue an error if `<SchemaName>` does not exist.
 
 In the following, `<TableName>` should be substituted with an actual table name.
 
-~~~{.sqlmysql}
+```
 SHOW CREATE TABLE <TableName>-- Gives the command to "re-construct" TableName.
 DESCRIBE <TableName>; -- Show the structure of TableName.
 DROP TABLE <TableName>; -- "Drop" (erase) TableName.
-~~~
+```
 
 You can also use the variation
 
-~~~{.sqlmysql}
+```
 DROP TABLE IF EXISTS <TableName>;
-~~~
+```
 
 that will not issue an error if `<TableName>` does not exist.
 
 ### See Also
 
-~~~{.sqlmysql}
+```
 SELECT * FROM <TableName> -- List all the rows in TableName.
 SHOW WARNINGS; -- Show the content of the latest warning issued.
-~~~
+```
 
 <!--
 DESCRIBE <SQL command>; -- Gives explanations as to how the SQL command is processed
@@ -1496,10 +1496,10 @@ There are six different kind of constraints that one can add to an attribute:
 
 #. Primary Key
 #. Foreign Key
-#. `NOT NULL`{.sqlmysql}
-#. `UNIQUE`{.sqlmysql}
-#. `DEFAULT`{.sqlmysql}
-#. `CHECK`{.sqlmysql}
+#. `NOT NULL`
+#. `UNIQUE`
+#. `DEFAULT`
+#. `CHECK`
 
 We already know the first two from the relational model.
 The other four are new, and could not be described in this model.
@@ -1519,7 +1519,7 @@ If we wanted to combine multiple constraints, we would have to follow the order 
 
 `MySQL` can output a description of those tables for us:
 
-~~~{.sqlmysql}
+```
 MariaDB [HW_ConstraintsPart1]> DESCRIBE HURRICANE;
 +-----------+-------------+------+-----+---------+-------+
 | Field     | Type        | Null | Key | Default | Extra |
@@ -1538,7 +1538,7 @@ MariaDB [HW_ConstraintsPart1]> DESCRIBE STATE;
 | Postal_abbr | char(2)     | NO   | UNI | NULL    |       |
 +-------------+-------------+------+-----+---------+-------+
 2 rows in set (0.00 sec)
-~~~
+```
 
 Note that more than one attribute can be the primary key, in which case the syntax needs to be something like the following:
 
@@ -1547,35 +1547,35 @@ Note that more than one attribute can be the primary key, in which case the synt
 
 Note that in this case, a statement like
 
-~~~{.sqlmysql}
+```
 INSERT INTO TEST VALUE (1, NULL);
-~~~
+```
 
-would result in an error: all the values that are part of the primary key needs to be non-`NULL`{.sqlmysql}.
+would result in an error: all the values that are part of the primary key needs to be non-`NULL`.
 
-For the `UNIQUE`{.sqlmysql} constraint, note that `NULL`{.sqlmysql} can be inserted: the rationale is that all the values need to be different from one another or `NULL`{.sqlmysql}.
+For the `UNIQUE` constraint, note that `NULL` can be inserted: the rationale is that all the values need to be different from one another or `NULL`.
 
-A couple of comments about the `CHECK`{.sqlmysql} constraint:
+A couple of comments about the `CHECK` constraint:
 
-- Before MariaDB 10.2.1, `WindSpeed INT CHECK (WindSpeed > 74 AND WindSpeed < 500)`{.sqlmysql} would have been parsed but would not have any effect, cf. <https://mariadb.com/kb/en/library/constraint/#check-constraints>. Since MariaDB 10.2.1, the `CHECK`{.sqlmysql} constraint are enforced.
-- If we try to violate the `CHECK`{.sqlmysql} constraint, with a command like
-~~~{.sqlmysql}
+- Before MariaDB 10.2.1, `WindSpeed INT CHECK (WindSpeed > 74 AND WindSpeed < 500)` would have been parsed but would not have any effect, cf. <https://mariadb.com/kb/en/library/constraint/#check-constraints>. Since MariaDB 10.2.1, the `CHECK` constraint are enforced.
+- If we try to violate the `CHECK` constraint, with a command like
+```
 INSERT INTO HURRICANE VALUES ("Test1", 12, NULL);
-~~~
+```
 
 then the insertion would not take place, and the system would issue an error message:
 
-~~~{.sqlmysql}
+```
 ERROR 4025 (23000): CONSTRAINT `HURRICANE.WindSpeed` failed for `HW_ConstraintsPart1]>`.`HURRICANE`
-~~~
+```
 
 - Note that you could still insert a value of NULL for the wind, and it would not triggered the error.
 
-To use the `DEFAULT`{.sqlmysql} value, use
+To use the `DEFAULT` value, use
 
-~~~{.sqlmysql}
+```
 INSERT INTO HURRICANE VALUES ("Test2", DEFAULT, NULL);
-~~~
+```
 
 
 ### Editing Constraints
@@ -1587,71 +1587,71 @@ SQL's syntax is a bit inconsistent on this topic, because it treats the constrai
 
 Adding a primary key:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE STATE ADD PRIMARY KEY (Name); 
-~~~
+```
 
 Removing the primary key:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE STATE DROP PRIMARY KEY;
-~~~
+```
 
 #### `UNIQUE` Constraint
 
 Adding a `UNIQUE` constraint:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE STATE ADD UNIQUE (Postal_abbr);
-~~~
+```
 
 Removing a UNIQUE constraint:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE STATE DROP INDEX Postal_abbr;
-~~~
+```
 
 Note the difference between adding and removing the `UNIQUE` constraint: the parenthesis around `(Postal_abbr)` are mandatory when adding the constraint, but would cause an error when removing it!
 
 
 #### `NOT NULL` Constraint
 
-Adding the `NOT NULL`{.sqlmysql} constraint:
+Adding the `NOT NULL` constraint:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE STATE MODIFY Postal_abbr CHAR(2) NOT NULL;
-~~~
+```
 
-Removing the `NOT NULL`{.sqlmysql} constraint:
+Removing the `NOT NULL` constraint:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE STATE MODIFY Postal_abbr CHAR(2);
-~~~
+```
 
-The syntax of `NOT NULL`{.sqlmysql} comes from the fact that this constraint is taken to be part of the datatype.
+The syntax of `NOT NULL` comes from the fact that this constraint is taken to be part of the datatype.
 
 
 #### Default value
 
 Changing the default value:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE HURRICANE ALTER COLUMN WindSpeed SET DEFAULT 74;
-~~~
+```
 
 Removing the default value:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE HURRICANE ALTER COLUMN  WindSpeed DROP DEFAULT;
-~~~
+```
 
 #### Foreign key
 
 Adding a foreign key constraint:
 
-~~~{.sqlmysql}
+```
 ALTER TABLE HURRICANE ADD FOREIGN KEY (Above) REFERENCES STATE(Name); 
-~~~
+```
 
 Removing a foreign key constraint is out of the scope of this lecture.
 If you are curious, you can have a look at <https://www.w3schools.com/sql/sql_foreignkey.asp>: dropping a foreign key constraint requires your constraint to have a name, something we did not introduce.
@@ -1669,7 +1669,7 @@ Note that a foreign key could be declared at the time of creation of the table a
 
 Let us test our constraints:
 
-~~~{.sqlmysql}
+```
 INSERT INTO STATE VALUES('Georgia', 'GA');
 INSERT INTO STATE VALUES('Texas', 'TX');
 INSERT INTO STATE VALUES('FLORIDA', 'FL');
@@ -1710,7 +1710,7 @@ UPDATE HURRICANE SET Above = 'North Carolina'
 INSERT INTO STATE VALUES('North Carolina', 'NC');
 UPDATE HURRICANE SET Above = 'North Carolina'
     WHERE Name = 'Irma';
-~~~
+```
 
 ## Foreign Keys
 
@@ -1721,7 +1721,7 @@ Let us come back more specifically to foreign key.
 In the example below, we introduce the foreign key update and delete rules.
 We also introduce, passing by, the enumerated data type, and how to edit it.
 
-~~~{.sqlmysql}
+```
 CREATE TABLE STORM(
     Name VARCHAR(25) PRIMARY KEY,
     Kind ENUM('Tropical Storm', 'Hurricane'),
@@ -1740,13 +1740,13 @@ CREATE TABLE STATE(
         ON DELETE SET NULL
         ON UPDATE CASCADE
 );
-~~~
+```
 
 Note that we can not "inline" the foreign key constraint like we "inlined" the primary key constraint (cf. <https://stackoverflow.com/q/24313143/>).
 
 Let us now illustrate this table by introducing some data in it:
 
-~~~{.sqlmysql}
+```
 INSERT INTO STORM VALUES('Harvey', 'Hurricane', 130, '2017-08-17');
 
 -- In the following, the entry gets created, but date is 0000-00-00!
@@ -1757,11 +1757,11 @@ INSERT INTO STORM VALUES('Dummy2', 'Hurricane', 120, DATE'2017-17-08');
 
 -- The next one sets NULL for DATE.
 INSERT INTO STORM VALUES('Irma', 'Tropical Storm', 102, DEFAULT);
-~~~
+```
 
-MySQL will always notify you if there is an error in a date attribute when you use the `DATE`{.sqlmysql} prefix.
+MySQL will always notify you if there is an error in a date attribute when you use the `DATE` prefix.
 
-~~~{.sqlmysql}
+```
 INSERT INTO STATE VALUES('Georgia', 'GA', NULL);
 INSERT INTO STATE VALUES('Texas', 'TX', NULL);
 INSERT INTO STATE VALUES('Florida', 'FL', NULL);
@@ -1773,14 +1773,14 @@ UPDATE STATE SET Affected_by = 'Harvey'
 UPDATE STORM SET Name = 'Harley' WHERE Name = 'Harvey';
 DELETE FROM STORM
     WHERE Name = 'Harley';
-~~~
+```
 
 ### Foreign Keys Restrictions
 
 The following is a code-driven explanation of the foreign key update and delete rules (or "restrictions").
 It is intended to make you understand the default behavior of foreig keys, and to understand how the system reacts to the possible restrictions.
 
-~~~{.sqlmysql}
+```
 CREATE TABLE F_Key(
     Attribute VARCHAR(25) PRIMARY KEY
     );
@@ -1844,11 +1844,11 @@ DELETE FROM F_Key
 
 -- Let us drop this table, and try again.
 DROP TABLE Table_default;
-~~~
+```
 
 ---
 
-~~~{.sqlmysql}
+```
 -- The following fails too, this time because of the Table_restrict table:
 UPDATE F_Key SET Attribute = 'After Update'
     WHERE Attribute = 'First Test';
@@ -1909,7 +1909,7 @@ MariaDB [HW_CONSTRAINTS_PART3]> SELECT * FROM Table_set_null;
 +------------+------------+
 2 rows in set (0.00 sec)
 */
-~~~
+```
 
 ---
 
@@ -1926,7 +1926,7 @@ DEPARTMENT(Code (PK), Name, Head (FK to PROF.Login))
 ](fig/rel_mod/professor_department)
 \ 
 
-~~~{.sqlmysql}
+```
 CREATE TABLE PROF(
     Login VARCHAR(25) PRIMARY KEY,
     Name VARCHAR(25),
@@ -1943,7 +1943,7 @@ CREATE TABLE DEPARTMENT(
 
 ALTER TABLE PROF ADD FOREIGN KEY (Department)
     REFERENCES DEPARTMENT(Code);
-~~~
+```
 
 Note the structure of the `ALTER TABLE` command:
 
@@ -1951,7 +1951,7 @@ Note the structure of the `ALTER TABLE` command:
 - … `KEY (Department) REFERENCES (Code);`⇒ error
 - … `KEY PROF(Department) REFERENCES DEPARTMENT(Code);` ⇒ ok
 
-~~~{.sqlmysql}
+```
 CREATE TABLE STUDENT(
     Login VARCHAR(25) PRIMARY KEY,
     Name VARCHAR(25),
@@ -1966,28 +1966,28 @@ CREATE TABLE GRADE(
     PRIMARY KEY(Login, Grade),
     FOREIGN KEY (Login) REFERENCES STUDENT(Login)
 );
-~~~
+```
 
 #### Populating
 
 We can insert multiple values at once:
 
-~~~{.sqlmysql}
+```
 INSERT INTO DEPARTMENT VALUES
     ('MATH', 'Mathematics', NULL),
     ('CS', 'Computer Science', NULL);
-~~~
+```
 
 We can specify which attributes we are giving:
 
-~~~{.sqlmysql}
+```
 INSERT INTO DEPARTMENT (Code, Name) VALUES
     ('CYBR', 'Cyber Secturity');
-~~~
+```
 
 And we can even specify the order (even the trivial one):
 
-~~~{.sqlmysql}
+```
 INSERT INTO PROF (Login, Department, Name) VALUES
     ('caubert', 'CS', 'Clément Aubert');
 
@@ -2006,7 +2006,7 @@ INSERT INTO STUDENT (Login, Name, Registered, Major) VALUES
 INSERT INTO GRADE VALUES
     ('jrakesh', 3.8),
     ('svlatka', 2.5);
-~~~
+```
 
 Note the date literals.
 
@@ -2014,7 +2014,7 @@ Note the date literals.
 
 Order of clauses does not matter, not even for optimization purpose.
 
-~~~{.sqlmysql}
+```
 UPDATE <table>
 SET <attribute1> = <value1>, <attribute2> = <value2>, …
 WHERE <condition>; 
@@ -2025,7 +2025,7 @@ WHERE <condition>;
 
 DELETE FROM <table list>
 WHERE <condition>;
-~~~
+```
 
 Conditions can
 
@@ -2041,7 +2041,7 @@ Conditions can
     - `_` will match one character (any character), `%` will match any number of character,
     - advanced regular expression possible using the `REGEXP` keyword.
 
-~~~{.sqlmysql}
+```
 SELECT Login FROM STUDENT;
 
 UPDATE DEPARTMENT SET Head = 'aturing'
@@ -2065,7 +2065,7 @@ SELECT Login FROM STUDENT
 
 SELECT Name FROM PROF
     WHERE Login LIKE '_aubert';
-~~~
+```
 
 Note that `LIKE` is by default case-insensitive, both in [MariaDB](https://mariadb.com/kb/en/library/like/) and in [MySQL](https://dev.mysql.com/doc/refman/8.0/en/case-sensitivity.html).
 The `COLLATE` operator can be used to force the search to be case-sensitive, as well as `LIKE BINARY`.
@@ -2077,9 +2077,9 @@ The `COLLATE` operator can be used to force the search to be case-sensitive, as 
 
 Cf. [@Textbook6, 5.1.1], [@Textbook7, 7.1.1]
 
-### Meaning of `NULL`{.sqlmysql}
+### Meaning of `NULL`
 
-`NULL`{.sqlmysql} is
+`NULL` is
 
 #. Unknown value ("Nobody knows")
 
@@ -2103,7 +2103,7 @@ Cf. [@Textbook6, 5.1.1], [@Textbook7, 7.1.1]
 
 ### Comparison with Unknown Values {#truth-tables}
 
-If `NULL`{.sqlmysql} is involved in a comparison, the result evaluates to "**U**nknown".
+If `NULL` is involved in a comparison, the result evaluates to "**U**nknown".
 
 ||||
 :--: | :--: | :--: | :--: 
@@ -2127,21 +2127,21 @@ T | F
 F | T 
 U | U 
 
-You can test if a value is `NULL`{.sqlmysql} with `IS NULL`.
+You can test if a value is `NULL` with `IS NULL`.
 
-~~~{.sqlmysql}
+```
 INSERT INTO DEPARTMENT Values ('Hist', 'History', NULL);
 SELECT * FROM DEPARTMENT WHERE Head IS NULL;
 SELECT * FROM DEPARTMENT WHERE Head IS NOT NULL;
 SELECT COUNT(*) FROM GRADE WHERE Grade IS NULL;
-~~~
+```
 
-Note that you can not use `IS`{.sqlmysql} to compare values: this key word is reserved to test if a value is (not) `NULL`{.sqlmysql}, and nothing else.
+Note that you can not use `IS` to compare values: this key word is reserved to test if a value is (not) `NULL`, and nothing else.
 
 There are no `if…then…else` statements in `SQL`, but you can do something similar with `CASE` (cf. <https://dev.mysql.com/doc/refman/8.0/en/case.html>).
 However, note that `SQL` is probably _not_ the right place to try to control the flow of execution.
 
-This probably depends on the system a lot, but one could wonder if MySQL uses some form of short-cut evaluation when comparing with `NULL`{.sqlmysql}.
+This probably depends on the system a lot, but one could wonder if MySQL uses some form of short-cut evaluation when comparing with `NULL`.
 Unfortunately, even with three times (!) the verbose option, MySQL does not give more insight as to whenever it drops comparing values once a NULL was encountered (cf. <https://dev.mysql.com/doc/refman/8.0/en/mysql-command-options.html#option_mysql_verbose>, you can log-in using `mysql -u testuser -p --password=password -v -v -v` to activate the most verbose mode).
 Normally, `EXPLAIN` (<https://dev.mysql.com/doc/refman/8.0/en/explain.html>) should be useful in answering this question, but failed to answer it as well.
 
@@ -2153,29 +2153,29 @@ For aggregate functions, cf. [@Textbook6, 5.1.7] or [@Textbook7, 7.1.7].
 
 ### `AUTO_INCREMENT`
 
-Something that is not exactly a constraint, but that can be used to "qualify" domains, is the `AUTO_INCREMENT`{.sqlmysql} feature of MySQL.
+Something that is not exactly a constraint, but that can be used to "qualify" domains, is the `AUTO_INCREMENT` feature of MySQL.
 Cf. <https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html>, you can have MySQL increment a particular attribute (most probably intended to be your primary key) for you.
 
 ### Transactions
 
 We can save the current state, and start a series of transactions, with the command
 
-~~~{.sqlmysql}
+```
 START TRANSACTION;
-~~~
+```
 
 All the commands that follows are "virtually" executed: you can undo them all using
 
-~~~{.sqlmysql}
+```
 ROLLBACK;
-~~~
+```
 
 This puts you back in the state you were in before starting the transaction.
 If you want all the commands you typed in-between to be actually enforced, you can use the command
 
-~~~{.sqlmysql}
+```
 COMMIT;
-~~~
+```
 
 Nested transactions are technically possible, but they are counter-intuitive and should be avoided, cf. <https://www.sqlskills.com/blogs/paul/a-sql-server-dba-myth-a-day-2630-nested-transactions-are-real/>.
 
@@ -2183,14 +2183,14 @@ Nested transactions are technically possible, but they are counter-intuitive and
 
 The result of a `SELECT` query, for instance, is a table, and SQL treats tables as multi-set, hence there can be repetitions in the result of a query, but we can remove them:
 
-~~~{.sqlmysql}
+```
 SELECT DISTINCT Major FROM STUDENT;
-~~~
+```
 
 The default behaviour is equivalent to specifying `ALL`, and it display the duplicates.
 In this case, it would be
 
-~~~{.sqlmysql}
+```
 > SELECT Major FROM STUDENT;
 +-------+
 | Major |
@@ -2201,7 +2201,7 @@ In this case, it would be
 | CYBR  |
 | MATH  |
 +-------+
-~~~
+```
 
 
 ### `UNION` 
@@ -2209,9 +2209,9 @@ In this case, it would be
 Set-theoretic operations are available as well.
 For instance, one can use:
 
-~~~{.sqlmysql}
+```
 (SELECT Login FROM STUDENT) UNION (SELECT Login FROM PROF);
-~~~
+```
 
 to collect all the logins from both tables.
 
@@ -2221,7 +2221,7 @@ There is also `INTERSECT` and `EXCEPT` in the specification, but MySQL does not 
 
 You can have `ORDER BY` specifications:
 
-~~~{.sqlmysql}
+```
 SELECT Login FROM GRADE
     WHERE Grade > 2.0
     ORDER BY Grade;
@@ -2232,7 +2232,7 @@ SELECT Login FROM GRADE
 
 SELECT Login, Major FROM STUDENT
     ORDER BY Major, Name;
-~~~
+```
 
 `ORDER BY` order by ascending order by default.
 
@@ -2240,25 +2240,25 @@ SELECT Login, Major FROM STUDENT
 
 You can use `MAX`, `SUM`, `MIN`, `AVG`, `COUNT`:
 
-~~~{.sqlmysql}
+```
 SELECT MAX(Registered) FROM STUDENT;
-~~~
+```
 
 returns the "greatest" date of registration of a student, i.e., the date of the latest registration.
 
-~~~{.sqlmysql}
+```
 SELECT COUNT(Name) FROM STUDENT;
-~~~
+```
 
 returns the number of names, i.e., the number of students.
 
-~~~{.sqlmysql}
+```
 SELECT COUNT(DISTINCT Name) FROM STUDENT;
-~~~
+```
 
 returns the number of _different names_ (which in this case is the same as the number of names, since we have no homonyms).
 
-Note that `AVG`{.sqlmysql} returns the average of all **non-`NULL`{.sqlmysql}** values, as we can see on the following example:
+Note that `AVG` returns the average of all **non-`NULL`** values, as we can see on the following example:
 
 ```{.sqlmysql .numberLines include=code/sql/HW_Avg.sql}
 ```
@@ -2266,7 +2266,7 @@ Note that `AVG`{.sqlmysql} returns the average of all **non-`NULL`{.sqlmysql}** 
 
 ### Aliases for Columns
 
-~~~{.sqlmysql}
+```
 SELECT Login FROM PROF;
 +---------+
 | Login   |
@@ -2286,7 +2286,7 @@ SELECT Login AS Username FROM PROF;
 | bgates   |
 | perdos   |
 +----------+
-~~~
+```
 
 The purpose of aliases will be clearer as we study select-project-join queries.
 
@@ -2299,34 +2299,34 @@ For nested queries, cf. [@Textbook6, 5.1.2] or  [@Textbook7, 7.1.2].
 
 ### Select-Project-Join
 
-~~~{.sqlmysql}
+```
 SELECT Login FROM PROF, DEPARTMENT
     WHERE DEPARTMENT.Name = 'Mathematics'
     AND Department = Code;
-~~~
+```
 
 - `Department.Name = 'Mathematics'` is the selection condition
 - `Department = Code` is the join condition, because it combines two tuples.
 - Why do we use the fully qualified name attribute for `Name`?
 - We have to list all the tables we want to consult, even if we use fully qualified names.
 
-~~~{.sqlmysql}
+```
 SELECT Name FROM STUDENT, GRADE
     WHERE Grade > 3.0
     AND STUDENT.Login = GRADE.Login;
-~~~
+```
 
 - `Grade > 3.0` is the selection condition
 - `STUDENT.Login = GRADE.Login` is the join condition
 
 We can have two join conditions!
 
-~~~{.sqlmysql}
+```
 SELECT PROF.Name FROM PROF, DEPARTMENT, STUDENT
     WHERE STUDENT.Name = 'Ava Alyx'
     AND STUDENT.Major = DEPARTMENT.Code
     AND DEPARTMENT.Head = PROF.Login;
-~~~
+```
 
 Note that for the kind of join we are studiying (called "inner joints"), the [order does not matter](https://stackoverflow.com/q/9614922).
 
@@ -2334,111 +2334,111 @@ Note that for the kind of join we are studiying (called "inner joints"), the [or
 
 We can use aliases to shorten the previous query:
 
-~~~{.sqlmysql}
+```
 SELECT PROF.Name FROM PROF, DEPARTMENT, STUDENT AS B
     WHERE B.Name = 'Ava Alyx
     AND B.Major = DEPARTMENT.Code
     AND DEPARTMENT.Head = PROF.Login;
-~~~
+```
 
 We can use multiple aliases:
 
-~~~{.sqlmysql}
+```
 SELECT A.Name FROM PROF AS A, DEPARTMENT, STUDENT AS B
     WHERE B.Name = 'Ava Alyx'
     AND B.Major = DEPARTMENT.Code
     AND DEPARTMENT.Head = A.Login;
-~~~
+```
 
 For those two, aliases were convenient, but not required to write the query.
 In some cases, we cannot do without aliases, for instance if we want to compare two rows in the same table:
 
-~~~{.sqlmysql}
+```
 SELECT Others.Login FROM GRADE AS Mine, GRADE AS Others
     WHERE Mine.Login = 'aalyx'
     AND Mine.Grade < Others.Grade;
-~~~
+```
 
 ---
 
-~~~{.sqlmysql}
+```
 SELECT Fellow.Name AS 'Fellow of Ava'
 FROM STUDENT AS Me, STUDENT AS Fellow
 WHERE Me.Name = 'Ava Alyx'
     AND Fellow.Major = Me.Major
     AND NOT Fellow.Name = Me.Name;
-~~~
+```
 
 `AND NOT Me = Fellow` would *not* work.
 Note that `AS 'Fellow of Ava'` is *another* kind of aliasing, mentioned in a previous section.
 
 ### Nested Queries
 
-~~~{.sqlmysql}
+```
 SELECT Login FROM GRADE
     WHERE Grade >
     (SELECT AVG(Grade) FROM GRADE);
-~~~
+```
 
 A nested query is made of an outer query (`SELECT Login`…) and an inner query (`SELECT AVG(Grade)`…).
 
-~~~{.sqlmysql}
+```
 SELECT Login FROM GRADE
     WHERE Grade >= 
     ALL (SELECT Grade FROM GRADE WHERE Grade IS NOT NULL);
-~~~
+```
 
 Note that this query could be simplified, using `MAX`:
 
-~~~{.sqlmysql}
+```
 SELECT Login FROM GRADE
 WHERE Grade >=
     (SELECT MAX(Grade) FROM GRADE);
-~~~
+```
 
-~~~{.sqlmysql}
+```
 SELECT Login 
 FROM PROF
 WHERE DEPARTMENT IN (   SELECT Major
                         FROM STUDENT
                         WHERE Login LIKE '%a');
-~~~
+```
 
 For this query, we could not use `=`, since more than one major could be returned.
 Furthermore, nested query that uses `=` can often be rewritten without being nested.
 For instance,
 
-~~~{.sqlmysql}
+```
 SELECT Login 
 FROM PROF
 WHERE DEPARTMENT = (    SELECT Major
                         FROM STUDENT
                         WHERE Login = "cjoella");
-~~~
+```
 
 becomes
 
-~~~{.sqlmysql}
+```
 SELECT PROF.Login 
 FROM PROF, STUDENT
 WHERE DEPARTMENT = Major AND STUDENT.Login = "cjoella";
-~~~
+```
 
 Conversly, you can sometimes write select-project-join as nested queries
 For instance, 
 
-~~~{.sqlmysql}
+```
 SELECT Name FROM STUDENT, GRADE
     WHERE Grade > 3.0
     AND STUDENT.Login = GRADE.Login;
-~~~
+```
 
 becomes
 
-~~~{.sqlmysql}
+```
 SELECT Name FROM STUDENT
     WHERE Login IN (SELECT Login FROM GRADE WHERE Grade > 3.0);
-~~~
+```
 
 
 ## Procedures
@@ -2525,24 +2525,24 @@ The following links could be useful:
 #. We now want to make sure that MySQL is running: launch Windows' "Control Panel", then click on "Administrative Tools", and on "Services". Look for "MySQLXX", its status should be "Running". If it is not, right-click on it and click on "Start".
 #. Open a command prompt (search for `cmd`, or use [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/getting-started/getting-started-with-windows-powershell?view=powershell-6)) and type
 
-    ~~~{.powershell}
+    ```{.powershell}
     cd "C:\Program Files\MySQL\MySQL Server 8.0\bin"
-    ~~~
+    ```
     
     If this command fails, it is probably because the version number changed: open the file explorer, go to `C:\Program Files\MySQL\`, look for the right version number, and update the command accordingly.
 
     Then, enter
     
-    ~~~{.powershell}
+    ```{.powershell}
     mysql -u root -p
-    ~~~
+    ```
 
 	and enter the password you picked previously for the root account.
     You are now logged as root in your database management system, you should see a brief message, followed by a prompt 
     
-    ~~~{.powershell}
+    ```{.powershell}
     mysql >
-    ~~~
+    ```
 
 #. Now, move on to ["Creating a User"](#creating-an-user).
 
@@ -2553,16 +2553,16 @@ Read <https://dev.mysql.com/doc/refman/8.0/en/osx-installation-pkg.html> and dow
 Install it, leaving everything by default but adding a password (refer to the instructions for windows).
 Then, open a command-line interface (the terminal),  enter
 
-~~~{.powershell}
+```{.powershell}
 mysql -u root -p
-~~~
+```
 
 and enter the password you picked previously for the root account.
 You are now logged as root in your database management system, you should see a brief message, followed by a prompt 
 
-~~~{.powershell}
+```{.powershell}
 mysql >
-~~~
+```
 
 Now, move on to ["Creating a User"](#creating-a-user).
 
@@ -2572,35 +2572,35 @@ Now, move on to ["Creating a User"](#creating-a-user).
 #. Install, through your standard package management system (`apt` or `aptitude` for debian-based systems, `pacman` for Arch Linux, etc.), the packages `mysql-client` and `mysql-server` (or `default-mysql-client` and `default-mysql-server`) as well as their dependencies^[Yes, the package is called `mysql-server`, but it actually install the package `mariadb-server-10.3` or higher… So do not be confused: *we are, indeed, installing MariaDB*!].
 #. Open a terminal and type 
 
-    ~~~{.bash}
+    ```{.bash}
     /etc/init.d/mysql status
-    ~~~
+    ```
     
     or, as root,
     
-    ~~~{.bash}
+    ```{.bash}
     service mysql status
-    ~~~
+    ```
 
     to see if MySQL is running: if you read something containing
 
-    ~~~{.bash}
+    ```{.bash}
     Active: active (running)
-    ~~~
+    ```
 
     then you can move on to the next step, otherwise run (as root) 
  
-     ~~~{.bash}
+     ```{.bash}
      service mysqld start
-     ~~~
+     ```
      
      and try again.
 
 #. As root, type in your terminal 
 
-    ~~~{.bash}
+    ```{.bash}
     mysql_secure_installation
-    ~~~
+    ```
 
     You will be asked to provide the current password for the root MySQL user: this password has not be defined yet, so just hit "Enter".
     You will be asked if you want to set a new password (that you can freely chose, just make sure to memorize it).
@@ -2608,16 +2608,16 @@ Now, move on to ["Creating a User"](#creating-a-user).
 
 #. Still as root, type in your terminal 
     
-    ~~~{.bash}
+    ```{.bash}
     mysql -u root -p
-    ~~~
+    ```
     
 	and enter the password you picked previously for the root account.
     You are now logged as root in your database management system: you should see a brief message, followed by a prompt
     
-    ~~~{.bash}
+    ```{.bash}
     MariaDB [(none)]>
-    ~~~
+    ```
 
 #. Now, move on to ["Creating a User"](#creating-a-user).
 
@@ -2628,35 +2628,35 @@ This step will create a non-root user^[By default, MySQL and MariaDB only create
 
 We first create a new user called `testuser` on our local installation, and give it the password `password`:
 
-~~~{.sqlmysql}
+```
 CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'password';
-~~~
+```
 
 Then, we grant the user all the privileges on the databases whose name starts with `HW_`:
 
-~~~{.sqlmysql}
+```
 GRANT ALL PRIVILEGES ON  `HW\_%` . * TO 'testuser'@'localhost';
-~~~
+```
 
 Be careful:  backticks (`` ` ``) are surrounding `HW\_%` whereas single quotes (`'`) are surrounding `testuser` and `localhost`.
 
 And then we quit the DBMS, using
 
-~~~{.sqlmysql}
+```
 EXIT;
-~~~
+```
 
 The message displayed after the two first commands should be 
 
-~~~{.sqlmysql}
+```
 Query OK, 0 rows affected (0.00 sec)
-~~~
+```
 
 and the message displayed after the last command should be
 
-~~~{.sqlmysql}
+```
 Bye
-~~~
+```
 
 ### Logging-In as testuser {#dbms:testuserlogin}
 
@@ -2664,39 +2664,39 @@ We now log in as the normal user called "testuser".
 
 Linux users should type *as a normal user, i.e., not as root*, in their terminal the following, and Windows users should type in their command prompt the following^[Provided the working directory is still `C:\Program Files\MySQL\MySQL Server 8.0\bin` or similar. Cf. <https://dev.mysql.com/doc/mysql-windows-excerpt/8.0/en/mysql-installation-windows-path.html> to add the MySQL bin directory to your Windows system `PATH` environment variable.]: 
 
-~~~{.bash}
+```{.bash}
 mysql -u testuser -p
-~~~
+```
 
 Enter `password` as your password.
 If you are prompted with a message
 
-~~~{.bash}
+```{.bash}
 ERROR 1045 (28000): Access denied for user 'testuser'@'localhost' (using password: YES)
-~~~
+```
 
 then you probably typed the wrong password. 
 Otherwise, you should see a welcoming message from MySQL or MariaDB and a prompt. 
 
 To save yourself the hassle of typing the password, you can use
 
-~~~{.bash}
+```{.bash}
 mysql -u testuser -ppassword
-~~~
+```
 
 or
 
-~~~{.bash}
+```{.bash}
 mysql -u testuser -p --password=password
-~~~
+```
 
 to log-in as testuser immediately.
 
 If at some point you want to know if you are logged as root or testuser, simply enter
 
-~~~{.sqlmysql}
+```
 \s;
-~~~
+```
 
 ### Creating Our First Database {#dbms:create}
 
@@ -2704,71 +2704,71 @@ Now, let us create our first schema, our first table, populate it with data, and
 
 We first create the schema (or database) `HW_FirstTest`:
 
-~~~{.sqlmysql}
+```
 CREATE DATABASE HW_FirstTest; -- Or CREATE SCHEMA HW_FirstTest;
-~~~
+```
 
 Let us make sure that we created it:
 
-~~~{.sqlmysql}
+```
 SHOW DATABASES;
-~~~
+```
 
 Let us use it:
 
-~~~{.sqlmysql}
+```
 USE HW_FirstTest;
-~~~
+```
 
 And see what it contains now:
 
-~~~{.sqlmysql}
+```
 SHOW TABLES;
-~~~
+```
 
 We now create a table called `TableTest`, wtih two integer attributes called `Attribute1` and `Attribute2`:
 
-~~~{.sqlmysql}
+```
 CREATE TABLE TableTest (Attribute1 INT, Attribute2 INT);
-~~~
+```
 
 And can make sure that the table was indeed created:
 
-~~~{.sqlmysql}
+```
 SHOW TABLES;
-~~~
+```
 
 We can further ask our DBMS to display the structure of the table we just created:
 
-~~~{.sqlmysql}
+```
 DESCRIBE TableTest; -- Can be abbreviated as DESC TableTest;
-~~~
+```
 
 And even ask to get back the code that would create the exact same structure (but without the data!):
 
-~~~{.sqlmysql}
+```
 SHOW CREATE TABLE TableTest;
-~~~
+```
 
 Now, let us populate it with some data:
 
-~~~{.sqlmysql}
+```
 INSERT INTO TableTest
     VALUES (1,2),
            (3,4),
            (5,6);
-~~~
+```
 
 Note that the `SQL` syntax and your DBMS are completely fine with your statement spreading over multiple lines.
 Let us now display the data stored in the table:
 
-~~~{.sqlmysql}
+```
 SELECT * FROM TableTest;
-~~~
+```
 
 After that last command, you should see
 
-~~~{.sqlmysql}
+```
 +------------+------------+
 | Attribute1 | Attribute2 |
 +------------+------------+
@@ -2776,23 +2776,23 @@ After that last command, you should see
 |          3 |          4 |
 |          5 |          6 |
 +------------+------------+
-~~~
+```
 
 
 Finally, we can erase the content of the table, then erase ("drop") the table, and finally the schema:
 
-~~~{.sqlmysql}
+```
 DELETE FROM TableTest; -- Delete the rows
 DROP TABLE TableTest; -- Delete the table
 DROP DATABASE HW_FirstTest; -- Delete the schema
-~~~
+```
 
 You're all set!
 All you have to do is to quit, using the command 
 
-~~~{.sqlmysql}
+```
 EXIT;
-~~~
+```
 
 ### Security Concerns {#dbms:security}
 
@@ -2853,7 +2853,7 @@ Exercise +.#sqldatatype
 
 Exercise +.#
 
-:  Explain this query: `CREATE SCHEMA FACULTY;`{.sqlmysql}.
+:  Explain this query: `CREATE SCHEMA FACULTY;`.
 
 Exercise +.#explainsql
 ~ 
@@ -2873,10 +2873,10 @@ Exercise +.#explainsql
 
     Explain this query:
 
-    ~~~{.sqlmysql}
+    ```
     ALTER TABLE TABLEA
         DROP INDEX Attribute1;
-    ~~~
+    ```
 
 Exercise +.#
 
@@ -2891,7 +2891,7 @@ Exercise +.#explainfk
 
     If `PkgName` is the primary key in the table `MYTABLE`, what can you tell about the number of rows returned by the following statement? 
     
-    `SELECT * FROM MYTABLE WHERE PkgName = 'MySQL';`{.sqlmysql}.
+    `SELECT * FROM MYTABLE WHERE PkgName = 'MySQL';`.
 
 Exercise +.# 
 
@@ -2910,11 +2910,11 @@ Exercise +.#
 
     If the following is part of the design of a table:
 
-    ~~~{.sqlmysql}
+    ```
     FOREIGN KEY (DptNumber) REFERENCES DEPARTMENT(Number)
         ON DELETE SET DEFAULT
         ON UPDATE CASCADE;
-    ~~~
+    ```
 
     What happen to the rows whose foreign key `DptNumber` are set to `3` if the row in the `DEPARTEMENT` table with primary key `Number` set to `3` is…
 
@@ -2926,10 +2926,10 @@ Exercise +.#
 
     If the following is part of the design of a `WORKER` table:
 
-    ~~~{.sqlmysql}
+    ```
     FOREIGN KEY WORKER(DptNumber) REFERENCES DEPARTMENT(DptNumber)
         ON UPDATE CASCADE;
-~~~
+```
 
     What happen to the rows whose foreign key `DptNumber` are set to `3` if the row in the `DEPARTMENT` table with primary key `Number` set to `3` is…
 
@@ -2944,9 +2944,9 @@ Exercise +.#
 ~ 
     Describe what the star do in the statement
 
-    ~~~{.sqlmysql}
+    ```
 SELECT ALL * FROM MYTABLE;
-~~~
+```
 
 Exercise +.# 
 
@@ -2965,15 +2965,15 @@ Exercise +.#
 
     What is the difference between 
 
-    ~~~{.sqlmysql}
+    ```
 SELECT ALL * FROM MYTABLE;
-~~~
+```
 
     and
 
-    ~~~{.sqlmysql}
+    ```
 SELECT DISTINCT * FROM MYTABLE;
-~~~
+```
 
     How are the results the same? How are they different?
 
@@ -2982,9 +2982,9 @@ Exercise +.#
 
     What is wrong with the statement
 
-    ~~~{.sqlmysql}
+    ```
     SELECT * WHERE Name = 'CS' FROM DEPARTMENT;
-    ~~~
+    ```
 
 Exercise +.# 
 
@@ -3008,7 +3008,7 @@ Exercise +.#
 
 Exercise +.#NullMeaning 
 
-: Give the three possible meaning of the `NULL`{.sqlmysql} value, and an example for each of them.
+: Give the three possible meaning of the `NULL` value, and an example for each of them.
 
 Exercise +.# 
 ~ 
@@ -3021,24 +3021,24 @@ Exercise +.#
 
 Exercise +.#truthTableAnd
 
-:  Write the truth table for `AND`{.sqlmysql} for the three-valued logic of `SQL`.
+:  Write the truth table for `AND` for the three-valued logic of `SQL`.
 
 Exercise +.# 
 
-: What comparison expression should you use to test if a value is different from `NULL`{.sqlmysql}?
+: What comparison expression should you use to test if a value is different from `NULL`?
 
 Exercise +.# 
 ~ 
 
     Explain this query:
 
-    ~~~{.sqlmysql}
+    ```
     SELECT Login 
         FROM PROF
         WHERE Department IN ( SELECT Major
                             FROM STUDENT
                             WHERE Login = 'jrakesh');
-    ~~~
+    ```
 
     Can you rewrite it without nesting queries?
 
@@ -3047,11 +3047,11 @@ Exercise +.#
 
     What is wrong with this query?
 
-    ~~~{.sqlmysql}
+    ```
     SELECT Name FROM STUDENT
         WHERE Login IN
         ( SELECT Code FROM Department WHERE head = 'aturing');
-    ~~~
+    ```
 
 Exercise +.#
 
@@ -3091,7 +3091,7 @@ Solution +.#
 
 Solution +.#
 
-: `ALTER TABLE STAFF ADD PRIMARY KEY(ID);`{.sqlmysql}
+: `ALTER TABLE STAFF ADD PRIMARY KEY(ID);`
 
 Solution +.#
 
@@ -3111,13 +3111,13 @@ Solution +.#
 
 Solution +.#
 
-: It creates a schema, i.e., a database, named `Faculty`{.sqlmysql}.
+: It creates a schema, i.e., a database, named `Faculty`.
 
 Solution +.#
 ~ 
     A simple and compact code could be:
     
-    ~~~{.sqlmysql}
+    ```
     -- You can ignore the first three lines.
     DROP SCHEMA IF EXISTS HW_SHORT;
     CREATE SCHEMA HW_SHORT;
@@ -3126,19 +3126,19 @@ Solution +.#
     CREATE TABLE B(Att3 INT PRIMARY KEY, Att4 INT, FOREIGN KEY (Att4) REFERENCES A(Att1));
     INSERT INTO A VALUES (1, 2);
     INSERT INTO B VALUES (3, 1);
-    ~~~~
+    ````
 
 Solution +.#
 
-: It removes the `UNIQUE`{.sqlmysql} constraint on the `Attribute1`{.sqlmysql} in the `TABLEA`{.sqlmysql} table.
+: It removes the `UNIQUE` constraint on the `Attribute1` in the `TABLEA` table.
  
 Solution +.#
 
-: `DATE'2016-01-21'`{.sqlmysql}, `'2016-01-21'`{.sqlmysql}, `'2016/01/21'`{.sqlmysql}, `'20160121'`{.sqlmysql}.
+: `DATE'2016-01-21'`, `'2016-01-21'`, `'2016/01/21'`, `'20160121'`.
  
 Solution +.#
 
-: `INSERT INTO TRAINS VALUES('Thomas', 4);`{.sqlmysql}
+: `INSERT INTO TRAINS VALUES('Thomas', 4);`
 
 Solution +.#
 
@@ -3146,7 +3146,7 @@ Solution +.#
 
 Solution +.#
 
-: We should use a referential triggered action clause, : `ON DELETE CASCADE`{.sqlmysql}.
+: We should use a referential triggered action clause, : `ON DELETE CASCADE`.
 
 Solution +.#
 
@@ -3154,7 +3154,7 @@ Solution +.#
 
 Solution +.#
 
-: If the referenced row is updated, then the attribute of the referencing rows are set to `NULL`{.sqlmysql}.
+: If the referenced row is updated, then the attribute of the referencing rows are set to `NULL`.
  
 Solution +.#
 ~ 
@@ -3165,18 +3165,18 @@ Solution +.#
 
 Solution +.#
 ~ 
-    #. This operation is rejected: the row in the `DEPARTMENT`{.sqlmysql} table with primary key `Number`{.sqlmysql} set to `3`{.sqlmysql} cannot be deleted if a row in the `WORKER`{.sqlmysql} table references it.
+    #. This operation is rejected: the row in the `DEPARTMENT` table with primary key `Number` set to `3` cannot be deleted if a row in the `WORKER` table references it.
     #. In the referencing rows, the department number is updated accordingly.
 
 Solution +.#
 ~ 
     We could use the following:
     
-    ~~~{.sqlmysql}
+    ```
     SELECT Name, Address
         FROM TOURIST
         WHERE EntryDate > DATE'2012-09-15';
-    ~~~
+    ```
 
 Solution +.#
 
@@ -3184,7 +3184,7 @@ Solution +.#
 
 Solution +.#
 
-: The name of the relation with the name of its schema and a period beforehand. An example would be `EMPLOYEE.Name`{.sqlmysql}.
+: The name of the relation with the name of its schema and a period beforehand. An example would be `EMPLOYEE.Name`.
 
 Solution +.#
 
@@ -3196,15 +3196,15 @@ Solution +.#
  
 Solution +.#
 
-: They both select all the rows in the `MYTABLE`{.sqlmysql} table, but `ALL`{.sqlmysql} will print the duplicate values, whereas `DISTINCT`{.sqlmysql} will print them only once.
+: They both select all the rows in the `MYTABLE` table, but `ALL` will print the duplicate values, whereas `DISTINCT` will print them only once.
 
 Solution +.#
 
-: You cannot have the `WHERE`{.sqlmysql} before `FROM`{.sqlmysql}.
+: You cannot have the `WHERE` before `FROM`.
 
 Solution +.#
 
-: `SELECT COUNT(*) FROM BOOK;`{.sqlmysql}
+: `SELECT COUNT(*) FROM BOOK;`
 
 Solution +.#
 
@@ -3223,10 +3223,10 @@ Solution +.#
 ~ 
     We could use the following:
     
-    ~~~{.sqlmysql}
+    ```
     UPDATE PROF SET Name = 'Hugo Pernot'
         WHERE Login = 'caubert';
-    ~~~
+    ```
 
 Solution +.#
 
@@ -3239,60 +3239,60 @@ Solution +.#
 Solution +.#
 ~ 
 
-    - `TRUE AND FALSE`{.sqlmysql} → `FALSE`{.sqlmysql}
-    - `TRUE AND UNKNOWN`{.sqlmysql} →  `UNKNOWN`{.sqlmysql}
-    - `NOT UNKNOWN`{.sqlmysql} → `UNKNOWN`{.sqlmysql}
-    - `FALSE OR UNKNOWN`{.sqlmysql} → `FALSE`{.sqlmysql}
+    - `TRUE AND FALSE` → `FALSE`
+    - `TRUE AND UNKNOWN` →  `UNKNOWN`
+    - `NOT UNKNOWN` → `UNKNOWN`
+    - `FALSE OR UNKNOWN` → `FALSE`
 
 
 Solution +.#
 ~ 
 
-    - `TRUE AND TRUE`{.sqlmysql} → `TRUE`{.sqlmysql}
-    - `TRUE AND FALSE`{.sqlmysql} → `FALSE`{.sqlmysql}
-    - `TRUE AND UNKNOWN`{.sqlmysql} → `UNKNOWN`{.sqlmysql}
-    - `FALSE AND FALSE`{.sqlmysql} → `FALSE`{.sqlmysql}
-    - `UNKNOWN AND UNKNOWN`{.sqlmysql} → `UNKNOWN`{.sqlmysql}
-    - `FALSE AND UNKNOWN`{.sqlmysql} → `FALSE`{.sqlmysql}
+    - `TRUE AND TRUE` → `TRUE`
+    - `TRUE AND FALSE` → `FALSE`
+    - `TRUE AND UNKNOWN` → `UNKNOWN`
+    - `FALSE AND FALSE` → `FALSE`
+    - `UNKNOWN AND UNKNOWN` → `UNKNOWN`
+    - `FALSE AND UNKNOWN` → `FALSE`
     - The other cases can be deduced by symmetry.
     
     For a more compact presentation, refer to [the three-valued truth table](#truth-tables).
     
 Solution +.#
 
-: `IS NOT`{.sqlmysql}
+: `IS NOT`
 
 Solution +.#
 ~ 
 
     It list the login of the professors teaching in the department where the student whose login is "jrakesh" is majoring. It can be rewritten as
 
-    ~~~{.sqlmysql}
+    ```
     SELECT PROF.Login 
         FROM PROF, STUDENT
         WHERE Department = Major
         AND STUDENT.Login = 'jrakesh';
-    ~~~
+    ```
 
 Solution +.#
 
-: It tries to find a `Login`{.sqlmysql} in a `Code`{.sqlmysql}.
+: It tries to find a `Login` in a `Code`.
 
 Solution +.#
 
-: `SELECT SUM(Pages) FROM BOOK;`{.sqlmysql}
+: `SELECT SUM(Pages) FROM BOOK;`
 
 Solution +.#
 
-: `ALTER TABLE BOOK ADD COLUMN Pages INT;`{.sqlmysql}
+: `ALTER TABLE BOOK ADD COLUMN Pages INT;`
 
 Solution +.#
 
-: `ALTER TABLE BOOK ALTER COLUMN Pages DROP DEFAULT;`{.sqlmysql}
+: `ALTER TABLE BOOK ALTER COLUMN Pages DROP DEFAULT;`
 
 Solution +.#
 
-: Essentially, if there are no primary key in the relation, and if no attribute has the `UNIQUE`{.sqlmysql} constraint. Cf. also [this previous problem](#problem:repetition).
+: Essentially, if there are no primary key in the relation, and if no attribute has the `UNIQUE` constraint. Cf. also [this previous problem](#problem:repetition).
 <!--
 Bug.
 Link to Duplicate rows in SQL 
@@ -3313,27 +3313,27 @@ Problem (Discovering the documentation) +.#sqldoc
 
     - non-terminal symbols (i.e., variables, parameters) are enclosed in angled brackets, 
 
-    ~~~{.text}
+    ```{.text}
     <…>
-    ~~~
+    ```
 
     - optional parts are shown in square brackets, 
 
-    ~~~{.text}
+    ```{.text}
     […]
-    ~~~
+    ```
 
     - repetitons are shown in braces 
 
-    ~~~{.text}
+    ```{.text}
     {…}
-    ~~~
+    ```
 
     - alternatives are shown in parenthesis and separated by vertical bars, 
  
-    ~~~{.text}
+    ```{.text}
     (…|…|…)
-    ~~~
+    ```
 
     The most complete lists of commands are probably at 
 
@@ -3343,7 +3343,7 @@ Problem (Discovering the documentation) +.#sqldoc
     Those are the commands implemented in the DBMS you are actually using.
     Since there are small variations from one implementation to the other, it is better to take one of this link as a reference in the future.
     
-    As a starting point, looking at the syntax for `CREATE TABLE`{.sqlmysql} commands is probably a good start, cf. <https://mariadb.com/kb/en/create-table/> or <https://dev.mysql.com/doc/refman/8.0/en/create-table.html>.
+    As a starting point, looking at the syntax for `CREATE TABLE` commands is probably a good start, cf. <https://mariadb.com/kb/en/create-table/> or <https://dev.mysql.com/doc/refman/8.0/en/create-table.html>.
 
 ---
 
@@ -3357,7 +3357,7 @@ Problem (Creating and using a simple table in SQL) +.#address
       
         Log in as `testuser`, create a database named `HW_Address`, use it, and create two tables:
 
-        ~~~{.sqlmysql}
+        ```
         CREATE TABLE NAME(
             FName VARCHAR(15),
             LName VARCHAR(15),
@@ -3371,24 +3371,24 @@ Problem (Creating and using a simple table in SQL) +.#address
             Habitants INT,
             PRIMARY KEY(StreetName, Number)
         );
-        ~~~
+        ```
 
     @problem:address -- Question -.#
     
-    : Observe the output produced by the command `DESC ADDRESS;`{.sqlmysql}.
+    : Observe the output produced by the command `DESC ADDRESS;`.
 
     @problem:address -- Question -.#
     ~ 
     
         Add a foreign key to the `ADDRESS` table, using
  
-        ~~~{.sqlmysql}
+        ```
         ALTER TABLE ADDRESS 
             ADD FOREIGN KEY (Habitants)
             REFERENCES NAME(ID);
-        ~~~
+        ```
 
-        And observe the new output produced by the command `DESC ADDRESS;`{.sqlmysql}.
+        And observe the new output produced by the command `DESC ADDRESS;`.
     
         Is it what you would have expected? How informative is it? Can you think of a command that would output more detailled information, including a reference to the existence of the foreign key?
 
@@ -3401,11 +3401,11 @@ Problem (Creating and using a simple table in SQL) +.#address
     
         Add some data in the `NAME` table:
 
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO NAME VALUES ('Barbara', 'Liskov', 003);
         INSERT INTO NAME VALUES ('Tuong Lu', 'Kim', 004);
         INSERT INTO NAME VALUES ('Samantha', NULL, 080);
-        ~~~
+        ```
 
         What command can you use to display this infomation back?
         Do you notice anything regarding the values we entered for the `ID` attribute?
@@ -3415,13 +3415,13 @@ Problem (Creating and using a simple table in SQL) +.#address
     
         Add some data into the `ADDRESS` table:
 
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO ADDRESS
             VALUES
             ('Armstrong Drive', 10019, 003),
             ('North Broad St.', 23, 004),
             ('Robert Lane', 120, NULL);
-        ~~~
+        ```
     
         What difference do you note with the insertions we made in the `NAME` table. Which syntax seem more easy to you?
 
@@ -3454,20 +3454,20 @@ Problem (Duplicate rows in SQL) +.#repetition
     
         Add a tuple to your table using
 
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO EXAMPLE VALUES(X, Y);
-        ~~~
+        ```
 
         where `X` and `Y` are values with the right datatype.
-        Try to add this tuple again. What do you observe? (You can use `SELECT * FROM EXAMPLE;`{.sqlmysql} to observe what is stored in this table.)
+        Try to add this tuple again. What do you observe? (You can use `SELECT * FROM EXAMPLE;` to observe what is stored in this table.)
 
     @problem:repetition -- Question -.#
     ~ 
         Alter your table to add a primary key, using
 
-        ~~~{.sqlmysql}
+        ```
         ALTER TABLE EXAMPLE ADD PRIMARY KEY (Attribute);
-        ~~~
+        ```
 
         where `Attribute` is the name of the attribute you want to be a primary key. What do you observe?
 
@@ -3476,9 +3476,9 @@ Problem (Duplicate rows in SQL) +.#repetition
 
         Empty your table using
 
-        ~~~{.sqlmysql}
+        ```
         DELETE FROM EXAMPLE;
-        ~~~
+        ```
     
         and alter your table to add a primary key, using the command we gave at the previous step. What do you observe?
 
@@ -3504,11 +3504,11 @@ Problem (Constraints on Foreign Keys) +.#fk
     ```{.sqlmysql .numberLines include=code/sql/HW_FKtest.sql}
     ```
     
-    #. Remove the `PRIMARY KEY`{.sqlmysql} constraint.
-    #. Replace `PRIMARY KEY`{.sqlmysql} with `UNIQUE`{.sqlmysql}.
-    #. Replace one of the `VARCHAR(25)`{.sqlmysql} with `CHAR(25)`{.sqlmysql}.
-    #. Replace one of the `VARCHAR(25)`{.sqlmysql} with `INT`{.sqlmysql}.
-    #. Replace one of the `VARCHAR(25)`{.sqlmysql} with `VARCHAR(15)`{.sqlmysql}
+    #. Remove the `PRIMARY KEY` constraint.
+    #. Replace `PRIMARY KEY` with `UNIQUE`.
+    #. Replace one of the `VARCHAR(25)` with `CHAR(25)`.
+    #. Replace one of the `VARCHAR(25)` with `INT`.
+    #. Replace one of the `VARCHAR(25)` with `VARCHAR(15)`
     #. Adjust the remarks to better reflects the reality of the implementation we are using.
     
 
@@ -3540,19 +3540,19 @@ Problem (Revisiting the PROF table) +.#profrevisited
     ~ 
         The `GRADE` table had some limitations, too, since every student could have only one grade.  Add two columns to the `GRADE` table, using
 
-        ~~~{.sqlmysql}
+        ```
         ALTER TABLE GRADE
             ADD COLUMN LectureCode CHAR(5),
             ADD COLUMN LectureYear YEAR(4);
-        ~~~
+        ```
     
         and add a foreign key:
     
-        ~~~{.sqlmysql}
+        ```
         ALTER TABLE GRADE
             ADD FOREIGN KEY (LectureYear, LectureCode)
             REFERENCES LECTURE(Year, Code);
-        ~~~
+        ```
     
         Use `DESCRIBE` and `SELECT` to observe the schema of the `GRADE` table and its rows. Is that what you would have expected?
 
@@ -3583,7 +3583,7 @@ Problem (HW_Train table and more advanced SQL coding) +.#train
 
     Look at the SQL code below, and then answer the following questions.
 
-    ~~~{.sqlmysql}
+    ```
     CREATE TABLE TRAIN(
         ID VARCHAR(30),
         Model VARCHAR(30),
@@ -3602,7 +3602,7 @@ Problem (HW_Train table and more advanced SQL coding) +.#train
         Day DATE,
         PRIMARY KEY(TrainId, ConductorId)
     );
-    ~~~
+    ```
 
     @problem:train -- Question -.#
 
@@ -3618,7 +3618,7 @@ Problem (HW_Train table and more advanced SQL coding) +.#train
 
     @problem:train -- Question -.#
 
-    : Write `INSERT` statements that insert one tuple of your invention in each relation (without `NULL`{.sqlmysql} values).
+    : Write `INSERT` statements that insert one tuple of your invention in each relation (without `NULL` values).
     Your statements should respect all the constraints (including the ones we added at the previous questions) and result in actual insertions. (Remember that four digits is a valid value for an attribute with the `YEAR(4)` datatype.)
 
     @problem:train -- Question -.#
@@ -3702,22 +3702,22 @@ You can use **COFFEE**.1 to denote the first tuple (or row) in **COFFEE**, and s
 
 @problem:coffee -- Question -.#
 ~ 
-    Determine if the following insertion statements would violate the the entity integrity constraint, ("primary key cannot be `NULL`{.sqlmysql} and should be unique"), the referential integrity constraint ("the foreign key must refer to something that exists"), if there would be some other kind of error (ignoring the plausability / revelance of inserting that tuple), or if it would result in successful insertion.
+    Determine if the following insertion statements would violate the the entity integrity constraint, ("primary key cannot be `NULL` and should be unique"), the referential integrity constraint ("the foreign key must refer to something that exists"), if there would be some other kind of error (ignoring the plausability / revelance of inserting that tuple), or if it would result in successful insertion.
 
-    ~~~{.sqlmysql}
+    ```
     INSERT INTO CUSTOMER VALUES(005, 'Bob Hill', NULL, 001);
     INSERT INTO COFFEE VALUES(002, "Peru", "Decaf", 3.00);
     INSERT INTO PROVIDER VALUES(NULL, "contact@localcof.com");
     INSERT INTO SUPPLY VALUES("Johns  Co.", 121);
     INSERT INTO SUPPLY VALUES("Coffee Unl.", 311, 221);
-    ~~~
+    ```
 
 @problem:coffee -- Question -.#
 ~ 
 
     Assuming that the referential triggered action clause `ON UPDATE CASCADE`{.sglmysql} is used for every foreign keys in this database, list the tuples modified by the following statements: 
 
-    ~~~{.sqlmysql}
+    ```
     UPDATE CUSTOMER SET FavCoffee = 001
         WHERE CardNo = 001;
         
@@ -3729,13 +3729,13 @@ You can use **COFFEE**.1 to denote the first tuple (or row) in **COFFEE**, and s
         
     UPDATE COFFEE SET PricePerPound = 10.00
         WHERE PricePerPound > 10.00;
-    ~~~
+    ```
 
 @problem:coffee -- Question -.#
 ~ 
     Assuming that the referential triggered action clause `ON DELETE CASCADE` is used for every foreign keys in this database, list the tuples modified by the following statements: 
 
-    ~~~{.sqlmysql}
+    ```
     DELETE FROM CUSTOMER
         WHERE Name LIKE '%S%';
         
@@ -3748,7 +3748,7 @@ You can use **COFFEE**.1 to denote the first tuple (or row) in **COFFEE**, and s
         
     DELETE FROM PROVIDER
         WHERE Name = 'Johns & Co.';
-    ~~~
+    ```
 
 @problem:coffee -- Question -.#
 ~ 
@@ -3768,7 +3768,7 @@ Problem (Select Queries for the DEPARTMENT Table) +.#DepartmentSelect
 
     Consider the following `SQL` code:
     
-    ~~~{.sqlmysql}
+    ```
     CREATE TABLE DEPARTMENT(
         ID INT PRIMARY KEY,
         Name VARCHAR(30)
@@ -3793,7 +3793,7 @@ Problem (Select Queries for the DEPARTMENT Table) +.#DepartmentSelect
         (3, "Mark", 20050101, 2),
         (4, "Karen", NULL, 1),
         (5, "Jocelyn", 20100101, 1);
-   ~~~
+   ```
    
    
     Write a query that returns … (in parenthesis, the values returned *in this set-up*, but you have to be general)
@@ -3852,7 +3852,7 @@ Problem (Improving a role-playing game) +.#roleplaying
 
     Your friend came up with the following code: 
 
-    ~~~{.sqlmysql}
+    ```
     CREATE TABLE CHARACTER(
         Name VARCHAR(30) PRIMARY KEY,
         Class VARCHAR(30),
@@ -3873,7 +3873,7 @@ Problem (Improving a role-playing game) +.#roleplaying
     
     ALTER TABLE CHARACTER
         ADD FOREIGN KEY (Quest_Completed) REFERENCES QUEST(ID);
-    ~~~
+    ```
 
     But there are several problems.
 
@@ -3913,7 +3913,7 @@ Problem (A simple database for books) +.#sqlBooks
 
     #.  Write a command that updates the title of all the books written by the author whose ID is $1$ to "BANNED". Is there any reason for this command to be rejected by the system? If yes, explain which one. 
 	#.  Write one or multiple commands that would delete the author whose ID is $3$, and all the book written by that author. Make sure you do not violate any foreign key constraint.
-	#.  Write a command that would create a table used to record the awards granted to authors for particular books. You should assume that each award has its own name, is awarded every year, and that it is awarded to an author for a particular book. Pick appropriate attributes, datatypes^[You can use the `DATE`{.sqlmysql} datatype to store a year.], primary as well as foreign keys, and avoid above all redundancy. 
+	#.  Write a command that would create a table used to record the awards granted to authors for particular books. You should assume that each award has its own name, is awarded every year, and that it is awarded to an author for a particular book. Pick appropriate attributes, datatypes^[You can use the `DATE` datatype to store a year.], primary as well as foreign keys, and avoid above all redundancy. 
 	#.  Draw the relational model of the database you created (i.e., including all the relations given in the code and the one you added).
     #.  Discuss two limitations of the model and how to improve it.
 
@@ -3927,7 +3927,7 @@ Problem (A database for websites certificates) +.#certificate
     A CA can be trusted, not trusted, or not having been evaluated yet.
     The code below tries to represent this situation, and populate it with examples.
     
-    ~~~{.sqlmysql}
+    ```
     CREATE TABLE ORGANIZATION(
         SN VARCHAR(30) PRIMARY KEY,
         CN VARCHAR(30)
@@ -3970,7 +3970,7 @@ Problem (A database for websites certificates) +.#certificate
                 20190101, 20200101),
         ('d', '*.wikipedia.org', '01', 'C',
                 20200101, 20220101);
-    ~~~
+    ```
 		
     #.  Write a query that selects … (in parenthesis, the values returned in _this set-up_, but you have to be general)
         #. … the CN of all certificates (*.wikimedia.org | \*.fsf.org | \*.shadytest.org | \*.wikipedia.org),
@@ -3982,10 +3982,10 @@ Problem (A database for websites certificates) +.#certificate
         #. … a table listing the CN of the organizations along with the CN of their certificates ( Wikimedia Foundation,  \*.wikimedia.org | Free Software Foundation, \*.fsf.org | Free Software Foundation , \*.shadytest.org | Wikimedia Foundation , \*.wikipedia.org ).
 
     #. _In this set-up_, what happens if the following commands are issued? (List all the entries that are modified or deleted, or specify if the command would not change anything why).
-        #. `DELETE FROM CA WHERE SN = 'A';`{.sqlmysql}
-        #. `UPDATE ORGANIZATION SET CN = "FSF" WHERE SN = '02';`{.sqlmysql}
-        #. `UPDATE ORGANIZATION SET SN = "01" WHERE SN = '02';`{.sqlmysql}
-        #. `DELETE FROM ORGANIZATION;`{.sqlmysql}
+        #. `DELETE FROM CA WHERE SN = 'A';`
+        #. `UPDATE ORGANIZATION SET CN = "FSF" WHERE SN = '02';`
+        #. `UPDATE ORGANIZATION SET SN = "01" WHERE SN = '02';`
+        #. `DELETE FROM ORGANIZATION;`
 
 ---
 
@@ -4007,22 +4007,22 @@ Problem (A simple database for published pieces of work) +.#sqlWorks
     - Draw the relational model corresponding to this series of commands.
     - Determine if the following insertion statements would violate the the Entity integrity constraint, the Referential integrity constraint, if there would be some Other kind of error, or if it would result in \textbf{S}uccessful insertion.
     
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO EBOOK VALUES (0, NULL, 20180101, 0);
 		INSERT INTO AUTHOR VALUES("Mary B.", "mb@fai.fr", NULL);
 		INSERT INTO WORK VALUES("My Life", "Claude A.");
 		INSERT INTO BOOK VALUES(00000000, NULL, DATE'20001225', 90.9);
 		INSERT INTO AUTHOR VALUES("Virginia W.", "alt@isp.net");
-        ~~~
+        ```
     
     - List the rows (i.e., A.2, W.1, etc.) modified by the following statements (be careful about the conditions on foreign keys!):
 		
-        ~~~{.sqlmysql}
+        ```
         UPDATE AUTHOR SET Email = 'Deprecated' WHERE Email LIKE '%isp.net';
 		UPDATE WORK SET Title = "How to eat" WHERE Title = "What to eat";
 		DELETE FROM WORK;
 		DELETE FROM AUTHOR WHERE Name = "Virginia W.";
-        ~~~
+        ```
         
     - You can now assume that there is more data than what we inserted, if that helps you. Write a command that selects …
 		- …  the price of all the ebooks.
@@ -4055,10 +4055,10 @@ Solution to [%D %n (%T)](#problem:address)
         We simply log-in as indicated in the ["Logging-in as testuser"](#dbms:testuserlogin) Section.
         Then, we enter
 
-        ~~~{.sqlmysql}
+        ```
         CREATE DATABASE HW_Address;
         USE HW_Address;
-        ~~~
+        ```
 
         We then create the tables as in the problem.
 
@@ -4067,7 +4067,7 @@ Solution to [%D %n (%T)](#problem:address)
 
         Ommiting the `Extra` column, we have:
 
-        ~~~{.bash}
+        ```{.bash}
         MariaDB [HW_Address]>     DESC ADDRESS;
         +------------+-------------+------+-----+---------+
         | Field      | Type        | Null | Key | Default |
@@ -4076,14 +4076,14 @@ Solution to [%D %n (%T)](#problem:address)
         | Number     | int(11)     | NO   | PRI | NULL    |
         | Habitants  | int(11)     | YES  |     | NULL    |
         +------------+-------------+------+-----+---------+
-        ~~~
+        ```
 
     @problem:address -- Solution to Q. -.#
     ~ 
 
         We add the foreign key, then (still omitting the `Extra` column):
 
-        ~~~{.bash}
+        ```{.bash}
         MariaDB [HW_Address]> DESC ADDRESS;
         +------------+-------------+------+-----+---------+
         | Field      | Type        | Null | Key | Default |
@@ -4092,16 +4092,16 @@ Solution to [%D %n (%T)](#problem:address)
         | Number     | int(11)     | NO   | PRI | NULL    |
         | Habitants  | int(11)     | YES  | MUL | NULL    |
         +------------+-------------+------+-----+---------+
-        ~~~
+        ```
 
         The only difference is the `MUL` value, which is a bit surprising: quoting <https://dev.mysql.com/doc/refman/8.0/en/show-columns.html>,
 
         > If Key is MUL, the column is the first column of a nonunique index in which multiple occurrences of a given value are permitted within the column. 
 
-        In other word, this does not really carry any information about the fact that `ADDRESS.Habitants`{.sqlmysql} is now a foreign key referencing `NAME.ID`{.sqlmysql}.
-        A way of displaying information about that foreign key is using `SHOW CREATE TABLE`{.sqlmysql}:
+        In other word, this does not really carry any information about the fact that `ADDRESS.Habitants` is now a foreign key referencing `NAME.ID`.
+        A way of displaying information about that foreign key is using `SHOW CREATE TABLE`:
 
-        ~~~{.bash}
+        ```{.bash}
         MariaDB [HW_Address]> SHOW CREATE TABLE ADDRESS;
         +---------+----------------------+
         | Table   | Create Table  
@@ -4116,7 +4116,7 @@ Solution to [%D %n (%T)](#problem:address)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 |
         +---------+----------------------+
         1 row in set (0.01 sec)
-        ~~~
+        ```
 
     @problem:address -- Solution to Q. -.#
     ~ We have.
@@ -4131,9 +4131,9 @@ Solution to [%D %n (%T)](#problem:address)
     ~  
         To display the information back, we can use
 
-        ~~~{.sqlmysql}
+        ```
         SELECT * FROM NAME;
-        ~~~
+        ```
 
         We can remark that the `ID` attributes lost their [leading zeros](https://en.wikipedia.org/wiki/Leading_zero).
 
@@ -4143,68 +4143,68 @@ Solution to [%D %n (%T)](#problem:address)
 
     @problem:address -- Solution to Q. -.#
     
-    : `SELECT ID FROM NAME WHERE FName = 'Samantha';`{.sqlmysql}
+    : `SELECT ID FROM NAME WHERE FName = 'Samantha';`
 
     @problem:address -- Solution to Q. -.#
     ~  
         The command
 
-        ~~~
+        ```
         INSERT INTO NAME VALUES ('Maria', 'Kashi', NULL);
-        ~~~
+        ```
 
         returns
     
-        ~~~{.bash}
+        ```{.bash}
         ERROR 1048 (23000): Column 'ID' cannot be null
-        ~~~
+        ```
 
         Another way of violating the entity integrity constraint is 
 
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO NAME VALUES ('Maria', 'Kashi', 80);
-        ~~~
+        ```
     
         which returns
     
-        ~~~{.bash}
+        ```{.bash}
         ERROR 1062 (23000): Duplicate entry '80' for key 'PRIMARY'
-        ~~~
+        ```
     
     @problem:address -- Solution to Q. -.#
     ~  
         The command
 
-        ~~~{.sqlmysql}
+        ```
         UPDATE ADDRESS SET Habitants = 340 WHERE Number = 120;
-        ~~~
+        ```
 
         returns
 
-        ~~~{.bash}
+        ```{.bash}
         ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`HW_Address`.`ADDRESS`, CONSTRAINT `ADDRESS_ibfk_1` FOREIGN KEY (`Habitants`) REFERENCES `NAME` (`ID`))
-        ~~~
+        ```
     
     @problem:address -- Solution to Q. -.#
     ~  
 
         The query
 
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO NAME VALUE ('Hi');
-        ~~~
+        ```
 
         returns
     
-        ~~~{.bash}
+        ```{.bash}
         ERROR 1136 (21S01): Column count does not match value count at row 1
-        ~~~
+        ```
         
         I was violating an implicit constraint, trying to insert a row with fewer values than there are attributes in the table. Note that
     
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO ADDRESS VALUES ('Maria', 'Random', 98);
-        ~~~
+        ```
     
         is a violation of explicit constraint, which is that the value must match the domain (i.e., datatype) of the attribute where they are inserted. However, MySQL or MariaDB does not return an error, and simply replace `'Random'` with `0`.
 
@@ -4214,7 +4214,7 @@ Solution to [%D %n (%T)](#problem:repetition)
 ~ 
     As a preamble, we create our own table:
 
-    ~~~{.sqlmysql}
+    ```
     CREATE SCHEMA HW_REPETITION;
     USE HW_REPETITION;
     
@@ -4222,32 +4222,32 @@ Solution to [%D %n (%T)](#problem:repetition)
         X VARCHAR(15),
         Y INT
     );
-    ~~~
+    ```
 
     @problem:repetition -- Solution to Q. -.#
     ~ 
         The command is
         
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO EXAMPLE VALUES('Train', 4);
-        ~~~
+        ```
     
         If we execute this command twice, then SQL is OK with it, and insert the same tuple twice.
         
-        ~~~{.sqlmysql}
+        ```
         SELECT * FROM EXAMPLE;
-        ~~~
+        ```
         
         displays
         
-        ~~~{.bash}
+        ```{.bash}
         +-------+------+
         | X     | Y    |
         +-------+------+
         | Train |    4 |
         | Train |    4 |
         +-------+------+
-        ~~~
+        ```
     
         This is an illustration of the fact that a table in sql is *not* a set, as opposed to a relation in the relational model.
 
@@ -4255,15 +4255,15 @@ Solution to [%D %n (%T)](#problem:repetition)
     ~ 
         The command 
 
-        ~~~{.sqlmysql}
+        ```
         ALTER TABLE EXAMPLE ADD PRIMARY KEY (X);
-        ~~~
+        ```
 
         returns
 
-        ~~~{.bash}
+        ```{.bash}
         ERROR 1062 (23000): Duplicate entry 'Train' for key 'PRIMARY'
-        ~~~
+        ```
 
         We tried to declare that `X` was a primary key, but SQL disagreed, since two rows have the same value for that attribute.
 
@@ -4275,15 +4275,15 @@ Solution to [%D %n (%T)](#problem:repetition)
     
         We cannot introduce the same value twice:
     
-        ~~~{.sqlmysql}
+        ```
         INSERT INTO EXAMPLE VALUES('Train', 4);
-        ~~~
+        ```
         
         returns, the second time:
         
-        ~~~{.bash}
+        ```{.bash}
         ERROR 1062 (23000): Duplicate entry 'Train' for key 'PRIMARY'
-        ~~~    
+        ```    
         
         which is, by the way, exactly the same error message as when we tried to add the primary key in the first place!
 
@@ -4294,25 +4294,25 @@ Solution to [%D %n (%T)](#problem:fk)
     
     We have the following:
     
-    #. Without the `PRIMARY KEY`{.sqlmysql} constraint, we obtain:
+    #. Without the `PRIMARY KEY` constraint, we obtain:
     
-        ~~~{.sqlmysql}
+        ```
         ERROR 1005 (HY000): Can't create table `HW_FKtest`.`SOURCE` (errno: 150 "Foreign key constraint is incorrectly formed")
-        ~~~
+        ```
         
-    #. Replacing `PRIMARY KEY`{.sqlmysql} with `UNIQUE`{.sqlmysql} does not create any issue.
-    #. Replacing one of the `VARCHAR(25)`{.sqlmysql} with `CHAR(25)`{.sqlmysql} does not create any issue.
-    #. Replacing `VARCHAR(25)`{.sqlmysql} with `INT`{.sqlmysql} gives an error:
+    #. Replacing `PRIMARY KEY` with `UNIQUE` does not create any issue.
+    #. Replacing one of the `VARCHAR(25)` with `CHAR(25)` does not create any issue.
+    #. Replacing `VARCHAR(25)` with `INT` gives an error:
     
-        ~~~{.sqlmysql}
+        ```
         ERROR 1005 (HY000): Can't create table `HW_FKtest`.`SOURCE` (errno: 150 "Foreign key constraint is incorrectly formed")
-        ~~~
+        ```
         
-    #. Replacing one of the `VARCHAR(25)`{.sqlmysql} with `VARCHAR(15)`{.sqlmysql} does not create any issue.
+    #. Replacing one of the `VARCHAR(25)` with `VARCHAR(15)` does not create any issue.
     #. The remarks become:
     
         > - The datatype of the foreign key has to **be "compatible"** with the datatype of the attribute that we are referring.
-        > - The target of the foreign key *must be* the primary key **or have the `UNIQUE`{.sqlmysql} constraint**.
+        > - The target of the foreign key *must be* the primary key **or have the `UNIQUE` constraint**.
 
 ---
 
@@ -4374,14 +4374,14 @@ Solution to [%D %n (%T)](#problem:DepartmentSelect)
     The full code can be found in code/sql/HW_Department.sql.
     The queries are:
     
-    ~~~{.sqlmysql}
+    ```
     SELECT EMPLOYEE.Name
     FROM EMPLOYEE, DEPARTMENT
     WHERE DEPARTMENT.Name = "Storage"
         AND EMPLOYEE.Department = DEPARTMENT.ID;  
-    ~~~
+    ```
     
-    ~~~{.sqlmysql}
+    ```
     SELECT Name
     FROM EMPLOYEE
     WHERE Hired <= ALL (
@@ -4389,9 +4389,9 @@ Solution to [%D %n (%T)](#problem:DepartmentSelect)
         FROM EMPLOYEE
         WHERE Hired IS NOT NULL
     );
-    ~~~
+    ```
     
-    ~~~{.sqlmysql}
+    ```
     SELECT EMPLOYEE.Name
     FROM EMPLOYEE, DEPARTMENT
     WHERE Hired <= ALL (
@@ -4403,21 +4403,21 @@ Solution to [%D %n (%T)](#problem:DepartmentSelect)
     )
     AND DEPARTMENT.Name = "Storage"
     AND EMPLOYEE.Department = DEPARTMENT.ID;
-    ~~~
+    ```
 ---
 
 Solution to [%D %n (%T)](#problem:ComputerSelectBis)
 
 ~ 
 
-    ~~~{.sqlmysql}
+    ```
     SELECT Model FROM COMPUTER WHERE ID = 'A';
     SELECT Type FROM PERIPHERAL WHERE ID = '14';
     SELECT Model FROM PERIPHERAL WHERE Type = 'printer';
     SELECT Model FROM PERIPHERAL WHERE Model LIKE 'IBM%';
     SELECT Model FROM PERIPHERAL, CONNEXION WHERE Computer = 'A' AND Peripheral = PERIPHERAL.ID;
     SELECT COUNT(Computer) FROM CONNEXION, COMPUTER WHERE Model = 'Apple IIc Plus' AND Computer = COMPUTER.ID; 
-    ~~~
+    ```
 
 ---
 
@@ -4425,7 +4425,7 @@ Solution to [%D %n (%T)](#problem:roleplaying)
 ~ 
 
     The following solves all the mentionned issues.
-    As quests only rarely provides a special item, we added a relation to avoid having a `Special-item` in the `QUEST` table that would be too often `NULL`{.sqlmysql}.
+    As quests only rarely provides a special item, we added a relation to avoid having a `Special-item` in the `QUEST` table that would be too often `NULL`.
 
     ![
     CLASS(Name (PK), Bonus, Element)
@@ -4447,91 +4447,91 @@ Solution to [%D %n (%T)](#problem:sqlBooks)
     
         - The title of all the books:
         
-            ~~~{.sqlmysql}
+            ```
             SELECT Title FROM BOOK;
-            ~~~
+            ```
         - The (distinct) name of the publishers.
         
-            ~~~{.sqlmysql}
+            ```
             SELECT DISTINCT Name FROM PUBLISHER;
-            ~~~
+            ```
 
         - The title and publication date of the books published since January 31, 2012.
                 
-            ~~~{.sqlmysql}
+            ```
             SELECT Title, Published FROM BOOK
             WHERE Published > DATE'20120131';
-            ~~~
+            ```
         
         - The first and last names of the authors published by Gallimard (no matter the city).
                         
-            ~~~{.sqlmysql}
+            ```
             SELECT FName, LName FROM AUTHOR, BOOK
             WHERE PublisherName = "Gallimard"
                 AND Author = ID;
-            ~~~
+            ```
             
         - The first and last names of the authors who were not published by an editor in New-York.
                                 
-            ~~~{.sqlmysql}
+            ```
             SELECT FName, LName FROM AUTHOR, BOOK
             WHERE NOT PublisherCity= "New-York"
                 AND Author = ID;
-            ~~~
+            ```
             
         - The ID of the authors who published a book whose name starts with "Where".
                                         
-            ~~~{.sqlmysql}
+            ```
             SELECT Author FROM BOOK
             WHERE Title LIKE 'Where%';
-            ~~~
+            ```
             
         - The total number of pages in the database.
                                                 
-            ~~~{.sqlmysql}
+            ```
             SELECT SUM(Pages) FROM BOOK;
-            ~~~
+            ```
             
         - The number of pages in the longest book written by the author whose last name is "Wolve".
                                                         
-            ~~~{.sqlmysql}
+            ```
             SELECT MAX(PAGES) FROM BOOK, AUTHOR
             WHERE LName = "Wolve"
                 AND Author = ID;            
-            ~~~
+            ```
             
         - The title of the books published in the XIXth century.
                                                                 
-            ~~~{.sqlmysql}
+            ```
             SELECT Title FROM BOOK
             WHERE Published >= DATE'18010101' 
                 AND Published <= DATE'19001231';
-            ~~~
+            ```
 
     @problem:sqlBooks -- Solution to Q. -.#
     ~ We can use the following command:
     
-    ~~~{.sqlmysql}
+    ```
     UPDATE BOOK SET Title = "BANNED"
     WHERE Author = 3;
-    ~~~
+    ```
     
     But, as the pair (title, publication date) is the primary key in the `BOOK` table, if the author whose ID is $3$ has published more than one book at a particular date, then our update will be rejected, as applying it would result in violating the entity integrity constraint.
     
     @problem:sqlBooks -- Solution to Q. -.#
     ~ To delete the required rows, we can use:
     
-    ~~~{.sqlmysql}
+    ```
     DELETE FROM BOOK WHERE Author = 3;
     DELETE FROM AUTHOR WHERE ID = 3;
-    ~~~
+    ```
     
     Note that trying to delete the rows in the `AUTHOR` table before deleting the rows in the `BOOK` table could cause a referential integrity violation, since some of the books would be "authorless".
     
     @problem:sqlBooks -- Solution to Q. -.#
     ~ We could design that table as follows:
     
-    ~~~{.sqlmysql}
+    ```
     CREATE TABLE AWARD(
         Name VARCHAR(30),
         Year DATE,
@@ -4541,7 +4541,7 @@ Solution to [%D %n (%T)](#problem:sqlBooks)
             REFERENCES BOOK(Title, Published),
         PRIMARY KEY (Name, Year)
     );
-    ~~~
+    ```
     
     Note that there is no need to store the name of the author in that relation: this information can be recovered by looking in the `BOOK` table for the name of the author of the awarded book.
 
@@ -4597,8 +4597,8 @@ Solution to [%D %n (%T)](#problem:sqlWorks)
 
 This part of the HW_Lecture covers significantly more material than the other, hence we give the details of the references below:
 
-- E.R. models: [@Textbook6, ch. 7] or [@Textbook7, ch. 3]
-- The E.R. to Relational model: [@Textbook6, ch. 9.1] or [@Textbook7, ch. 9.1]
+- ER models: [@Textbook6, ch. 7] or [@Textbook7, ch. 3]
+- The ER to Relational model: [@Textbook6, ch. 9.1] or [@Textbook7, ch. 9.1]
 - Normalization: [@Textbook6, ch. 7] or [@Textbook7, ch. 3]
 - UML: not so much in the textbook, but you can look at [@Textbook6, ch. 7.8, 10.3] or [@Textbook7, ch. 3.8].
 
@@ -4780,7 +4780,7 @@ They both concerns the number of relationship instances an entity can participat
 
 For binary relations, can be $1:1$, $N:1$, $1:N$, or $M:N$.
 The $1$ stands for "at most $1$", and the $M$, $N$, and $P$ stand for "possibly more than $1$", or "no maximum".
-In E.R. diagram, we do not count, and do not make the distinction between "at most $5$" and "at most $10$", for instance^[An alternative notation, [detailled later on](#sec:alternative-notation), will address this shortcoming.].
+In ER diagram, we do not count, and do not make the distinction between "at most $5$" and "at most $10$", for instance^[An alternative notation, [detailled later on](#sec:alternative-notation), will address this shortcoming.].
 
 Possible examples include:
 
@@ -4954,7 +4954,7 @@ More generally, we have the following:
 
 ### Enhanced Entity–Relationship Model {#sec:EER}
 
-Extended (or Enhanced) E.R. Models (E.E.R.) have additionaly:
+Extended (or Enhanced) ER Models (EER) have additionaly:
 
 - Subtype / Subclass: "every professor is an employee". There is a class / subclass relationship (you can proceed by specialization or generalization).
 - Category (to represent UNION): an OWNER entity that can be either a PERSON, a BANK, or a COMPANY entity type.
@@ -4978,7 +4978,7 @@ Will not be able to represent it, because of https://stackoverflow.com/a/2126026
 
 ### Reverse Engineering
 
-From relational models to E.R. models (sometimes needed)
+From relational models to ER models (sometimes needed)
 
 ![](img/reverse_eng_01.jpeg){width=90%}
 
@@ -4986,7 +4986,7 @@ From relational models to E.R. models (sometimes needed)
 
 ---
 
-## E.R.-to-Relational Models Mapping
+## ER-to-Relational Models Mapping
 
 ### Intro
 
@@ -5068,7 +5068,7 @@ ENT.B(KeyB (PK))
 \ 
 
 Note that we could also have added the foreign key on the side of ENT.B, referencing the key of ENT.A.
-But since ENT.A has a total participation constraint, we know that the value of FK will always exist, whereas some entities in ENT.B may not be in relationship with an entity from ENT.A, creating the (nefast) need for `NULL`{.sqlmysql} values.
+But since ENT.A has a total participation constraint, we know that the value of FK will always exist, whereas some entities in ENT.B may not be in relationship with an entity from ENT.A, creating the (nefast) need for `NULL` values.
 
 For the same diagram, the cross-reference approach would give:
 
@@ -5133,12 +5133,12 @@ To improve this situation, we can either
 #. take the foreign key to MEMBER and the foreign key to TIME\_SLOT to be the primary key of this relation,
 #. or take the foreign key to EQUIPMENT and the foreign key to TIME\_SLOT to be the primary key of this relation.
 
-Both solutions enforce only _some_ of the requirement expressed by the E.R. diagram.
+Both solutions enforce only _some_ of the requirement expressed by the ER diagram.
 
 
 ### Outro
 
-E.R. Model | Relational Model |
+ER Model | Relational Model |
 --- | ---
 Entity type | Entity relation
 $1:1$ or $1:N$ relationship type | Foreign key (or relationship relation)
@@ -5164,7 +5164,7 @@ Goals:
 #. Minimum redundancy
 #. Make queries easy (avoid redundant work, make `select` / `join` easy)
 
-For E.R. diagrams, some of the usual techniques^[Cf. for instance <http://infolab.stanford.edu/~ullman/fcdb/aut07/slides/er.pdf>.] are:
+For ER diagrams, some of the usual techniques^[Cf. for instance <http://infolab.stanford.edu/~ullman/fcdb/aut07/slides/er.pdf>.] are:
 
 - Limit the use of weak entity sets.
 - Do not use an entity when an attribute will do.
@@ -5178,7 +5178,7 @@ For E.R. diagrams, some of the usual techniques^[Cf. for instance <http://infola
 #### No Anomalies
 
 #. Insertion Anomalies
-: Having to invent values or to put `NULL`{.sqlmysql} to insert tuples, especially on a key attribute!
+: Having to invent values or to put `NULL` to insert tuples, especially on a key attribute!
 
 #. Deletion Anomalies
 : Loosing information inadvertently
@@ -5188,26 +5188,26 @@ For E.R. diagrams, some of the usual techniques^[Cf. for instance <http://infola
 
 (Bad!) Example:
 
-~~~
+```
 ---------- (Login, Name, AdvisoryName, AdvisorOffice, Major, MajorHead)
 
 -----------(Office, PhoneNumber, Building)
-~~~
+```
 
 #. Advisor without student
 #. Delete last student of advisor
 #. Advisor change name.
 
-#### `NULL`{.sqlmysql} Should Be Rare
+#### `NULL` Should Be Rare
 
-`NULL`{.sqlmysql} has 3 meanings, wastes space, and makes join / nested projections harder.
+`NULL` has 3 meanings, wastes space, and makes join / nested projections harder.
 
 Example:
 
-~~~
+```
 
 STUDENT(Login, …, siblingEnrolled)
-~~~
+```
 
 Transform into "Emergency Contact in University" relation (bonus: allow multiple contacts).
 
@@ -5218,23 +5218,23 @@ Example with advisorOffice and Office: if we try to write a join to obtain the p
 
 ### Example
 
-~~~
+```
 
 MARKER(Owner, Color, OwnerOffice, Brand, BrandEmail)
 
 TEACHER(Office, Name, Phone)
-~~~
+```
 
 Corrected to:
 
-~~~
+```
 
 MARKER(Owner, Color, B͟r͟a͟n͟d͟)
 
 TEACHER(Office, N͟a͟m͟e͟, Phone)
 
 BRAND(N͟a͟m͟e͟, Email)
-~~~
+```
 
 
 ### Functional Dependencies
@@ -5250,10 +5250,10 @@ For instance, if $X$ and $Y$ are (sets of) attributes, $X → Y$ reads "$X$ fixe
 
 Let us list all the attributes of our previous example:
 
-~~~
+```
 MARKER.Owner, MARKER.Color, MAKER.Brand, TEACHER.Office, TEACHER.Name,
 TEACHER.Phone, BRAND.Name, BRAND.Email
-~~~
+```
 
 Think about their dependencies, and list them:
 
@@ -5738,7 +5738,7 @@ Exercise +.#deletion
 
 Exercise +.# 
 
-: Why should we avoid attributes whose value will often be `NULL`{.sqlmysql}? Can the usage of `NULL`{.sqlmysql} be completely avoided?
+: Why should we avoid attributes whose value will often be `NULL`? Can the usage of `NULL` be completely avoided?
 
 Exercise +.# 
 ~ 
@@ -5795,7 +5795,7 @@ Exercise +.#
     
 Exercise +.#composite_1NF
 
-:  What is a composite attribute in a E.R. diagram? Can a relational schema with composite attribute be in Second Normal Form?
+:  What is a composite attribute in a ER diagram? Can a relational schema with composite attribute be in Second Normal Form?
 
 Exercise +.# 
 ~ 
@@ -5871,7 +5871,7 @@ Exercise +.#
 
 Exercise +.# 
 
-: Name two reasons why one would want to use a U.M.L. class diagram over an E.R. diagram to represent a conceptual schema.
+: Name two reasons why one would want to use a U.M.L. class diagram over an ER diagram to represent a conceptual schema.
 
 Exercise +.# 
 ~ 
@@ -5883,7 +5883,7 @@ Exercise +.#
 
 Exercise +.# 
 ~ 
-	Convert the following E.R. diagram to a U.M.L. class diagram.
+	Convert the following ER diagram to a U.M.L. class diagram.
 
     : ![](fig/er/belongs)
 
@@ -5899,7 +5899,7 @@ Why is such a concept useful?
 Exercise +.# 
 ~ 
 
-    Convert the following E.R. diagram into a U.M.L. class diagram:
+    Convert the following ER diagram into a U.M.L. class diagram:
 
     ![](fig/er/pilot)
 
@@ -6062,7 +6062,7 @@ Solution +.#
 
 Solution +.#
 
-: When you have to invent a primary key or add a lot of `NULL`{.sqlmysql} value to be able to add a tuple. I want to add a room in my DB, but the only place where rooms are listed are as an attribute on a Instructor table, so I have to "fake" an instructor to add a room.
+: When you have to invent a primary key or add a lot of `NULL` value to be able to add a tuple. I want to add a room in my DB, but the only place where rooms are listed are as an attribute on a Instructor table, so I have to "fake" an instructor to add a room.
 
 Solution +.#
 
@@ -6075,11 +6075,11 @@ Solution +.#
 
 Solution +.#
 
-: Because it will be `NULL`{.sqlmysql} most of the time. In a separate relation, e.g. a "BIKE" relation, with two attributes, "Owner" and "Brand", "Owner" being a foreign key referencing the SSN attribute of PROF.
+: Because it will be `NULL` most of the time. In a separate relation, e.g. a "BIKE" relation, with two attributes, "Owner" and "Brand", "Owner" being a foreign key referencing the SSN attribute of PROF.
 
 Solution +.#
 
-: Because it will be `NULL`{.sqlmysql} most of the time, and because students could have more than one sibling on campus. In a separate relation, e.g. in a "EMERGENCY_CONTACT" relation, with two attributes, "Student" (refercing the SSN attribute of STUDENT), and "Contact". If the emergency contacts are not related to the student, or if we want to preserve the fact that one student is a sibling to another, we can create another relation to store that information.
+: Because it will be `NULL` most of the time, and because students could have more than one sibling on campus. In a separate relation, e.g. in a "EMERGENCY_CONTACT" relation, with two attributes, "Student" (refercing the SSN attribute of STUDENT), and "Contact". If the emergency contacts are not related to the student, or if we want to preserve the fact that one student is a sibling to another, we can create another relation to store that information.
 
 Solution +.#
 
@@ -6283,7 +6283,7 @@ Problem (ER diagram for job and offers) +.#job-offers
 	Sometimes you know one or multiple persons working there, and you want to keep track of their names, role, and (if this is the case)  of the job they told you about.
 	Finally, you want to keep track of the offers you received: the job they correspond to, the actual salary offered and the possible starting date.
 	
-	Draw the E.R. diagram for this situation.
+	Draw the ER diagram for this situation.
 	Add attributes for the key attributes if needed, and specify the cardinality ratios and participation constraints.
 
 ---
@@ -6291,7 +6291,7 @@ Problem (ER diagram for job and offers) +.#job-offers
 Problem (Reverse engineering by hand) +.#Reverse-Engineering-ACTOR
 ~ 
 
-    Look at the following relational model, and "reverse-engineer" it to obtain an E.R. diagram:
+    Look at the following relational model, and "reverse-engineer" it to obtain an ER diagram:
 
     ![](fig/rel_mod/actor)
 
@@ -6311,9 +6311,9 @@ Problem (Discovering MySQL Workbench) +.#mysqlw
     #. Check that all the parameters are correct. Normally, you only have to change the name of the user to "testuser", and leave the rest as it is. Click on "Test the connection", and enter your password (which should be "password") when prompted. If you receive a warning about "Incompatible/nonstandard server version or connection protocol detected", click on "Continue anyway".
     #.  Now, click on the box "Local instance 3306", and enter your password. A new tab appears, you can see the list of schemas in the bottom part of the left panel.
     #.  Click on "Database", and then on "Reverse Engineering" (or hit `ctrl` + `r`), click on "next", enter your password, and click on "next". You should see the list of the schemas stored in your database. Select one (any one, we are just exploring the functionalities at that point, you can pick for instance `HW_DBCoffee` from [%D %n (%T)](#problem:coffee)), click on "next", and then click on "execute", "next", and "close".
-    #. You're back on the previous view, but you should now see "E.E.R. diagram" on the top of the middle panel. Click on "E.E.R. diagram" twice, scroll down if needed, and you should see the E.E.R. diagram.
-    #.  This diagram is not exaclty an E.R. diagram, and it is not a U.M.L. diagram either: it is an [E.E.R. diagram](#sec:EER), that uses [Crow's foot notation](#sec:Crow_foot). Make sure you understand it.
-    #. Try to modify the E.E.R. diagram. Make some relations mandatory, change their name, add an attribute, change the name of another, insert a couple of elements in an entity, add a row in a table, etc. Make sure you understand the meaning of the lines between the entities.
+    #. You're back on the previous view, but you should now see "EER diagram" on the top of the middle panel. Click on "EER diagram" twice, scroll down if needed, and you should see the EER diagram.
+    #.  This diagram is not exaclty an ER diagram, and it is not a U.M.L. diagram either: it is an [EER diagram](#sec:EER), that uses [Crow's foot notation](#sec:Crow_foot). Make sure you understand it.
+    #. Try to modify the EER diagram. Make some relations mandatory, change their name, add an attribute, change the name of another, insert a couple of elements in an entity, add a row in a table, etc. Make sure you understand the meaning of the lines between the entities.
     #. Once you're done, try to "Forward Engineer" by hitting "Ctrl" + "G". Click on "next" twice, enter your password, click on lick on "next" once more, and you should see the `SQL` code needed to produce the table you just designed using the graphical tool.
 
 ---
@@ -6325,10 +6325,10 @@ Apply the ER-to-Relation mapping to your ER diagram from [%D %n (%T)](#problem:c
 
 ---
 
-Problem (From E.R. diagram to Relational model -- BIKE) +.#ERtoRELBike
+Problem (From ER diagram to Relational model -- BIKE) +.#ERtoRELBike
 ~ 
 
-    Consider the following E.R. diagram:
+    Consider the following ER diagram:
 
     ![](fig/er/bike)
     \ 
@@ -6347,14 +6347,14 @@ Problem (From E.R. diagram to Relational model -- BIKE) +.#ERtoRELBike
 "… a bike can be in the database without having been dropped by a customer?  |   |   |
 "… an employee can be asked to repair a bike without having that type of bike as one of their specialty?  |   |   |
 
-Then, convert that E.R. diagram to the relational model. Try to make as few assumptions as possible.
+Then, convert that ER diagram to the relational model. Try to make as few assumptions as possible.
 
 ---
 
-Problem (From E.R. diagram to Relational model -- RECORD) +.#ERtoRELRecord
+Problem (From ER diagram to Relational model -- RECORD) +.#ERtoRELRecord
 ~ 
 
-    Consider the following E.R. diagram:
+    Consider the following ER diagram:
 
     ![](fig/er/record)
     \ 
@@ -6373,14 +6373,14 @@ two logos can have the same name? |   |   |
 two recordings can have the same title? |   |   |
 a record shop must sell at least one recording? |   |   |
 
-Then, convert that E.R. diagram to the relational model. Try to make as few assumptions as possible.
+Then, convert that ER diagram to the relational model. Try to make as few assumptions as possible.
 
 ---
 
 Problem (ER-to-Relation mapping for Country) +.#ERtoRELCountry
 ~ 
 
-    Consider the following E.R. schema:
+    Consider the following ER schema:
 
     ![](fig/er/country)
     \ 
@@ -6392,12 +6392,12 @@ Problem (ER-to-Relation mapping for Country) +.#ERtoRELCountry
 
     For this relationship, on the left-hand side is the language that borrows a word, and on the right-hand side is the language that provides the loanword.
 
-    Map that E.R. diagram to a relational database schema.
+    Map that ER diagram to a relational database schema.
 
 ---
 
 
-Problem (From business statements to E.R. diagram -- UNIVERSITY) +.#BusinessToEr
+Problem (From business statements to ER diagram -- UNIVERSITY) +.#BusinessToEr
 ~ 
 
     Consider the following requirements for a UNIVERSITY database, used to keep track of students' transcripts.
@@ -6409,7 +6409,7 @@ Problem (From business statements to E.R. diagram -- UNIVERSITY) +.#BusinessToEr
     #.  Each section of a course has an instructor, a semester, a year, and a section number.
     The section number distinguishes different sections of the same course that are taught during the same semester/year; its values are 1, 2, 3, …, up to the number of sections taught during each semester. Students can enroll in sections and receive a letter grade, and grade point (0, 1, 2, 3, 4 for F, D, C, B, A, respectively).
 
-    Draw an E.R. diagram for that schema.
+    Draw an ER diagram for that schema.
     Specify key attributes of each entity type and structural constraints on each relationship type.
     Note any unspecified requirements, and make appropriate assumptions to make the specification complete.
 
@@ -6727,18 +6727,18 @@ Problem (A Relation for Network Cards) +.#network
 
 ---
 
-Problem (From E.R. to relational schema and UML class diagram -- CAR\_INFO) +.#carinfo
+Problem (From ER to relational schema and UML class diagram -- CAR\_INFO) +.#carinfo
 ~ 
 
-    Consider the following E.R. schema for the CAR\_INFO database:
+    Consider the following ER schema for the CAR\_INFO database:
 
     ![](fig/er/car_info)
 
     Note that a car can have at most one driver, $N$ passengers, $N$ insurances, and that car insurances exist only if they are "tied up" to a car (i.e., they are weak entities, and their identifying relationship is called "Insured").
 
     #. Find the key attribute for "Car", and the partial key for "Car Insurance". If you cannot think of any, add a dummy attribute and make it be the key.
-    #. Convert that E.R. diagram to a relational database schema. 
-    #. Convert the E.R. diagram to a U.M.L. class diagram. Comparing Figure 7.16 with Figure 7.2 from your textbook should guide you.
+    #. Convert that ER diagram to a relational database schema. 
+    #. Convert the ER diagram to a U.M.L. class diagram. Comparing Figure 7.16 with Figure 7.2 from your textbook should guide you.
 
 ---
 
@@ -6768,8 +6768,8 @@ Problem (Using MySQL Workbench's reverse engineering) +.#reverseeng
     *This problem requires you to have successfully completed @problem:mysqlw and @problem:UMLtoRELDriver.*
 
     Using the relational database schema you obtained in @problem:UMLtoRELDriver, write the `SQL` implementation of that database. 
-    Then, using MySQL Workbench, use the "Reverse Engineering" function to obtain a E.E.R. diagram of your database, and compare it with the U.M.L. diagram from @problem:UMLtoRELDriver.
-    Apart from the difference inherent to the nature of the diagram (i.e., U.M.L. Vs E.E.R.), how are they the same?
+    Then, using MySQL Workbench, use the "Reverse Engineering" function to obtain a EER diagram of your database, and compare it with the U.M.L. diagram from @problem:UMLtoRELDriver.
+    Apart from the difference inherent to the nature of the diagram (i.e., U.M.L. Vs EER), how are they the same?
     How do they differ?
     Is the automated tool as efficient and accurate as you are?
 
@@ -7162,7 +7162,7 @@ Solution to [%D %n (%T)](#problem:library_network)
     
 Note that:
 
-- The relationships "HOLD\_BY" and "BORROWED\_BY" could be represented using the foreign key approach. However, their value would be `NULL`{.sqlmysql} most of the time, so it would not be very efficient.
+- The relationships "HOLD\_BY" and "BORROWED\_BY" could be represented using the foreign key approach. However, their value would be `NULL` most of the time, so it would not be very efficient.
 - COPY could be the only attribute in the primary key of BORROWING and HOLD because a copy can be borrowed or put on hold only once. Having both attributes being the primary key could allow for more flexibility (typically, a copy could be put on hold by multiple patrons at the same time), but should be discussed.
 
 ---
@@ -7251,7 +7251,7 @@ For this program, we will use the following database:
 ```{.sqlmysql .numberLines include=code/sql/HW_EBookshop.sql}
 ```
 
-~~~{.plain .numberlines}
+```{.plain .numberlines}
 MariaDB [HW_EBookshop]> SELECT * FROM BOOKS;
 +----+-------------------------+--------------------------------+-------+------+
 | ID | title                   | author                         | price | qty  |
@@ -7263,20 +7263,20 @@ MariaDB [HW_EBookshop]> SELECT * FROM BOOKS;
 |  5 | Le Petit Prince         | Antoine de Saint-Exupéry       | 55.55 |   55 |
 +----+-------------------------+--------------------------------+-------+------+
 5 rows in set (0.00 sec)
-~~~
+```
 
 You can copy and paste the code, then execute it, or use MySQL's batch mode: you can find the code previously given at `code/sql/HW_EBookshop.sql`, i.e., at <https://rocketgit.com/user/caubert/CSCI_3410/source/tree/branch/master/blob/notes/code/sql/HW_EBookshop.sql>.
 Open a terminal (or command-line interpreter), navigate to the folder where you stored that file (using `cd`), and type
 
-~~~{.bash}
+```{.bash}
 mysql -u testuser -p < HW_EBookshop.sql
-~~~
+```
 
 for linux, or (something like)
 
-~~~{.bash}
+```{.bash}
 "C:\Program Files\MySQL\MySQL Server 5.7\bin\mysql.exe" -u testuser -p < HW_EBookshop.sql
-~~~
+```
 
 for Windows.
 
@@ -7306,28 +7306,28 @@ We need to set up the *driver* (or *connector*) to make the java `sql` API and M
 
 Once this is done and your program was compiled, you can run it using (where you replace `***` with the actual number, of course, e.g. `8.0.15`):
 
-~~~{.bash}
+```{.bash}
 java -cp .:mysql-connector-java-***-bin.jar FirstProg
-~~~
+```
 
 in Linux, or
 
-~~~{.bash}
+```{.bash}
 java -cp .;mysql-connector-java-***-bin.jar FirstProg
-~~~
+```
 
 in Windows.
 The `-cp` option lists the places where java should look for the class used in the program: we are explicitely asking java to use the `mysql-connector-java-***-bin.jar` executable (the driver) to execute our `FirstProg` executable.
 
 If we try to execute `FirstProg` without that flag, we obtain the following error message:
 
-~~~{.bash}
+```{.bash}
 $ java FirstProg
 java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/HW_EBookshop
 at java.sql.DriverManager.getConnection(DriverManager.java:689)
 at java.sql.DriverManager.getConnection(DriverManager.java:247)
 at FirstProg.main(FirstProg.java:9)
-~~~
+```
 
 ### The Application Program (`java`)
 
@@ -7357,31 +7357,31 @@ A couple of comments:
 
 If you store the program in `FirstProg.java`, compile it, with
 
-~~~{.bash}
+```{.bash}
 javac FirstProg.java
-~~~
+```
 
 and then execute it, with 
 
-~~~{.bash}
+```{.bash}
 java -cp .:mysql-connector-java-8.0.15.jar FirstProg
-~~~
+```
 
 then you would obtain:
 
-~~~{.plain .numberLines}
+```{.plain .numberLines}
 The SQL query is: SELECT title, price, qty FROM BOOKS WHERE qty > 40
 The records selected are:
 The Lord of the Rings, 44.44, 44
 Le Petit Prince, 55.55, 55
 Total number of records = 2
-~~~
+```
 
 ### A Variation
 
 If you were to replace the body of `try` in the previous program with 
 
-~~~{.java .numberLines}
+```{.java .numberLines}
 String strSelect = "SELECT * FROM BOOKS";
 ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -7399,20 +7399,20 @@ while (rset.next()) {
  System.out.println();
 }
 conn.close();
-~~~
+```
 
 (You can find this code in `code/java/FirstProgBis.java`)
 
 You would obtain:
 
-~~~{.plain  .numberLines}
+```{.plain  .numberLines}
 The records selected are:
 1 ID,  The Communist Manifesto title,  Karl Marx and Friedrich Engels author,  11.11 price,  11 qty
 2 ID,  Don Quixote title,  Miguel de Cervantes author,  22.22 price,  22 qty
 3 ID,  A Tale of Two Cities title,  Charles Dickens author,  33.33 price,  33 qty
 4 ID,  The Lord of the Rings title,  J. R. R. Tolkien author,  44.44 price,  44 qty
 5 ID,  Le Petit Prince title,  Antoine de Saint-Exupéry author,  55.55 price,  55 qty
-~~~
+```
 
 ## Mapping Datatypes
 
@@ -7456,14 +7456,14 @@ The program in [%D %n (%T)](#problem:Advanced_java) uses the modifications discu
 
 We can  pass options when connecting to the database:
 
-~~~{.java}
+```{.java}
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/HW_DBPROG"
     + "?user=testuser"
 	+ "&password=password"
 	+ "&allowMultiQueries=true"
 	+ "&createDatabaseIfNotExist=true"
 	+ "&useSSL=true");
-~~~
+```
 
 `allowMultiQueries` allows to pass multiple queries with one `executeUpdate` statement, and `createDatabaseIfNotExist` is about schema, actually.
 
@@ -7478,13 +7478,13 @@ Use `stmt.executeUpdate` (multiple insertion possible if `allowMultiQueries` was
 
 Another way of batch processing statements:
 
-~~~{.java}
+```{.java}
 stmt.addBatch(insert3);
 stmt.addBatch(insert4);
 stmt.executeBatch();
-~~~
+```
 
-Note that `executeBatch` may be used "for updating, inserting, or deleting a row; and it may also contain DDL statements such as `CREATE TABLE`{.sqlmysql} and `DROP TABLE`{.sqlmysql}. It cannot, however, contain a statement that would produce a ResultSet object, such as a `SELECT statement`{.sqlmysql}", cf. <https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html#batch_updates>.
+Note that `executeBatch` may be used "for updating, inserting, or deleting a row; and it may also contain DDL statements such as `CREATE TABLE` and `DROP TABLE`. It cannot, however, contain a statement that would produce a ResultSet object, such as a `SELECT statement`", cf. <https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html#batch_updates>.
 Also, the name suggests that it should be possible to fetch the `SQL` instructions from a file and load them in your `Java` program, but there is actually no easy way to do this, c.f. <https://stackoverflow.com/q/2071682/>.
 
 ### Prepared Statements
@@ -7539,11 +7539,11 @@ Exercise +.#
 
 Exercise +.# 
 
-: How do you submit a `SELECT`{.sqlmysql} statement to the DBMS?
+: How do you submit a `SELECT` statement to the DBMS?
 
 Exercise +.# 
 
-: What method should be used to perform an `INSERT`{.sqlmysql} command from your program?
+: What method should be used to perform an `INSERT` command from your program?
 
 Exercise +.# 
 
@@ -7558,9 +7558,9 @@ Exercise +.#
 
   Explain this JDBC URL format:
   
-  ~~~{.java  .numberLines}
+  ```{.java  .numberLines}
   jdbc:mysql://localhost:3306/HW_NewDB?createDatabaseIfNotExist=true&useSSL=true
-  ~~~
+  ```
 
 Exercise +.# 
 
@@ -7572,9 +7572,9 @@ Exercise +.#
 
     Assuming `stmt`{.java} is a `Statement`{.java} object, in the statement
     
-    ~~~{.java}
+    ```{.java}
     modif = stmt.executeUpdate(strC);
-    ~~~
+    ```
     what is 
 
     #. the datatype of `modif`{.java}?
@@ -7589,7 +7589,7 @@ Exercise +.#
 
 Exercise +.# 
 
-: Assuming `ps` is the prepared statement `INSERT INTO EXAM VALUES (?, ?)`{.sqlmysql}, write the three statements needed to allocate "Quiz" and "5" to the two slots, and then to execute the prepared statement on the database.
+: Assuming `ps` is the prepared statement `INSERT INTO EXAM VALUES (?, ?)`, write the three statements needed to allocate "Quiz" and "5" to the two slots, and then to execute the prepared statement on the database.
 
 Exercise +.#ErrorsInCode
 ~ 
@@ -7603,7 +7603,7 @@ Exercise +.#ErrorsInCode
 
 Exercise +.# 
 
-: Write a small program that determine whenever the `null` value from Java is  equal to the `NULL`{.sqlmysql} value in your DBMS.
+: Write a small program that determine whenever the `null` value from Java is  equal to the `NULL` value in your DBMS.
 
 ## Solution to Exercises {-} 
 
@@ -7638,7 +7638,7 @@ Solution +.#
 
 Solution +.#
 
-: The `executeUpdate` or `execute` methods can be used to perform an `INSERT`{.sqlmysql} command from our program.
+: The `executeUpdate` or `execute` methods can be used to perform an `INSERT` command from our program.
 
 Solution +.#
 
@@ -7655,7 +7655,7 @@ Solution +.#
 
 Solution +.#
 
-: In `modif = stmt.executeUpdate(strC);`{.java}, `modif` is an integer (the number of rows modified by the query), `strC` is a `String` (a SQL command), and an example of value is `DELETE FROM BOOKS Where Price > 0.5`{.sqlmysql}.
+: In `modif = stmt.executeUpdate(strC);`{.java}, `modif` is an integer (the number of rows modified by the query), `strC` is a `String` (a SQL command), and an example of value is `DELETE FROM BOOKS Where Price > 0.5`.
 
 Solution +.#
 
@@ -7668,25 +7668,25 @@ Solution +.#
 Solution +.#
 ~ 
 
-    ~~~{.java}
+    ```{.java}
     ps.setString(1, "Quiz");
 	ps.setInt(2, 5);
 	ps.execute();
-	~~~
+	```
 
 Solution +.#
 ~ 
 
     The errors are:
 
-    - line 16, `stmt.executeUpdate(strSelect)`{.java}: `executeUpdate`{.java} cannot be used to perform `SELECT`{.sqlmysql} statements.
+    - line 16, `stmt.executeUpdate(strSelect)`{.java}: `executeUpdate`{.java} cannot be used to perform `SELECT` statements.
     - line 21, this error is subtle: we need to display the last record before using `previous()`{.java}, otherwise it would be just skipped. We can fix this using a `do`...`while` loop.
     - line 22, `String title = rset.getDouble("title");`{.java}: `getDouble`{.java} returns a `double`{.java}, and hence cannot be stored as a `String`{.java}.
     - line 28, `ps.executeQuery()`{.java}: the prepared statement did not received a value for the `?` argument.
 
     You can find the program patched in `code/java/ProgWithErrorsPatched.java`, the (relevant) diff. is:
 
-    ~~~~{.bash}
+    ````{.bash}
     16c16
     <       ResultSet rset = stmt.executeUpdate(strSelect);
     ---
@@ -7703,7 +7703,7 @@ Solution +.#
     >       }while(rset.previous()); // Error 2 bis
     27a28
     >       ps.setInt(1, 10); // Error 4
-    ~~~~
+    ````
 
 <!--
 %
@@ -7731,11 +7731,11 @@ Solution +.#
 
     This program should display:
     
-    ~~~~{.bash}
+    ````{.bash}
     This last query changed 1 row(s).
     null 0.0 0
     And null for CHAR in SQL is null for String in Java.
-    ~~~~
+    ````
 
 ## Problems
 
@@ -7773,13 +7773,13 @@ Problem (A GUEST Java Program) +.#Guest_Java
     their presence? Enter "Y" for yes, anything else for no.
     ```
 
-    You should suppose that `BLACKLIST`{.sqlmysql} contains more than one name, and that some other operations are performed where ……………⌛…………… is (typically, some guests will confirm their presence).
+    You should suppose that `BLACKLIST` contains more than one name, and that some other operations are performed where ……………⌛…………… is (typically, some guests will confirm their presence).
     Using batch processing or prepared statements will be a plus, but is not mandatory to solve those exercises.
 
     #. Write a snippet that 
         #. Ask the user how many guests they have,
         #. For each guest, ask their name (using `key.nextLine()`{.java}, that returns the `String`{.java} entered by the user),
-        #. For each guest name entered, insert in the `GUEST`{.sqlmysql} table an integer that is incremented after each insertion, the name entered by the user, and `NULL`{.sqlmysql}.
+        #. For each guest name entered, insert in the `GUEST` table an integer that is incremented after each insertion, the name entered by the user, and `NULL`.
 	#. Write a snippet such that if there is at least one guest who confirmed their presence and whose name is on the blacklist, a message will be displayed at the screen, containing the name of (at least) one of those guests.
 	#. Write a snippet that asks the user whenever they want to remove from the guest list all the persons on the blacklist that confirmed their presence, and do so if they enter "yes" (or some variation).
     
@@ -7796,16 +7796,16 @@ Solution to [%D %n (%T)](#problem:Guest_Java)
     
     They both starts with:
     
-    ~~~{.java .numberLines}
+    ```{.java .numberLines}
     // Asking the number of guests.
     int guest_id;
     String guest_name;
     int counter = 0;
-    ~~~
+    ```
     
     Then the solution using batch processing could be:
 
-    ~~~{.java .numberLines}
+    ```{.java .numberLines}
     while (counter < guest_total) {
         System.out.print("Enter name of guest " + (counter + 1) + ".\n"); // Ask the name of the guest.
         guest_name = key.nextLine(); // Read the name of the guest.
@@ -7814,11 +7814,11 @@ Solution to [%D %n (%T)](#problem:Guest_Java)
         counter++;
     }
     stmt.executeBatch(); // Execute the batch statement.
-    ~~~
+    ```
     
     while the solution using prepared statements could be:
     
-    ~~~{.java .numberLines}
+    ```{.java .numberLines}
     PreparedStatement ps = conn.prepareStatement("INSERT INTO GUEST VALUES(?, ?, NULL);");
     while (counter < guest_total) {
         System.out.print("Enter name of guest " + (counter + 1) + ".\n");
@@ -7828,13 +7828,13 @@ Solution to [%D %n (%T)](#problem:Guest_Java)
         ps.executeUpdate();
         counter++;
     }
-    ~~~
+    ```
     
     @problem:Guest_Java -- Solution to Q. -.#
     
     We let `SQL` do all the hard work:
     
-    ~~~{.java .numberLines}
+    ```{.java .numberLines}
     ResultSet rset = stmt.executeQuery
         "SELECT * FROM GUEST, BLACKLIST"+
         "WHERE GUEST.Name = BLACKLIST.Name"+
@@ -7844,13 +7844,13 @@ Solution to [%D %n (%T)](#problem:Guest_Java)
         System.out.print("Oh no, (at least) one of the guest from the black list confirmed their presence!\n"
         +" The name of the first one is " + rset.getString(2) + ".\n");
     }
-    ~~~
+    ```
     
     @problem:Guest_Java -- Solution to Q. -.#
     
     Similarly, we let `SQL` do all the hard work:
     
-    ~~~{.java .numberLines}
+    ```{.java .numberLines}
     System.out.print("Do you want to remove all the guests that are on the black list"
         +" that confirmed their presence? Enter \"Y\" for yes, anything else for no.\n");
     if (key.nextLine().equals("Y")) {
@@ -7861,7 +7861,7 @@ Solution to [%D %n (%T)](#problem:Guest_Java)
             + " AND Confirmed = true;"
         );
     }
-    ~~~
+    ```
 
 # A Bit About Security
 
@@ -7907,10 +7907,10 @@ Attacks: buffer overflow, denial of service, weak authentication, privilege esca
 
 Example with `ASP`, Active Server Pages, a server-side scripting language:
 
-~~~{.asp}
+```{.asp}
 txtUserId = getRequestString("UserId");
 txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
-~~~
+```
 
 #. `105; DROP TABLE Suppliers;` Execute remote command
 #. `105 or 1 = 1` Exploit, bypass login screen
@@ -7922,19 +7922,19 @@ The source code at `code/java/SimpleInjection01.java` and `code/java/SimpleInjec
 
 The gist of `code/java/SimpleInjection01.java` is that writing a statement like
 
-~~~{.java}
+```{.java}
 ResultSet rset = stmt.executeQuery("SELECT * FROM SECRETVIP WHERE Name ='" + entered + "';");
-~~~
+```
 
-leaves the door open for an attacker to enter `n' OR '1' = '1`{.sqlmysql} as a value for `entered`, so that the condition would always be true.
+leaves the door open for an attacker to enter `n' OR '1' = '1` as a value for `entered`, so that the condition would always be true.
 
 For `code/java/SimpleInjection02.java`, it shows how
 
-~~~{.java}
+```{.java}
 stmt.execute("SELECT * FROM SECRETVIP WHERE Name ='" + entered + "';");
-~~~
+```
 
-could be a serious issue if `nope'; DROP SCHEMA HW_SIMPLE_INJECTION_2;`{.sqlmysql} was entered as a value for `entered`, destroying the whole schema `HW_SIMPLE_INJECTION_2`.
+could be a serious issue if `nope'; DROP SCHEMA HW_SIMPLE_INJECTION_2;` was entered as a value for `entered`, destroying the whole schema `HW_SIMPLE_INJECTION_2`.
 
 Finally, `code/java/SimpleInjection03.java` shows how to use proper statements to avoid this situation.
 
@@ -7942,9 +7942,9 @@ Finally, `code/java/SimpleInjection03.java` shows how to use proper statements t
 
 #. Backups: 
 
-    ~~~{.bash}
+    ```{.bash}
     mysqldump --all-databases - u testuser -p password - h localhost > dump.sql
-    ~~~
+    ```
 #. Possible protections from sql injections (-like):
     #. Prepared Statemets (a.k.a. stored procedures)
     #. White list input validation
@@ -7995,7 +7995,7 @@ Solution +.#
 : 
     There are two ways:
     
-    - I look for places where the program is asking for user-input, and I enter values like `1 OR 1 = 1`{.sqlmysql}, or `; DROP TABLE Users;--`{.sqlmysql}
+    - I look for places where the program is asking for user-input, and I enter values like `1 OR 1 = 1`, or `; DROP TABLE Users;--`
     - I look for an automated tool (like <http://sqlmap.org/>) that will test the server to which we are connecting.
     
     Note that both options can be explored in parallel. You can also check e.g. <https://sqa.stackexchange.com/q/1527/> for more ideas on how to test for injections.
@@ -8024,7 +8024,7 @@ Problem (Insecure Java Programming) +.#insecure_java
         "jdbc:mysql://example.com/:3306/?user=admin&password=admin");
     ```
 
-    that contains three tables (`DISK`{.sqlmysql}, `BOOK`{.sqlmysql} and `VINYL`{.sqlmysql}), each with `Title`{.sqlmysql} and `Price`{.sqlmysql} attributes.
+    that contains three tables (`DISK`, `BOOK` and `VINYL`), each with `Title` and `Price` attributes.
     The compiled version is then shared with customers all around the world.
     
     You can find a program in a compilable state at `code/java/InsecureProgram.java` that connects to localhost, if you want to test it.
@@ -8033,7 +8033,7 @@ Problem (Insecure Java Programming) +.#insecure_java
     Question -.#
     ~ 
     
-        The authors of this program believe that the top-secret title of the next disk by a secret group will not be accessible to the user of this program, because its price is set to `NULL`{.sqlmysql} in the `DISK`{.sqlmysql} table.
+        The authors of this program believe that the top-secret title of the next disk by a secret group will not be accessible to the user of this program, because its price is set to `NULL` in the `DISK` table.
         Prove them wrong.
 
     Question -.#
@@ -8273,7 +8273,7 @@ Think of BSON as a binary representation of JSON (JavaScript Object Notation) do
 
 An example of XML (Extensible Markup Languag) document (you can actually convert from XML to JSON):
 
-~~~{.xml .numberLines}
+```{.xml .numberLines}
 <shiporder orderid="889923">
   <orderperson>John Smith</orderperson>
   <shipto>
@@ -8294,7 +8294,7 @@ An example of XML (Extensible Markup Languag) document (you can actually convert
     <price>9.90</price>
   </item>
 </shiporder>
-~~~
+```
 
 - Invalid document exists!
 - Human and computer-readable
@@ -8314,7 +8314,7 @@ Each MongoDB instance has multiple databases, each database can have multiple co
 
 Two documents (delimited by `[`…`]`, used to delimit an arry of document).
 
-~~~{.json  .numberLines}
+```{.json  .numberLines}
 [
 {
   "firstname": "Martin",
@@ -8337,7 +8337,7 @@ Two documents (delimited by `[`…`]`, used to delimit an arry of document).
   "lastcity": "Chicago"
 }
 ]
-~~~
+```
 
 <!--
 **Use the same example all along!**
@@ -8436,34 +8436,34 @@ The code explained below can be found at `code/java/MongoTest.java`.
 
 Compile and execute with
 
-~~~{.bash}
+```{.bash}
 javac -cp .:mongo-java-driver-3.7.0-rc0.jar MongoTest2.java 
 java -cp .:mongo-java-driver-3.7.0-rc0.jar MongoTest2
-~~~
+```
 
 After various import statement, and the usual header:
 
-~~~{.java}
+```{.java}
 MongoClientURI connectionString = new MongoClientURI("mongodb://localhost:27017");
 MongoClient mongoClient = new MongoClient(connectionString);
-~~~
+```
 
 Or, more compact:
 
-~~~{.java}
+```{.java}
 MongoClient mongoClient = new MongoClient();
-~~~
+```
 
 Get a collection:
 
-~~~{.java}
+```{.java}
 MongoDatabase database = mongoClient.getDatabase("mydb");
 MongoCollection<Document> collection = database.getCollection("test");
-~~~
+```
 
 Assume we want to create the following document:
 
-~~~{.json}
+```{.json}
   {
    "name" : "MongoDB",
    "type" : "database",
@@ -8471,51 +8471,51 @@ Assume we want to create the following document:
    "versions": [ "v3.2", "v3.0", "v2.6" ],
    "info" : { "level" : "easy", "used" : "yes" }
   }
-~~~
+```
 
 (Remember: order does not matter!)
 
 Then we can use the `Document` class, and then insert it:
 
-~~~{.java}
+```{.java}
 Document doc = new Document("name", "MongoDB");
 doc.append("type", "database");
 doc.append("count", 1);
 doc.append("versions", Arrays.asList("v3.2", "v3.0", "v2.6"));
 doc.append("info", new Document("level", "easy").append("used", "yes"));
-~~~
+```
 
 We can "chain" the `append`: `doc.append("type", "database").append("count", 1);`
 
 And then insert:
 
-~~~{.java}
+```{.java}
 collection.insertOne(doc);
-~~~
+```
 
 Only at this point would the database and collection being created.
 To make sure everything went right, we can open the command-line-interface, and run:
 
-~~~{.bash}
+```{.bash}
 mongo
 show dbs
 use mydb
 show collections
 db.collection.find()
-~~~
+```
 
 This last command should returns something that begins with `{ "_id" : ObjectId("5ae08a7252cbeb2717712b9f"), "name" : "MongoDB" … }`.
 
 We can construct lists of documents and insert them:
 
-~~~{.java  .numberLines}
+```{.java  .numberLines}
 List<Document> documents = new ArrayList<Document>();
 for (int i = 0; i < 10; i++) {
     documents.add(new Document("i", i));
 }
 
 collection.insertMany(documents);
-~~~
+```
 
 ## Principles
 
@@ -8595,7 +8595,7 @@ Problem (Explaining NoSQL) +.#explainNosql
 
 ---
 
-Problem (E.R. Diagram from XML File -- Customer) +.#xmltoercustomer
+Problem (ER Diagram from XML File -- Customer) +.#xmltoercustomer
 ~ 
 
     Consider the following `xml` file:
@@ -8603,12 +8603,12 @@ Problem (E.R. Diagram from XML File -- Customer) +.#xmltoercustomer
     ```{.xml .numberLines include=code/xml/customers.xml}
     ```
     
-    Try to draw the E.R. model that would correspond to the relational implementation of this database.
+    Try to draw the ER model that would correspond to the relational implementation of this database.
     Justify your choices.
 
 ---
 
-Problem (E.R. Diagram from XML File -- Award) +.#xmltoeraward
+Problem (ER Diagram from XML File -- Award) +.#xmltoeraward
 ~ 
 
     Find below a (mashup) of actual data from the National Science Foundation (courtesy of <https://www.nsf.gov/awardsearch/download.jsp>):
