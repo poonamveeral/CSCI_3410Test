@@ -4,7 +4,7 @@
 
 * Our working directory is
 
-![alt text](1.png)
+![alt text](https://github.com/poonamveeral/CSCI_3410Test/blob/master/1.png)
 
   * [Code Folder Naming Convention](#code-folder-naming-convention)
   * [File Names](#file-name)
